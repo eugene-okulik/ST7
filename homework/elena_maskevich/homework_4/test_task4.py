@@ -1,0 +1,10 @@
+name = input('Как вас зовут? ')
+purchase = input('Что вы хотите купить? ')
+cost = input('Сколько это стоит? ')
+how_much_you_get = input('Сколько есть? ')
+how_much_to_save = input('Сколько отложить? ')
+difference = float(cost) - float(how_much_you_get)
+
+print('Привет', name, '. На покупку', purchase, 'тебе не хватает', difference)
+print('Возможность совершения покупки:', difference < 0)
+print('До покупки осталось:', difference / float(how_much_to_save))
