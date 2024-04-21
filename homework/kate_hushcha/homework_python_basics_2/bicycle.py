@@ -10,7 +10,7 @@ months_needed = (price - initial_money) / monthly_input
 months_needed = int(months_needed)
 possibility_now = price is initial_money
 
-print('Hello,', user_name) 
+print('Hello,', user_name)
 print('To buy a', gift, 'you need $', money_needed)
 print('Possibility to buy it right now:', possibility_now)
 print('You will get your', gift, 'in', months_needed, 'months')
