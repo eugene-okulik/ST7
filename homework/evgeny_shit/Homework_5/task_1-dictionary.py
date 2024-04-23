@@ -6,7 +6,8 @@ my_dict = {'tuple': (1, 2, 3, 4, 5),
            'set': {'one', 'two', 'three', 'four', 'five'}}
 
 #  Tuple action.
-print(f'The last element of the tuple \n{my_dict['tuple'][-1]}\n')
+last_element = my_dict['tuple'][-1]
+print(f'The last element of the tuple \n{last_element}\n')
 
 #  List action
 my_dict['list'].append(60)
