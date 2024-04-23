@@ -6,7 +6,7 @@ price = float(input("How much does it cost?\n"))
 current_money = float(input("How much money do you have?\n"))
 save_money = float(input("How much can you save per month?\n"))
 
-need_money = price - current_money
+need_money = max(price - current_money, 0)
 make_purchase = current_money >= need_money
 months = math.ceil(need_money / save_money)
 
