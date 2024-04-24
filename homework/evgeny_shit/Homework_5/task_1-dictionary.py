@@ -25,7 +25,6 @@ print(f"Adding a key ('i am a tuple,') with the value '(111,)' and deleting a ra
 #  Set action
 my_dict['set'].add('six')
 my_dict['set'].pop()
-dict_set = my_dict['set']
 
 print(f"Adding the value 'six' and deleting the value 'three'\n{my_dict['set']}\n")
 
