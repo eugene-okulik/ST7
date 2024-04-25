@@ -12,19 +12,16 @@ my_list = list(my_dict[list1])
 my_list.append('appended')
 my_list.pop(1)
 print(my_list)
-#добавьте элемент с ключом ('i am a tuple',) и любым значением
-#удалите какой-нибудь элемент
+# добавьте элемент с ключом ('i am a tuple',) и любым значением
+# удалите какой-нибудь элемент
 my_dict1 = my_dict[dict1]
 my_dict1['i am a tuple'] = 'tuple'
 del my_dict1['one']
 print(my_dict1)
-#добавьте новый элемент в множество
-#удалите элемент из множества
+# добавьте новый элемент в множество
+# удалите элемент из множества
 my_set1 = my_dict[set1]
 my_set1.add(4)
 my_set1.pop()
 print(my_set1)
-
 print(my_dict)
-
-
