@@ -1,6 +1,6 @@
 
-my_dict = {'tuple' : (2, 12, 22, 32, 42, 52), 'list' : ['two', 2, 'five', 5, 2.5]}
-my_dict['dic'] = {'boy' : 1, 'girl' : 2, 'mom' : 4, 'dad' : 5, 'family' : 'together'}
+my_dict = {'tuple': (2, 12, 22, 32, 42, 52), 'list': ['two', 2, 'five', 5, 2.5]}
+my_dict['dic'] = {'boy': 1, 'girl': 2, 'mom': 4, 'dad': 5, 'family': 'together'}
 my_dict['set'] = {909, 'Nine', 911, 'help', 'reality'}
 
 print(my_dict['tuple'][-1])
