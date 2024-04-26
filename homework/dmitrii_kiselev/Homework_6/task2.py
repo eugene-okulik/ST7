@@ -1,5 +1,5 @@
 for number in range(1, 101):
-    if not number%3 and not number%5:
+    if not number % 3 and not number % 5:
         print('FuzzBuzz')
     elif not number % 3:
         print('Fuzz')

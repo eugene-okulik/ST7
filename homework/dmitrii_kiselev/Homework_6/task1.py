@@ -1,4 +1,5 @@
-string = 'Etiam tincidunt neque erat, quis molestie enim imperdiet vel. Integer urna nisl, facilisis vitae semper at, dignissim vitae libero'.split()
+string = ('Etiam tincidunt neque erat, quis molestie enim imperdiet vel. Integer urna nisl, facilisis vitae semper at, '
+          'dignissim vitae libero').split()
 
 for i in range(len(string)):
     if string[i][-1] == ',':
