@@ -9,7 +9,7 @@ my_dict['list'].append('more')
 my_dict['list'].pop(1)
 # print(my_dict['list'])
 
-my_dict['dic']['flower'] = 'i am a tuple'
+my_dict['dic']['i am a tuple'] = 'therefore i am a flower'
 my_dict['dic'].pop('girl')
 # print(my_dict['dic'])
 
