@@ -8,6 +8,7 @@ print(my_dict['tuple'][-1])
 my_dict['list'].append(6)
 my_dict['list'].pop(2)
 my_dict['dict']['expectation_salary'] = 5000
+my_dict['i am a tuple'] = 'code refactoring'
 my_dict['dict'].pop('position')
 my_dict['set'].add('flo')
 my_dict['set'].pop()
