@@ -9,7 +9,7 @@ print(my_dict['tuple'][-1])
 my_dict['list'].append(50)
 my_dict['list'].pop(2)
 
-my_dict['dict']['i am a tuple'] = 50
+my_dict['dict'][('i am a tuple',)] = 'tuple'
 my_dict['dict'].pop('1')
 
 my_dict['set'].add(50)
