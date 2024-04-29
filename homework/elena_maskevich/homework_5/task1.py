@@ -5,7 +5,7 @@ print(my_dict)
 tuple1, list1, dict1, set1 = my_dict
 my_tuple = my_dict[tuple1]
 # выведите на экран последний элемен tuple
-print(my_tuple[4])
+print(my_tuple[-1])
 # добавьте в конец списка еще один элемент
 # удалите второй элемент списка
 my_list = list(my_dict[list1])
@@ -15,7 +15,7 @@ print(my_list)
 # добавьте элемент с ключом ('i am a tuple',) и любым значением
 # удалите какой-нибудь элемент
 my_dict1 = my_dict[dict1]
-my_dict1['i am a tuple'] = 'tuple'
+my_dict1[('i am a tuple',)] = 'tuple'
 del my_dict1['one']
 print(my_dict1)
 # добавьте новый элемент в множество
