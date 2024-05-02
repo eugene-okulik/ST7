@@ -9,3 +9,4 @@ suma = how_many >= us_price
 mount = (us_price - how_many) / how_otlohit
 print('Возможность совершения покупки: ', suma)
 print('покупки осталось ', mount, 'месяцев')
+ 
