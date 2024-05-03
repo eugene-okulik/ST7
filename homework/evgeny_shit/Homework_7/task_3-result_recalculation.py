@@ -9,4 +9,3 @@ str3 = 'результат работы программы: 9'
 
 for i in str1, str2, str3:
     print(f'{recalc(i)} - result of recalculating "{i}" row')
-
