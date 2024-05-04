@@ -10,7 +10,7 @@
 #             break
 
 secret_number = input('Введете секретное число: ')
-suggested_number = input('Угадайте секретное число: ' )
+suggested_number = input('Угадайте секретное число: ')
 if suggested_number == secret_number:
     print('Поздравляю! Вы угадали!')
 else:
@@ -18,5 +18,3 @@ else:
         if user_input := input('Попробуйте снова ') == secret_number:
             print('Поздравляю! Вы угадали!')
             break
-
-

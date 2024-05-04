@@ -6,7 +6,7 @@ forth_line = 'результат: 2'
 
 def calc(a):
     ind = a.find(':')
-    new_number = int(a[(ind+2):]) + 10
+    new_number = int(a[(ind + 2):]) + 10
     return new_number
 
 
