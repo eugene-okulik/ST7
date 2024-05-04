@@ -4,8 +4,9 @@ def recalc(s):
 
 
 str1 = 'результат операции: 42'
-str2 = 'результат операции: 514'
-str3 = 'результат работы программы: 9'
+str2 = 'результат операции: 54'
+str3 = 'результат работы программы: 209'
+str4 = 'результат: 2'
 
-for i in str1, str2, str3:
+for i in str1, str2, str3, str4:
     print(f'{recalc(i)} - result of recalculating "{i}" row')
