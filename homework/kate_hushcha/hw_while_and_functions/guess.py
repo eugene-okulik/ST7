@@ -7,4 +7,3 @@ while True:
     if user_guess == right_number:
         print('Great Job! You are right.')
         break
-
