@@ -10,7 +10,8 @@ b = list(words.values())
 
 
 def pylove(a, b):
-   return a * int(b)
+    return a * int(b)
+
 
 print(pylove(a[0], b[0]))
 print(pylove(a[1], b[1]))
