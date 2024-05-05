@@ -13,7 +13,7 @@ my_dict['list'].append('six')
 my_dict['list'].pop(1)  # del my_dict['list'][1]
 
 # DICT
-my_dict['dict']['i am a tuple'] = (1, 2, 3)
+my_dict['dict'][('i am a tuple',)] = (1, 2, 3)
 my_dict['dict'].pop('age', 'Key not found')  # del my_dict['dict']['age']
 
 # SET
