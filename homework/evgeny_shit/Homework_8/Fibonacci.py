@@ -8,16 +8,20 @@ def fibonacci():
         a, b = b, a + b
 
 
-def get_fibonacci_number(index):
-    fib_gen = fibonacci()
+def get_fibonacci_number(index, generator):
     for _ in range(index):
-        number = next(fib_gen)
+        number = next(generator)
     return number
 
 
+fib_gen = fibonacci()
+
 sys.set_int_max_str_digits(50000)
 
-print(f"Num 5: {get_fibonacci_number(5)}")
-print(f"Num 200: {get_fibonacci_number(200)}")
-print(f"Num 1000: {get_fibonacci_number(1000)}")
-print(f"Num 100000: {get_fibonacci_number(100000)}")
+desired_numbers = [5, 200, 1000, 100000]
+previous_number = 0
+
+for current_number in desired_numbers:
+    steps = current_number - previous_number
+    print(f"Fibonacci number {current_number} : {get_fibonacci_number(steps, fib_gen)}")
+    previous_number = current_number
