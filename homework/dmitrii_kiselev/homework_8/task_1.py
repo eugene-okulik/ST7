@@ -13,5 +13,5 @@ for x in fibonacci():
     if count in result_list:
         print(x)
     count += 1
-    if count > 100000:
+    if count > max(result_list):
         break
