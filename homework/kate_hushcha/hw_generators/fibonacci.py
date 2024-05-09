@@ -7,7 +7,7 @@ def fibonacci():
         first_num = second_num
         second_num = first_num + second_num
 
-                            
+                
 count = 0
 for num in fibonacci():
     if count == 4:
@@ -20,4 +20,3 @@ for num in fibonacci():
     if count == 99999:
         print(num)
         break
-
