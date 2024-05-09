@@ -7,7 +7,7 @@ def fibonacci():
         first_num = second_num
         second_num = first_num + second_num
 
-                
+
 count = 0
 for num in fibonacci():
     if count == 4:
