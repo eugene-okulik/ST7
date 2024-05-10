@@ -17,6 +17,6 @@ max_num_pos = max(fib_num_positions)
 
 for num_pos, fib_num in enumerate(gen, start=1):
     if num_pos in fib_num_positions:
-        print(fib_num)
+        print(f"In {num_pos} position: {fib_num}")
         if num_pos == max_num_pos:
             break
