@@ -34,6 +34,3 @@ for elem in a:
     count += 1
     if count == 5 or count == 200 or count == 1000 or count == 100000:
         print(elem)
-
-
-
