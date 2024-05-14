@@ -1,9 +1,9 @@
 my_dict = {
-          'tuple': (10, 25, 35, 44, 57),
-          'list': ['one', 'two', 'three', 'four', 'five'],
-          'dict': {'name': 'Anton', 'lastname': 'Bagrov', 'age': 44, 'city': 'Krasnogorsk', 'job_title': 'manual_QA'},
-          'set': {6, 7, 8, 9, 0}
-          }
+    'tuple': (10, 25, 35, 44, 57),
+    'list': ['one', 'two', 'three', 'four', 'five'],
+    'dict': {'name': 'Anton', 'lastname': 'Bagrov', 'age': 44, 'city': 'Krasnogorsk', 'job_title': 'manual_QA'},
+    'set': {6, 7, 8, 9, 0}
+}
 
 # TUPLE - кортежи
 print(my_dict['tuple'][-1])  # -1 последний элемент, -2 предпоследний и тд
