@@ -50,7 +50,7 @@ while True:
         continue
 
     result = controlled_calc(first_number, second_number)
-    if isinstance(result, str):  # Проверка на ошибку деления на ноль или другие ошибки
+    if isinstance(result, str):  # Check for division by zero or other errors
         print(f"Result: {result}\n")
     else:
         print(f"Result: {result:.2f}\n")
