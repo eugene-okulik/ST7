@@ -6,16 +6,12 @@ def calc(first, second, operation):
     elif operation == '*':
         return first * second
     elif operation == '/':
-        return first / second if second != 0 else 'Error: Division by zero'
-    else:
-        return 'Invalid operation'
+        return first / second
 
 
 def operation_control(func):
     def wrapper(first, second):
-        if second == 0 and first != 0:
-            operation = '/'
-        elif first < 0 or second < 0:
+        if first < 0 or second < 0:
             operation = '*'
         elif first == second:
             operation = '+'
@@ -50,7 +46,6 @@ while True:
         continue
 
     result = controlled_calc(first_number, second_number)
-    if isinstance(result, str):  # Check for division by zero or other errors
-        print(f"Result: {result}\n")
-    else:
-        print(f"Result: {result:.2f}\n")
+    if result == 0:
+        result = 0
+    print(f"Result: {result:.2f}\n")
