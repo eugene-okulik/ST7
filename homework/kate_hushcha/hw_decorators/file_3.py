@@ -2,6 +2,7 @@
 first = int(input('Enter the first number:\n'))
 second = int(input('Enter the second number:\n'))
 
+
 def operation_func(function):
     def wrapper(*args, **kwargs):
         if first == second:
@@ -9,12 +10,12 @@ def operation_func(function):
         elif first < 0 or second < 0:
             operation = '*'
         elif first > second:
-            operation =  '-'
+            operation = '-'
         elif first < second:
-            operation =  '/'
-        
+            operation = '/'
+
         return function(first, second, operation)
-    
+
     return wrapper
 
 

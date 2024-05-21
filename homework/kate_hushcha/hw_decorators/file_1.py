@@ -7,8 +7,10 @@ def the_end(finished):
 
     return wrapper
 
+
 @the_end
 def story(words):
     print(words)
+
 
 story('Many many years ago...')
