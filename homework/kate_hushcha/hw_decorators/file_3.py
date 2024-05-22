@@ -4,7 +4,7 @@ second = int(input('Enter the second number:\n'))
 
 
 def operation_func(function):
-    def wrapper(*args, **kwargs):
+    def wrapper(first, second):
         if first == second:
             operation = '+'
         elif first < 0 or second < 0:
@@ -31,4 +31,4 @@ def calc(first, second, operation):
         return first * second
 
 
-print(round(calc(), 2))
+print(round(calc(first, second), 2))
