@@ -1,4 +1,4 @@
-# List comprehension
+#  List comprehension
 
 PRICE_LIST = '''тетрадь 50р
 книга 200р
