@@ -10,14 +10,13 @@ generation_num = num_fibonacci()
 count = 0
 
 for x in num_fibonacci():
-    if count == 3:
+    if count == 4:
         print(x)
-    if count == 100:
+    if count == 199:
         print(x)
-    if count == 5000:
+    if count == 999:
         print(x)
-    if count == 10000:
+    if count == 99999:
         print(x)
-    count += 1
-    if count > 10000:
         break
+    count += 1
