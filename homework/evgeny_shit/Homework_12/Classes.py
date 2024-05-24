@@ -18,12 +18,14 @@ class Book:
         bold_start = "\033[1m"
         bold_end = "\033[0m"
         reserved_status = f"{bold_start}Reserved:{bold_end} Yes" if self.is_reserved else ""
-        return (f"{bold_start}Book name:{bold_end} {self.title}, "
+        return (
+                f"{bold_start}Book name:{bold_end} {self.title}, "
                 + f"{bold_start}Author:{bold_end} {self.author}, "
                 + f"{bold_start}Publishing year:{bold_end} {self.year}, "
                 + f"{bold_start}Pages:{bold_end} {self.num_of_pages}, "
                 + f"{bold_start}Material:{bold_end} {self.material_pages} "
-                + f"{reserved_status}").strip()
+                + f"{reserved_status}"
+        ).strip()
 
 
 class Textbook(Book):
