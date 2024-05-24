@@ -22,7 +22,6 @@ PRICE_LIST = '''тетрадь 50р
 рюкзак 500р'''
 
 new_keys = [x for x in PRICE_LIST.split() if PRICE_LIST.split().index(x) % 2 == 0]
-new_values = [x.replace('р','') for x in PRICE_LIST.split() if PRICE_LIST.split().index(x) % 2 != 0]
+new_values = [x.replace('р', '') for x in PRICE_LIST.split() if PRICE_LIST.split().index(x) % 2 != 0]
 price = dict(zip(new_keys, new_values))
 print(price)
-
