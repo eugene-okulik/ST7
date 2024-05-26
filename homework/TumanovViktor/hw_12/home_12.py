@@ -1,25 +1,21 @@
 class Book:
-    def __init__(self, autor, page, title, text, reserved, page_count, material):
+    material = 'Бумага'
+
+    def __init__(self, autor, page, title, text, reserved, page_count, isbn):
         self.autor = autor
         self.title = title
         self.page = page
         self.text = text
         self.reserved = reserved
         self.page_count = page_count
-        self.material = material
-
-
-class Pushkin(Book):
-    def __init__(self, autor, page, title, text, reserved, page_count, material, isbn):
-        super().__init__(autor, page, title, text, reserved, page_count, material)
         self.isbn = isbn
 
 
-book1 = Pushkin('Пушкин', 'Есть', 'Lukomorie', 'есть', False, 343, 'Бумага', 453)
-book2 = Book('Маяковский', 'Есть', 'На земле', 'есть', False, 3453, 'Бумага')
-book3 = Book('Ремарк', 'Есть', 'Три товарища', 'есть', True, 66, 'Картон')
-book4 = Book('Лука', 'Есть', 'Крыша', 'есть', False, 88, 'Картон')
-book5 = Book('Даль', 'Есть', 'Корабль', 'нет', False, 65, 'Бумага')
+book1 = Book('Пушкин', 'Есть', 'Lukomorie', 'есть', False, 343, 991)
+book2 = Book('Маяковский', 'Есть', 'На земле', 'есть', False, 33, 992)
+book3 = Book('Ремарк', 'Есть', 'Три товарища', 'есть', True, 66, 993)
+book4 = Book('Лука', 'Есть', 'Крыша', 'есть', False, 88, 994)
+book5 = Book('Даль', 'Есть', 'Корабль', 'есть', False, 65, 995)
 
 for i in [book1, book2, book3, book4, book5]:
     if i.reserved:
