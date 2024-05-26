@@ -14,7 +14,8 @@ class Book:
             print(f'Название: {self.books_name}, Автор: {self.author}, страниц: {self.pages}, материал: {self.material}'
                   f', Зарезервирована')
         else:
-            print(f'Название: {self.books_name}, Автор: {self.author}, страниц: {self.pages}, материал: {self.material}')
+            print(f'Название: {self.books_name}, Автор: {self.author}, страниц: {self.pages},'
+                  f' материал: {self.material}')
 
 
 Idiot = Book('Идиот', 'Достоевский', 500, 356, is_Reserved=False)
