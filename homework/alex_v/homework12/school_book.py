@@ -3,10 +3,11 @@ from book import Book
 
 class SchoolBook(Book):
     def __init__(
-            self,page_material, availability_of_text, book_title, author, number_of_pages, isbn, school_subject, school_class,
+            self, page_material, availability_of_text, book_title, author, number_of_pages, isbn, school_subject,
+            school_class,
             is_task_available=True, is_booked=False
     ):
-        super().__init__(page_material, availability_of_text,book_title, author, number_of_pages, isbn, is_booked)
+        super().__init__(page_material, availability_of_text, book_title, author, number_of_pages, isbn, is_booked)
         self.school_subject = school_subject
         self.school_class = school_class
         self.is_task_available = is_task_available
