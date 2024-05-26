@@ -11,6 +11,7 @@ def operation_manager(func):
         return func(first, second, operation)
     return wrapper
 
+
 @operation_manager
 def calc(first, second, operation):
     if operation == '+':
