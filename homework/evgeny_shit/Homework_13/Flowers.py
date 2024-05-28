@@ -67,7 +67,6 @@ class Bouquet:
         return results
 
 
-# Пример использования
 rose = Rose(color='red', length=40, cost=200, lifespan=7)
 tulip = Tulip(color='yellow', length=30, cost=90, lifespan=5)
 lily = Lily(color='white', length=50, cost=350, lifespan=10)
@@ -79,13 +78,14 @@ bouquet.add_flower(tulip)
 bouquet.add_flower(lily)
 bouquet.add_flower(lily2)
 
+# Get statistics
 bouquet.get_cost()
 bouquet.get_avg_lifespan()
 
-# Сортировка по стоимости
+# Sort by cost
 bouquet.sort_flowers('cost')
 
-# Поиск цветов по цвету
+# Search flowers by color
 bouquet.find_flowers(lifespan=10)
 bouquet.find_flowers(lifespan=11)
 bouquet.find_flowers(lifespan=5)
