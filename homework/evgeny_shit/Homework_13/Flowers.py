@@ -30,11 +30,12 @@ class Bouquet:
         self.flowers.append(flower)
         print(
             f"Added flower: {flower.name} ({flower.color}), cost: {flower.cost} rub, "
-            + f"length: {flower.length} sm, lifetime: {flower.lifespan} days")
+            + f"length: {flower.length} sm, lifetime: {flower.lifespan} days"
+        )
 
     def get_cost(self):
         total_cost = sum(flower.cost for flower in self.flowers)
-        print(f"Bouquet cost: {total_cost} rub")
+        print(f"\nBouquet cost: {total_cost} rub")
         return total_cost
 
     def get_avg_lifespan(self):
@@ -42,25 +43,28 @@ class Bouquet:
             avg_lifespan = 0
         else:
             avg_lifespan = sum(flower.lifespan for flower in self.flowers) / len(self.flowers)
-        print(f"Average life time of a bouquet: {avg_lifespan} days")
+        print(f"\nAverage life time of a bouquet: {avg_lifespan} days")
         return avg_lifespan
 
     def sort_flowers(self, key):
         self.flowers.sort(key=lambda flower: getattr(flower, key))
-        print(f"Flowers in a bouquet after sorting by {key}:")
+        print(f"\nFlowers in a bouquet after sorting by {key}:")
         for flower in self.flowers:
             print(f"{flower.name} ({flower.color}): {getattr(flower, key)}")
 
     def find_flowers(self, **kwargs):
         results = self.flowers
-        found_flowers = f"Found flowers by parameters {kwargs}:"
+        found_flowers = "\nFound flowers by parameters " + " ".join(
+            f"{key} {value}" for key, value in kwargs.items()) + ":"
         for key, value in kwargs.items():
             results = [flower for flower in results if getattr(flower, key) == value]
         if results:
             print(found_flowers)
             for flower in results:
-                print(f"{flower.name} ({flower.color}), cost: {flower.cost} rub, length: {flower.length} sm, "
-                      + f"lifetime: {flower.lifespan} days")
+                print(
+                    f"{flower.name} ({flower.color}), cost: {flower.cost} rub, length: {flower.length} sm, "
+                    + f"lifetime: {flower.lifespan} days"
+                )
         else:
             print(found_flowers)
             print("Nothing found")
@@ -83,9 +87,10 @@ bouquet.get_cost()
 bouquet.get_avg_lifespan()
 
 # Sort by cost
-bouquet.sort_flowers('cost')
+bouquet.sort_flowers('lifespan')
 
 # Search flowers by color
 bouquet.find_flowers(lifespan=10)
+bouquet.find_flowers(lifespan=10, length=50, color='white')
 bouquet.find_flowers(lifespan=11)
 bouquet.find_flowers(lifespan=5)
