@@ -19,7 +19,6 @@ class CountryData:
         return data
 
 
-
 data1 = CountryData('data1.txt')
 
 print(data1.data)
