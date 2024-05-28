@@ -17,13 +17,14 @@ third = Books('The Clean Coder', 'Robert C. Martin', 256, 'AA-4891', True)
 forth = Books('The 7 Habits of Highly Effective People', 'Stephen R Covey', 464, 'AA-4792')
 fifth = Books('Empowered', 'Marty Cagan', 432, 'AA-4793')
 
+
 def book_param(book):
-        if book.is_reserved:
-            print(f'Title : {book.title}, Author: {book.author}, Number of pages: {book.numb_of_pages}, '
-                 f'Material: {book.page_material}, Reserved')
-        else:
-            print(f'Title : {book.title}, Author: {book.author}, Number of pages: {book.numb_of_pages}, '
-                  f'Material: {book.page_material}')
+    if book.is_reserved:
+        print(f'Title : {book.title}, Author: {book.author}, Number of pages: {book.numb_of_pages}, '
+              f'Material: {book.page_material}, Reserved')
+    else:
+        print(f'Title : {book.title}, Author: {book.author}, Number of pages: {book.numb_of_pages}, '
+              f'Material: {book.page_material}')
 
 
 book_param(first)
@@ -35,9 +36,9 @@ book_param(fifth)
 
 class SchoolBooks(Books):
     def __init__(self, title, author, numb_of_pages, isbn, subject, unit, is_reserved=False):
-         super().__init__(title, author, numb_of_pages, isbn, is_reserved)
-         self.subject = subject
-         self.unit = unit
+        super().__init__(title, author, numb_of_pages, isbn, is_reserved)
+        self.subject = subject
+        self.unit = unit
 
 
 math = SchoolBooks('Math 6 grade', 'Ruhl', 199, 'AA-98289', 'Math', 'Tornado 6', True)
@@ -52,6 +53,7 @@ def s_book_param(s_book):
     else:
         print(f'Title : {s_book.title}, Author: {s_book.author}, Number of pages: {s_book.numb_of_pages}, '
               f'Subject: {s_book.subject}, Unit: {s_book.unit}')
+
 
 s_book_param(math)
 s_book_param(lang_art)
