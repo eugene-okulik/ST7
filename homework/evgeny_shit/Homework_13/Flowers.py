@@ -82,15 +82,12 @@ bouquet.add_flower(tulip)
 bouquet.add_flower(lily)
 bouquet.add_flower(lily2)
 
-# Get statistics
 bouquet.get_cost()
 bouquet.get_avg_lifespan()
 
-# Sort by cost
-bouquet.sort_flowers('lifespan')
+bouquet.sort_flowers('length')
 
-# Search flowers by color
-bouquet.find_flowers(lifespan=10)
+bouquet.find_flowers(lifespan=5)
 bouquet.find_flowers(lifespan=10, length=50, color='white')
 bouquet.find_flowers(lifespan=11)
-bouquet.find_flowers(lifespan=5)
+bouquet.find_flowers(cost=350)
