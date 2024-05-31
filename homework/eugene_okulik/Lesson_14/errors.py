@@ -1,7 +1,7 @@
 def calc(x, y):
     try:
         x, y = int(x), int(y)
-        result =  x / y
+        result = x / y
     # except ZeroDivisionError:
     #     return 'Не дели на ноль'
     # except ValueError:
@@ -19,7 +19,6 @@ def calc(x, y):
         return result
     finally:
         print('The end')
-
 
 
 print(calc(1, 2))
