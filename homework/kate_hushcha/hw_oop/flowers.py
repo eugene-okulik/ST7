@@ -10,7 +10,6 @@ class Flowers:
         self.size = size
         self.price = price
 
-
     def bloom_time(self):
         pass
 
@@ -20,11 +19,9 @@ class OutdoorFlowers(Flowers):
     grow_start = 'Spring'
     stem_size = 45
 
-
     def __init__(self, name, color, life_time, size, price, insects):
         super().__init__(name, color, life_time, size, price)
         self.insects = insects
-
 
     def bloom_time(self):
         print('Summer')
@@ -41,7 +38,7 @@ class IndoorFlowers(Flowers):
 
 daffodils = OutdoorFlowers('Daffodil', 'Yellow', 20, 'medium', 10, 'bumblebees')
 crocuses = OutdoorFlowers('Crocus', 'Violet', 10, 'small', 5, 'bees')
-kalanchoe = IndoorFlowers('Kalanchoe', 'White', 30, 'big', 17 )
+kalanchoe = IndoorFlowers('Kalanchoe', 'White', 30, 'big', 17)
 cactus = IndoorFlowers('Cactus', 'Green', 40, 'small', 9)
 
 
@@ -49,28 +46,24 @@ class Bouquet():
     def __init__(self):
         self.flowers = []
 
-
     def b_flowers(self, flower):
         self.flowers.append(flower)
         print(f'Bouquet flowers: {flower.name}')
-
 
     def f_price(self):
         self.price = sum(flower.price for flower in self.flowers)
         print(f'Bouquet price is {self.price}')
 
-    
     def fade_time(self):
         self.fade_time = sum(flower.life_time for flower in self.flowers) / 4
         print(f'Bouquet fading time is {round(self.fade_time)} days')
 
 
     def sort_flowers(self):
-        self.flowers.sort(key=lambda flower : flower.stem_size)
-        print(f'Flower are sorted:')
+        self.flowers.sort(key=lambda flower: flower.stem_size)
+        print('Flower are sorted:')
         for flower in self.flowers:
             print(f' - {flower.name} with stem size {flower.stem_size}')
-
 
     def find_flowers(self, color):
         for flower in self.flowers:
