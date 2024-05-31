@@ -58,7 +58,6 @@ class Bouquet():
         self.fade_time = sum(flower.life_time for flower in self.flowers) / 4
         print(f'Bouquet fading time is {round(self.fade_time)} days')
 
-
     def sort_flowers(self):
         self.flowers.sort(key=lambda flower: flower.stem_size)
         print('Flower are sorted:')
