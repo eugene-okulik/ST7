@@ -46,7 +46,7 @@ class Bouquet:
         return total_lifetime / len(self.flowers)
 
     def sort_by_freshness(self):
-        self.flowers.sort(key= lambda flower: flower.freshness)
+        self.flowers.sort(key=lambda flower: flower.freshness)
 
     def sort_by_color(self):
         self.flowers.sort(key=lambda flower: flower.color)
