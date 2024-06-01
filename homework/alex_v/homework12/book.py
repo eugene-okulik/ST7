@@ -1,4 +1,7 @@
 class Book:
+    page_material = 'paper'
+    availability_of_text = True
+
     def __init__(self, page_material, availability_of_text, book_title, author, number_of_pages, isbn, is_booked):
         self.page_material = page_material
         self.availability_of_text = availability_of_text
