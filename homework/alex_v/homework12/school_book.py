@@ -12,13 +12,14 @@ class SchoolBook(Book):
         self.school_class = school_class
         self.is_task_available = is_task_available
 
-
-def __str__(self):
-    if self.is_booked:
-        return (f"School Book(title={self.book_title}, author={self.author}, pages={self.number_of_pages},"
-                f" is_booked={self.is_booked})")
-    else:
-        return f"School Book(title={self.book_title}, author={self.author}, pages={self.number_of_pages}"
+    def __str__(self):
+        if self.is_booked:
+            return (f"School Book(title={self.book_title}, author={self.author}, pages={self.number_of_pages}, "
+                    f"school_subject={self.school_subject}"
+                    f" is_booked={self.is_booked})")
+        else:
+            return (f"School Book(title={self.book_title}, author={self.author}, pages={self.number_of_pages},"
+                    f"school_subject={self.school_subject}")
 
 
 school_book1 = SchoolBook(
