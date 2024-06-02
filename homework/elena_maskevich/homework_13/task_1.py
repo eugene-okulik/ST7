@@ -38,21 +38,24 @@ class Bouquet:
         self.flowers.append(flower)
 
     def count_price(self):
-        sum_cost = sum(flower.cost for flower in self.flowers)
-        return sum_cost
+        sum_cost = sum([flower.cost for flower in self.flowers])
+        print(f'Цена букета - {sum_cost}')
 
     def average_life(self):
         lifetime = [int(flower.lifetime[0]) for flower in self.flowers]
-        avg_lifetime = sum(lifetime)/len(lifetime)
+        avg_lifetime = sum(lifetime) / len(lifetime)
 
         print(f'Среднее время увядания {avg_lifetime}')
 
-    def sort_by_color(self):
-        sorted_color = sorted(self.flowers, key=lambda flower:flower.color)
-        # self.flowers.sort(key=flower.color)
-        # for color, flower in sorted_color, self.flowers:
-        #     print(f'{flower.name}: {flower.color}')
-        return sorted_color
+    def sort_by_value(self, value):
+        self.flowers.sort(key=lambda flower: getattr(flower, value))
+        for flower in self.flowers:
+            print(f'{flower.name}, {getattr(flower, value)}')
+
+    def find_flower_by_cost(self, cost):
+        founded_flower = [flower for flower in self.flowers if flower.cost == cost]
+        for flower in founded_flower:
+            print(f'Цветок с такой ценой это - {flower.name}')
 
 
 bell = Bell('колокольчик', 10, '5 дней', 'wight', '10 cm')
@@ -66,6 +69,7 @@ bouquet.add_flower(chamomile)
 bouquet.add_flower(peony)
 bouquet.add_flower(gerbera)
 
-print(bouquet.count_price())
+bouquet.count_price()
 bouquet.average_life()
-print(bouquet.sort_by_color())
+bouquet.sort_by_value('color')
+bouquet.find_flower_by_cost(10)
