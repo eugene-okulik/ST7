@@ -1,5 +1,6 @@
 import datetime
 
+
 def dob():
     try:
         user_birthday = input('What is you DoB?\n')
