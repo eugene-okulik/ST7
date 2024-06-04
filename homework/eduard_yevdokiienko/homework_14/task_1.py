@@ -4,7 +4,6 @@ date_format = '%d/%m/%Y'
 
 while True:
     user_input = input('Please type your birth date: ')
-
     try:
         birth_date = datetime.datetime.strptime(user_input, date_format)
         current_date = datetime.datetime.now()
@@ -13,4 +12,3 @@ while True:
         break
     except ValueError:
         print('Invalid date format. Please enter the date in the format: dd/mm/yyyy')
-        
