@@ -26,10 +26,12 @@ class Flower:
 def show_flower_price(cvetok: Flower):
     print(cvetok.price)
 
+
 rose = Flower(12, 'white')
 tulip = Flower(5, 'Black')
 
 xxx = 'hi!'
+
 
 def hi_or_bye(word: Literal['hi', 'by']):
     # if word == 'hi':
@@ -45,6 +47,7 @@ def hi_or_bye(word: Literal['hi', 'by']):
             print('Good bye')
         case _:
             print('give me hi or bye')
+
 
 hi_or_bye('hi')
 
