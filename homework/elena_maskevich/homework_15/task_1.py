@@ -21,7 +21,7 @@ dates_array = []
 for elem in lines:
     start = elem.find(' ')
     end = elem.find(' -')
-    dates_array.append(elem[start+1:end])
+    dates_array.append(elem[start + 1:end])
 print(dates_array)
 first = dates_array[0]
 first_p = datetime.datetime.strptime(first, '%Y-%m-%d %H:%M:%S.%f')
