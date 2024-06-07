@@ -35,8 +35,10 @@ VALUES
     (20, 6, 14);
 
 
-select `value` as Оценка from marks where student_id = 14;
-select title as Книга from books where taken_by_student_id = 14;
+SELECT `value` as Оценка from marks where student_id = 14;
+
+SELECT title as Книга from books where taken_by_student_id = 14;
+
 SELECT
     CONCAT(s.name, ' ', s.second_name) AS Студент,
     b.title AS Книга,
