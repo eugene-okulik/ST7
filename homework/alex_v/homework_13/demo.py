@@ -29,4 +29,3 @@ class Demo:
     my_bouquet.sort_by_price()
     for flower in my_bouquet.flowers:
         print(f"{flower.name}: {flower.price} euro")
-
