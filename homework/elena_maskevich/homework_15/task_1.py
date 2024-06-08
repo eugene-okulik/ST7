@@ -15,6 +15,7 @@ file_path = os.path.join(task_path, 'data.txt')
 
 with open(file_path, encoding='utf-8') as data_file:
     data = data_file.read()
+    print(data)
 
 lines = data.split('\n')
 dates_array = []
@@ -24,9 +25,13 @@ for elem in lines:
     dates_array.append(elem[start + 1:end])
 print(dates_array)
 first = dates_array[0]
+second = dates_array[1]
+third = dates_array[2]
 first_p = datetime.datetime.strptime(first, '%Y-%m-%d %H:%M:%S.%f')
+second_p = datetime.datetime.strptime(second, '%Y-%m-%d %H:%M:%S.%f')
+third_p = datetime.datetime.strptime(third, '%Y-%m-%d %H:%M:%S.%f')
 seven_days = datetime.timedelta(days=7)
 now = datetime.datetime.now()
-print(f'Прошло {(now - first_p).days} дней')
 print(first_p + seven_days)
-print(f'День недели - {first_p.strftime("%A")}')
+print(f'День недели - {second_p.strftime("%A")}')
+print(f'Прошло {(now - third_p).days} дня')
