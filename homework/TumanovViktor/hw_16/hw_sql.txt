@@ -1,0 +1,55 @@
+INSERT INTO students (name, second_name, group_id) value ('Viktor', 'Tumanov', 6)
+
+INSERT INTO books (title, taken_by_student_id) value ('Dora', 15)
+
+INSERT INTO books (title, taken_by_student_id) value ('DodoBook', 15)
+
+INSERT INTO books (title, taken_by_student_id) value ('Dorado', 15)
+
+INSERT INTO subjets (title) value ('SQL')
+
+INSERT INTO subjets (title) value ('MySQL')
+
+INSERT INTO lessons (title, subject_id) value ('sleep 9-12', 6)
+
+INSERT INTO lessons (title, subject_id) value ('sleep 12-3', 6)
+
+INSERT INTO lessons (title, subject_id) value ('Magic lessons 21:00', 7)
+
+INSERT INTO lessons (title, subject_id) value ('Magic lessons 00:00', 7)
+
+INSERT INTO marks (value, lesson_id, student_id) value (5, 7, 15)
+
+INSERT INTO marks (value, lesson_id, student_id) value (5, 8, 15)
+
+INSERT INTO marks (value, lesson_id, student_id) value (4, 9, 15)
+
+INSERT INTO marks (value, lesson_id, student_id) value (2, 10, 15)
+
+-- DELETE FROM books WHERE taken_by_student_id = 13
+
+-- DELETE FROM students WHERE id = 13
+
+-- DELETE FROM subjets WHERE id = 5
+
+INSERT INTO `groups` (title, start_date, end_date) value ('Nara', 'start 2024', 'End 2025')
+
+
+SELECT * from marks WHERE student_id = 15
+
+SELECT * from books WHERE taken_by_student_id = 15
+
+SELECT * from marks WHERE student_id = 15
+
+SELECT * from books WHERE taken_by_student_id = 15
+
+
+SELECT * FROM students
+join `groups`
+on students.group_id = `groups`.id
+join books
+on students.id = books.taken_by_student_id
+JOIN marks ON students.id = marks.student_id
+JOIN subjects on lessons.subject_id = subjects.id
+JOIN lessons on marks.lesson_id = lessons.id
+WHERE students.id = 15
