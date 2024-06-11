@@ -1,0 +1,28 @@
+
+         
+insert into students (name, second_name, group_id) values ('Kate', 'Hushcha', 3)
+insert into books (title) values ('Charlotte''s Web')
+insert into books (title) values ('When Cultures Collide')
+update books set taken_by_student_id = 19 where id = 24
+update books set taken_by_student_id = 19 where id = 25
+insert into `groups` (title, start_date, end_date) values ('Entrepreneurs', 'June 2024', 'August 2024')
+update students set group_id = 8 where id = 19
+insert into subjects (title) values ('Theater')
+insert into subjects (title) values ('Music')
+insert into lessons (title, subject_id) values ('Drums', 11)
+insert into lessons (title, subject_id) values ('Theory', 11)
+insert into lessons (title, subject_id) values ('Acrobatics', 10)
+insert into lessons (title, subject_id) values ('Pantomime', 10)
+insert into marks (value, lesson_id, student_id) values (91, 15, 19)
+insert into marks (value, lesson_id, student_id) values (99, 16, 19)
+insert into marks (value, lesson_id, student_id) values (89, 17, 19)
+insert into marks (value, lesson_id, student_id) values (100, 18, 19)
+select value from marks where student_id = 19
+select title from books where taken_by_student_id = 19
+
+select * from students 
+left join books on students.id = taken_by_student_id
+left join marks on students.id = student_id
+left join lessons on marks.lesson_id = lessons.id
+left join subjects on lessons.subject_id = subjects.id
+where students.id = 19
