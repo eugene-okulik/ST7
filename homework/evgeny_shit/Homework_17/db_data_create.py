@@ -13,7 +13,7 @@ def get_db_connection():
     )
 
 
-def create_data():
+if __name__ == "__main__":
     with get_db_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute("INSERT INTO students (name, second_name) VALUES ('Davy', 'Jones')")
@@ -52,6 +52,3 @@ def create_data():
             cursor.executemany("INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)", marks)
 
         conn.commit()
-
-
-create_data()
