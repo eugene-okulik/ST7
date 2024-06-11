@@ -19,13 +19,11 @@ with mysql.connect(
         for line in data:
             print(line['name'])
 
-
     def get_one():
         cursor.execute("SELECT * FROM students WHERE id = 1")
         data = cursor.fetchone()
         print(data)
         print(data['name'])
-
 
     def insert_into():
         cursor.execute("INSERT INTO students (name, second_name) VALUES ('George', 'Washington2')")
@@ -36,7 +34,6 @@ with mysql.connect(
         wash4_id = cursor.lastrowid
         db.commit()
         print(wash3_id, wash2_id, wash4_id)
-
 
     def incorrect_formatting():
         name = input('login:')
@@ -51,7 +48,6 @@ with mysql.connect(
         else:
             print('User does not exist')
 
-
     def correct_formatting():
         name = input('login:')
         second_name = input('password:')
@@ -63,12 +59,10 @@ with mysql.connect(
         else:
             print('User does not exist')
 
-
     def one_param():
         name = 'George'
         select_request = 'select * from students where name = %s'
         cursor.execute(select_request, (name,))
-
 
     def insert_many():
         insert_query = 'INSERT INTO students (name, second_name) VALUES (%s, %s)'
@@ -76,7 +70,6 @@ with mysql.connect(
         ids = cursor.lastrowid
         print(ids)
         db.commit()
-
 
     def insert_many_with_ids():
         ids = []
@@ -86,7 +79,6 @@ with mysql.connect(
             ids.append(cursor.lastrowid)
         print(ids)
         db.commit()
-
 
     def big_query():
         query = '''
