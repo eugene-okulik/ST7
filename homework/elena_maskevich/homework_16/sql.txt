@@ -15,7 +15,7 @@
 1) INSERT INTO students (name, second_name) values ('Elena', 'Maskevich')
 2) INSERT INTO books (title, taken_by_student_id) values ('The rich dad', 17)
 3) INSERT INTO `groups` (title, start_date, end_date) values ('Kwantum', '06.2024', '08.2124')
-INSERT INTO students (group_id) values (7) where id = 17
+UPDATE INTO students (group_id) values (7) where id = 17
 4) INSERT INTO subjects (title) values ('Art')
 INSERT INTO subjects (title) values ('Programming')
 5) INSERT INTO lessons (title, subject_id) values ('Speaking', 8),('Writing', 8), ('Doing nothing', 9), ('Dancing', 9)
