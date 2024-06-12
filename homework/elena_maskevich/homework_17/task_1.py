@@ -1,7 +1,7 @@
-#Все действия с базой данных из прошлого домашнего задания напишите с помощью Python.
-#Важно: никакие id не хардкодить! Хардкод - это если вы в коде пишете значение id. Все id нужно сохранять в
+# Все действия с базой данных из прошлого домашнего задания напишите с помощью Python.
+# Важно: никакие id не хардкодить! Хардкод - это если вы в коде пишете значение id. Все id нужно сохранять в
 # переменные сразу после добавления данных в базу и потом ими пользоваться.
-#При получении данных, распечатывайте эти данные.
+# При получении данных, распечатывайте эти данные.
 
 import mysql.connector as mysql
 
@@ -33,7 +33,7 @@ with mysql.connect(
         cursor.execute("INSERT INTO `groups` (title, start_date, end_date) values ('Auto', '06.38024', '08.20124')")
         group_id = cursor.lastrowid
         set_group_id_request = 'UPDATE students set group_id = %s where id = %s'
-        cursor.execute(set_group_id_request,(group_id, student_id))
+        cursor.execute(set_group_id_request, (group_id, student_id))
         db.commit()
         print(group_id)
 
@@ -81,9 +81,9 @@ with mysql.connect(
 
     def get_all_about_student():
         get_all_query = '''select * from students join books on students.id=books.taken_by_student_id  join `groups`
-        on students.group_id = groups.id 
-        join marks on students.id = marks.student_id join lessons on marks.lesson_id=lessons.id join subjects on
-        lessons.subject_id =subjects.id where students.id=%s'''
+            on students.group_id = groups.id 
+            join marks on students.id = marks.student_id join lessons on marks.lesson_id=lessons.id join subjects on
+            lessons.subject_id =subjects.id where students.id=%s'''
         cursor.execute(get_all_query, (student_id,))
         student_info = cursor.fetchall()
         print(student_info)
