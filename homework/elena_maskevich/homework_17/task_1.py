@@ -82,7 +82,7 @@ with mysql.connect(
     def get_all_about_student():
         get_all_query = '''
         select * from students join books on students.id=books.taken_by_student_id  join `groups`
-        on students.group_id = groups.id 
+        on students.group_id = groups.id
         join marks on students.id = marks.student_id join lessons on marks.lesson_id=lessons.id join subjects on
         lessons.subject_id =subjects.id where students.id=%s
         '''
