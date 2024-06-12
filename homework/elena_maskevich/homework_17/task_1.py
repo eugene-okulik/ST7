@@ -15,19 +15,6 @@ with mysql.connect(
 
     cursor = db.cursor(dictionary=True)
 
-    # def first_select():
-    #     name = input('name:')
-    #     cursor.execute(f"SELECT * FROM students WHERE name = '{name}'")
-    #     data = cursor.fetchall()
-    #     print(data)
-    #     for line in data:
-    #         print(line['second_name'])
-    #
-    # def get_one():
-    #     cursor.execute("SELECT * FROM students WHERE id = 1")
-    #     data = cursor.fetchone()
-    #     print(data)
-
     def create_student():
         global student_id
         cursor.execute("INSERT INTO students (name, second_name) VALUES ('Elon', 'Musk2')")
@@ -35,10 +22,9 @@ with mysql.connect(
         db.commit()
         print(student_id)
 
-
     def create_books_by_student():
         create_books_request = "INSERT INTO books (title, taken_by_student_id) values ('Teslasas', %s)"
-        cursor.execute(create_books_request, (student_id,))
+        cursor.execute(create_books_request, (student_id, ))
         book_id = cursor.lastrowid
         db.commit()
         print(book_id)
@@ -64,7 +50,8 @@ with mysql.connect(
         global ids
         ids = []
         create_lesson_request = 'INSERT INTO lessons (title, subject_id) values (%s, %s)'
-        for param in [('Dryving', subject_1), ('Parking', subject_1), ('Doing nothing', subject_2), ('Dancing', subject_2)]:
+        for param in [('Dryving', subject_1), ('Parking', subject_1), ('Doing nothing', subject_2),
+                      ('Dancing', subject_2)]:
             cursor.execute(create_lesson_request, param)
             ids.append(cursor.lastrowid)
         print(ids)
