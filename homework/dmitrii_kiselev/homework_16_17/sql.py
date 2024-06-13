@@ -35,7 +35,7 @@ with mysql.connect(
         lesson_ids.append(cursor.lastrowid)
 
     quary = 'INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)'
-    marks_dict = {'python basics': 5, 'java basics': 3, 'advanced python': 4, 'advanced java': 3}
+    marks_dict = {'python basics': 5, 'java basics': 3, 'advanced python': 4, 'advanced java': 2}
     for i in range(4):
         cursor.execute(quary, [marks_dict[lessons[i]], lesson_ids[i], student_id_var])
 
