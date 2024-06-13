@@ -52,13 +52,13 @@ with mysql.connect(
     JOIN `groups` g
     ON s.group_id = g.id
     JOIN books b
-    ON s.id = b.taken_by_student_id 
+    ON s.id = b.taken_by_student_id
     JOIN marks m
-    ON s.id = m.student_id 
+    ON s.id = m.student_id
     JOIN lessons l
-    ON m.lesson_id = l.id 
+    ON m.lesson_id = l.id
     JOIN subjects s2
-    ON l.subject_id = s2.id 
+    ON l.subject_id = s2.id
     WHERE s.id = 80
     '''
     cursor.execute(query)
