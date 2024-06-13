@@ -50,14 +50,14 @@ with mysql.connect(
     query = '''
     SELECT * FROM students s
     JOIN `groups` g
-    ON s.group_id = g.id 
-    JOIN books b 
+    ON s.group_id = g.id
+    JOIN books b
     ON s.id = b.taken_by_student_id 
-    JOIN marks m 
+    JOIN marks m
     ON s.id = m.student_id 
-    JOIN lessons l 
+    JOIN lessons l
     ON m.lesson_id = l.id 
-    JOIN subjects s2 
+    JOIN subjects s2
     ON l.subject_id = s2.id 
     WHERE s.id = 80
     '''
