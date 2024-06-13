@@ -2,9 +2,12 @@
 import os
 import datetime
 
-new_file_path = 'C:\\Users\\kater\\ST7\\homework\\eugene_okulik\\hw_15\\data.txt'
+new_file_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+data_path = os.path.join(new_file_path, 'homework', 'eugene_okulik', 'hw_15')
+file_path = os.path.join(data_path, 'data.txt')
 
-with open(new_file_path, encoding='utf-8') as dates_file:
+
+with open(file_path, encoding='utf-8') as dates_file:
     date_f = dates_file.read()
 
 lines = date_f.split('\n')
