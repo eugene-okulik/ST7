@@ -20,8 +20,7 @@ with mysql.connect(
     book_2_id = cursor.lastrowid
     books_data = cursor.fetchall()
 
-    insert_group = '''INSERT INTO `groups` (title, start_date, end_date) 
-                VALUES ('ST777', '2024-04-04', '2024-08-01')'''
+    insert_group = '''INSERT INTO `groups` (title, start_date, end_date) VALUES ('ST777', '2024-04-04', '2024-08-01')'''
     cursor.execute(insert_group)
     my_group_id = cursor.lastrowid
     put_student_into = f'''UPDATE students SET group_id ={my_group_id} WHERE id ={eduard_id}'''
