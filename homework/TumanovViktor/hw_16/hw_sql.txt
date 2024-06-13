@@ -26,12 +26,6 @@ INSERT INTO marks (value, lesson_id, student_id) value (4, 9, 15)
 
 INSERT INTO marks (value, lesson_id, student_id) value (2, 10, 15)
 
--- DELETE FROM books WHERE taken_by_student_id = 13
-
--- DELETE FROM students WHERE id = 13
-
--- DELETE FROM subjets WHERE id = 5
-
 INSERT INTO `groups` (title, start_date, end_date) value ('Nara', 'start 2024', 'End 2025')
 
 
