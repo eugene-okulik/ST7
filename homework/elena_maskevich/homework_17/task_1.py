@@ -4,6 +4,8 @@
 # При получении данных, распечатывайте эти данные.
 
 import mysql.connector as mysql
+import dotenv
+dotenv.load_dotenv()
 
 with mysql.connect(
     username='st7',
