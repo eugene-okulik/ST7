@@ -12,7 +12,7 @@ with mysql.connect(
 
     cursor = db.cursor(dictionary=True)
 
-    cursor.execute(f"SELECT * FROM students WHERE name = 'George'")
+    cursor.execute("SELECT * FROM students WHERE name = 'George'")
     data = cursor.fetchall()
     print(data)
     for line in data:
