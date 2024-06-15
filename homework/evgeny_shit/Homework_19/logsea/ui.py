@@ -188,7 +188,7 @@ def run_app():
     line_numbers_text.bind("<MouseWheel>", on_mouse_wheel)
     context_text.bind("<MouseWheel>", on_mouse_wheel)
 
-    context_text.tag_configure('highlight', foreground='red')
+    context_text.tag_configure('highlight', foreground='red', font=('Helvetica', 10, 'bold'))
 
     ttk.Label(root).grid(row=2, column=0, padx=10, pady=5, sticky='e')
     path_frame = ttk.Frame(root)
