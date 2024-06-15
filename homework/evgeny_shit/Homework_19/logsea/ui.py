@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
+from ttkbootstrap.constants import CENTER
 from tkinter import filedialog, messagebox, END
 from typing import List, Tuple
 
