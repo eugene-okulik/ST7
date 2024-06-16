@@ -3,6 +3,9 @@ from typing import List, Tuple
 
 
 def search_text_in_file(file_path: str, search_text: str, first_only: bool) -> List[Tuple[int, str]]:
+    """
+    Search for a specific text in a file and return the line number and context.
+    """
     results = []
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
