@@ -1,0 +1,30 @@
+INSERT INTO students (name,second_name) Values('John','Anderson')
+
+INSERT INTO books (title) Values ('Java 11')
+
+update books set taken_by_student_id = 361 where id = 519
+
+insert into `groups` (title, start_date, end_date) values ('Blinov stream', 'nov 2024', 'dec 2025')
+
+UPDATE `groups` SET id = 361 WHERE `groups`.id = 202
+
+insert into subjects (title) values ('Kung-fu')
+
+insert into lessons (title, subject_id) values ('self-attack', 363)
+
+insert into marks (value, lesson_id, student_id) values (37, 570, 361)
+
+insert into marks (value, lesson_id, student_id) values (67, 571, 361)
+
+select value from marks where student_id = 361
+
+SELECT title from books WHERE taken_by_student_id = 361
+
+select * from students
+left join books on students.id = taken_by_student_id
+left join marks on students.id = student_id
+left join lessons on marks.lesson_id = lessons.id
+left join subjects on lessons.subject_id = subjects.id
+where students.id = 361
+
+
