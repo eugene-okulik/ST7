@@ -256,7 +256,7 @@ def create_options(parent) -> None:
 
     themes = ["superhero", "cyborg", "minty", "flatly", "journal"]
     theme_combobox = ttk.Combobox(parent, values=themes, state='readonly')
-    theme_combobox.grid(row=4, column=1, columnspan=1, padx=5, pady=10)
+    theme_combobox.grid(row=4, column=1, columnspan=1, padx=80, pady=10)
 
     theme_combobox.bind("<<ComboboxSelected>>", change_theme)
     theme_combobox.set("Theme")
