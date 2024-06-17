@@ -47,8 +47,6 @@ def update_text_widgets(results: List[Tuple[str, int, str]], search_text: str) -
         search_text (str): The text that was searched for.
     """
     if results:
-        longest_file_name_length = max(len(file) for file, _, _ in results)
-
         for file, line_number, context in results:
             file_names_text.insert(END, f"{file}\n")
             line_numbers_text.insert(END, f"{line_number}\n", "center")
@@ -62,7 +60,6 @@ def update_text_widgets(results: List[Tuple[str, int, str]], search_text: str) -
                 start_idx = context.lower().find(search_text.lower())
             context_text.insert(END, context + "\n")
 
-        file_names_text.config(width=longest_file_name_length)
         theme_combobox.grid(padx=80)
     else:
         file_names_text.insert(END, "No results found\n")
@@ -173,13 +170,13 @@ def create_output_frame(parent) -> None:
     )
 
     file_names_text = ttk.Text(
-        output_frame, height=30, wrap=ttk.WORD, borderwidth=0, highlightthickness=0, relief='solid'
+        output_frame, width=30, height=30, wrap=ttk.NONE, borderwidth=0, highlightthickness=0, relief='solid'
     )
     file_names_text.grid(row=1, column=0, sticky='nsew', padx=(0, 2))
     file_names_text.configure(state='disabled')
 
     line_numbers_text = ttk.Text(
-        output_frame, width=10, height=30, wrap=ttk.WORD, borderwidth=0, highlightthickness=0, relief='solid'
+        output_frame, width=10, height=30, wrap=ttk.NONE, borderwidth=0, highlightthickness=0, relief='solid'
     )
     line_numbers_text.grid(row=1, column=1, sticky='nsew', padx=(0, 2))
     line_numbers_text.configure(state='disabled')
