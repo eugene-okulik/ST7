@@ -1,14 +1,10 @@
-from pathlib import Path
 from random import randint
 
 import os
 import mysql.connector
 from dotenv import load_dotenv
 
-base_dir = Path(__file__).resolve().parent.parent.parent.parent
-filepath = base_dir / '.env'
-
-load_dotenv(dotenv_path=filepath)
+load_dotenv()
 
 
 def get_db_connection():
