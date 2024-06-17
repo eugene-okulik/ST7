@@ -7,7 +7,8 @@ from ttkbootstrap.constants import CENTER
 from tkinter import filedialog, messagebox, END
 
 from search import search_text_in_file
-from utils import set_placeholder, check_horizontal_scroll, on_vertical_scroll, on_horizontal_scroll, on_mouse_wheel
+from utils import set_placeholder, check_horizontal_scroll, check_vertical_scroll, on_vertical_scroll, \
+    on_horizontal_scroll, on_mouse_wheel
 
 
 def display_results(results: List[Tuple[str, int, str]], search_text: str) -> None:
@@ -22,6 +23,7 @@ def display_results(results: List[Tuple[str, int, str]], search_text: str) -> No
     update_text_widgets(results, search_text)
     line_numbers_text.tag_configure("center", justify='center')
     check_horizontal_scroll(context_text, scrollbar_horizontal)
+    check_vertical_scroll(context_text, scrollbar_vertical)
     disable_text_widgets()
 
 
@@ -133,6 +135,9 @@ def configure_text_widgets() -> None:
     context_text.bind('<Configure>', lambda e: check_horizontal_scroll(context_text, scrollbar_horizontal))
     context_text.bind('<KeyRelease>', lambda e: check_horizontal_scroll(context_text, scrollbar_horizontal))
     context_text.bind('<MouseWheel>', lambda e: check_horizontal_scroll(context_text, scrollbar_horizontal))
+    context_text.bind('<Configure>', lambda e: check_vertical_scroll(context_text, scrollbar_vertical))
+    context_text.bind('<KeyRelease>', lambda e: check_vertical_scroll(context_text, scrollbar_vertical))
+    context_text.bind('<MouseWheel>', lambda e: check_vertical_scroll(context_text, scrollbar_vertical))
 
     file_names_text.bind(
         "<MouseWheel>", lambda e: on_mouse_wheel(file_names_text, line_numbers_text, context_text, e)
@@ -199,6 +204,10 @@ def create_output_frame(parent) -> None:
     scrollbar_horizontal.grid(row=2, column=2, sticky='ew')
 
     configure_text_widgets()
+
+    # Initial scroll check to hide scrollbars if not needed
+    check_horizontal_scroll(context_text, scrollbar_horizontal)
+    check_vertical_scroll(context_text, scrollbar_vertical)
 
 
 def create_path_frame(parent) -> None:

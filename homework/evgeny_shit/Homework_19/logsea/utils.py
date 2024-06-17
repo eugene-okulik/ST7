@@ -34,6 +34,18 @@ def check_horizontal_scroll(context_text, scrollbar_horizontal) -> None:
         scrollbar_horizontal.grid()
 
 
+def check_vertical_scroll(context_text, scrollbar_vertical) -> None:
+    """
+    Check if vertical scrolling is needed for the context text widget and adjust scrollbar visibility.
+    """
+    context_text.update_idletasks()
+    bbox = context_text.bbox("end-1c")
+    if bbox and bbox[3] < context_text.winfo_height():
+        scrollbar_vertical.grid_remove()
+    else:
+        scrollbar_vertical.grid()
+
+
 def on_vertical_scroll(file_names_text, line_numbers_text, context_text, *args) -> None:
     """
     Synchronize vertical scrolling for text widgets.
