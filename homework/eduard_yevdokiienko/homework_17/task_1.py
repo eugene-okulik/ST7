@@ -65,8 +65,6 @@ with mysql.connect(
     mark_4_id = cursor.lastrowid
     marks_data = cursor.fetchall()
 
-    db.commit()
-
     query_eduard_marks = f'''SELECT * FROM marks WHERE student_id = %s'''
     cursor.execute(query_eduard_marks, (eduard_id,))
     eduard_marks = cursor.fetchall()
