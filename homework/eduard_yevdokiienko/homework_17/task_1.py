@@ -65,17 +65,17 @@ with mysql.connect(
     mark_4_id = cursor.lastrowid
     marks_data = cursor.fetchall()
 
-    query_eduard_marks = f'''SELECT * FROM marks WHERE student_id = %s'''
+    query_eduard_marks = '''SELECT * FROM marks WHERE student_id = %s'''
     cursor.execute(query_eduard_marks, (eduard_id,))
     eduard_marks = cursor.fetchall()
     print(eduard_marks)
 
-    query_eduard_books = f'''SELECT * FROM books b  WHERE taken_by_student_id =%s'''
+    query_eduard_books = '''SELECT * FROM books b  WHERE taken_by_student_id =%s'''
     cursor.execute(query_eduard_books, (eduard_id,))
     eduard_books = cursor.fetchall()
     print(eduard_books)
 
-    query_general = f'''SELECT s.name, s.second_name, g.title AS group_title, b.title AS book_title, m.value AS mark,
+    query_general = '''SELECT s.name, s.second_name, g.title AS group_title, b.title AS book_title, m.value AS mark,
                     l.title AS lesson_title, sub.title AS subject_title
                     FROM students s
                     JOIN `groups` g ON g.id = s.group_id
