@@ -1,30 +1,40 @@
-INSERT INTO students (name,second_name) Values('John','Anderson')
+INSERT INTO students (name,second_name, group_id) Values('Keanu','Reaves', Null)
 
-INSERT INTO books (title) Values ('Java 11')
-
-update books set taken_by_student_id = 361 where id = 519
-
-insert into `groups` (title, start_date, end_date) values ('Blinov stream', 'nov 2024', 'dec 2025')
-
-UPDATE `groups` SET id = 361 WHERE `groups`.id = 202
-
-insert into subjects (title) values ('Kung-fu')
-
-insert into lessons (title, subject_id) values ('self-attack', 363)
-
-insert into marks (value, lesson_id, student_id) values (37, 570, 361)
-
-insert into marks (value, lesson_id, student_id) values (67, 571, 361)
-
-select value from marks where student_id = 361
-
-SELECT title from books WHERE taken_by_student_id = 361
-
-select * from students
-left join books on students.id = taken_by_student_id
-left join marks on students.id = student_id
-left join lessons on marks.lesson_id = lessons.id
-left join subjects on lessons.subject_id = subjects.id
-where students.id = 361
+INSERT INTO books (title, taken_by_student_id) Values ('Harry Potter and goblet of fire', 362)
+INSERT INTO books (title, taken_by_student_id) Values ('Harry Potter and order of Phenix', 362)
 
 
+insert into `groups` (title, start_date, end_date) values ('Avengers', 'nov 2024', 'dec 2025')
+
+UPDATE students SET group_id =007 WHERE id =362
+
+
+INSERT INTO subjects (title) VALUES ('World Economics')
+INSERT INTO subjects (title) VALUES ('Polish language')
+
+INSERT INTO lessons (title, subject_id) VALUES ('Theory of economics', 364)
+INSERT INTO lessons (title, subject_id) VALUES ('Macro ecnomics', 364)
+INSERT INTO lessons (title, subject_id) VALUES ('Reading', 365)
+INSERT INTO lessons (title, subject_id) VALUES ('Writing', 365)
+
+INSERT INTO marks (value, lesson_id, student_id) VALUES (7, 572, 362)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (7, 573, 362)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (6, 574, 362)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (8, 575, 362)
+
+SELECT *
+FROM marks
+WHERE student_id =362
+
+SELECT *
+FROM books b
+WHERE taken_by_student_id =362
+
+SELECT s.name, s.second_name, g.title AS group_title, b.title AS book_title, m.value AS mark, l.title AS lesson_title, sub.title AS subject_title
+FROM students s
+JOIN `groups` g ON g.id = s.group_id
+JOIN books b ON b.taken_by_student_id = s.id
+JOIN marks m ON m.student_id = s.id
+JOIN lessons l ON l.id = m.lesson_id
+JOIN subjects sub ON sub.id = l.subject_id
+WHERE s.id = 362
