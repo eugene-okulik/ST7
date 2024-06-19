@@ -9,7 +9,7 @@ parser.add_argument("--valid", help="search for date", action="store_true")
 
 args = parser.parse_args()
 
-with open (args.file_path, encoding='utf-8') as file:
+with open(args.file_path, encoding='utf-8') as file:
     user_file = file.read()
 
 file_line = user_file.split('\n')
