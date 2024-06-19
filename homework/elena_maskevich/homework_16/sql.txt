@@ -1,0 +1,28 @@
+#Создайте в базе данных полный набор информации о студенте, заполнив все таблички:
+#Создайте студента (student)
+#Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
+#Создайте группу (group) и определите своего студента туда
+#Создайте несколько учебных предметов (subjects)
+#Создайте по два занятия для каждого предмета (lessons)
+#Поставьте своему студенту оценки (marks) для всех созданных вами занятий
+#Получите информацию из базы данных:
+#Все оценки студента
+#Все книги, которые находятся у студента
+#Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов (всё
+#одним запросом с использованием Join)
+#Все запросы, которые сделаете, сохраняйте в файлик с расширением .txt или .sql, и сдавайте как обычно.
+
+1) INSERT INTO students (name, second_name) values ('Elena', 'Maskevich')
+2) INSERT INTO books (title, taken_by_student_id) values ('The rich dad', 17)
+3) INSERT INTO `groups` (title, start_date, end_date) values ('Kwantum', '06.2024', '08.2124')
+UPDATE INTO students (group_id) values (7) where id = 17
+4) INSERT INTO subjects (title) values ('Art')
+INSERT INTO subjects (title) values ('Programming')
+5) INSERT INTO lessons (title, subject_id) values ('Speaking', 8),('Writing', 8), ('Doing nothing', 9), ('Dancing', 9)
+6) INSERT INTO marks (value, lesson_id, student_id) values (10, 11, 17), (9, 12, 17), (8, 13, 17), (7, 14, 17)
+7) SELECT value FROM marks where student_id = 17
+8) select title from books join students on books.taken_by_student_id = students.id where name = 'Elena'
+9) select * from students join books on students.id=books.taken_by_student_id  join `groups`
+on students.group_id = groups.id
+join marks on students.id = marks.student_id join lessons on marks.lesson_id=lessons.id join subjects on
+lessons.subject_id =subjects.id where students.id=17
