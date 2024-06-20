@@ -9,7 +9,6 @@ with mysql.connect(
 ) as db:
     cursor = db.cursor(dictionary=True)
 
-
     def create_student():
         global student_id
         cursor.execute("INSERT INTO students (name,second_name, group_id) Values('Johny','Silverhand', Null)")
