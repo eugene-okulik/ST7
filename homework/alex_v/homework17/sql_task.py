@@ -20,7 +20,6 @@ with mysql.connect(
     def create_and_assign_books_to_students():
         create_books = "INSERT INTO books (title, taken_by_student_id) Values ('Green light', %s)"
         cursor.execute(create_books, (student_id,))
-        book_id = cursor.lastrowid
         db.commit()
 
 
