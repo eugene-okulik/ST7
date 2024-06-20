@@ -16,12 +16,10 @@ with mysql.connect(
         student_id = cursor.lastrowid
         db.commit()
 
-
     def create_and_assign_books_to_students():
         create_books = "INSERT INTO books (title, taken_by_student_id) Values ('Green light', %s)"
         cursor.execute(create_books, (student_id,))
         db.commit()
-
 
     def create_students_group():
         cursor.execute(
@@ -31,7 +29,6 @@ with mysql.connect(
         cursor.execute(set_group_id, (group_id, student_id))
         db.commit()
 
-
     def create_subjects():
         global subject1
         global subject2
@@ -40,7 +37,6 @@ with mysql.connect(
         cursor.execute("INSERT INTO subjects (title) values ('Abusing Pro - level')")
         subject2 = cursor.lastrowid
         db.commit()
-
 
     def create_lessons():
         global ids
@@ -54,7 +50,6 @@ with mysql.connect(
             cursor.execute(create_lessons, lesson)
         db.commit()
 
-
     def set_marks():
         set_marks = 'INSERT INTO marks (value, lesson_id,student_id) values (%s,%s,%s)'
 
@@ -65,14 +60,12 @@ with mysql.connect(
             cursor.execute(set_marks, marks)
             db.commit()
 
-
     def get_student_marks():
         get_marks = 'SELECT value from marks where student_id = %s'
         cursor.execute(get_marks, (student_id,))
         marks = cursor.fetchall()
         for m in marks:
             print(m['value'])
-
 
     def get_student_books():
         get_books = (
@@ -81,7 +74,6 @@ with mysql.connect(
 
         cursor.execute(get_books, (student_id,))
         cursor.fetchall()
-
 
     def get_full_info_about_student():
         get_all = '''
