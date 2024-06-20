@@ -79,7 +79,7 @@ with mysql.connect(
         get_all = '''
         select * from students join books on students.id= books.taken_by_student_id
         join 'groups' on students.group_id = group.id
-        join marks on students.id = marks.student_id join lessons 
+        join marks on students.id = marks.student_id join lessons
         on marks.lesson_id = lessons.id join subjects on lessons.subjects.id where.id=%s
         '''
         cursor.execute(get_all, (student_id,))
