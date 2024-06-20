@@ -42,7 +42,6 @@ with mysql.connect(
         global ids
         ids = []
         create_lessons = "INSERT INTO lessons (title, subject_id) values (%s,%s)"
-
         for lesson in [('Theory of economics', subject1),
                        ('Macro ecnomics', subject1),
                        ('Reading', subject2),
