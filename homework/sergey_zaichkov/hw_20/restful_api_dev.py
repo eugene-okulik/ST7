@@ -13,13 +13,10 @@ def add_object():
             "Hard disk size": "1 TB"
         }
     }
-    response = requests.post(
-        url=BASE_URL,
-        json=payload
-    )
+    response = requests.post(url=BASE_URL, json=payload)
     assert response.status_code == 200, "Status code is not 200"
     response_dict = response.json()
-    return response_dict['id']
+    return response_dict.get('id')
 
 
 def get_object_by_id(id):
@@ -62,29 +59,32 @@ def delete_object(id):
     response = requests.delete(url=f"{BASE_URL}/{id}")
 
     assert response.status_code == 200, "Status code is not 200"
-    print(response.text)
+    response_dict = response.json()
+    return response_dict.get('message')
 
 
 # Create object
 obj_id = add_object()
-add_object()
+
 # Get created object
-print("New Object is")
+print("New Object:")
 print(get_object_by_id(obj_id))
 
 # Change the object by PUT
 change_object_put(obj_id)
 
 # Get changed object
-print("Changed object by PUT is")
+print("Changed object by PUT:")
 print(get_object_by_id(obj_id))
 
 # Change the object by PATCH
 change_object_patch(obj_id)
 
 # Get changed object
-print("Changed object by PATCH is")
+print("Changed object by PATCH:")
 print(get_object_by_id(obj_id))
 
 # Delete the object
-delete_object(obj_id)
+delete_result = delete_object(obj_id)
+print('_'*len(delete_result))
+print(delete_result)
