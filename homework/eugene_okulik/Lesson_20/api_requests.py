@@ -41,10 +41,10 @@ def create_publication():
 
 def update_with_put():
     payload = {
-            "title": "LKJHLKJDHLKJDHLKJDF-UPD",
-            "body": "UYkajshdfkajdshfasdf-UPD",
-            "userId": 1
-        }
+        "title": "LKJHLKJDHLKJDHLKJDF-UPD",
+        "body": "UYkajshdfkajdshfasdf-UPD",
+        "userId": 1
+    }
 
     response = requests.put(
         'https://jsonplaceholder.typicode.com/posts/42',
