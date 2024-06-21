@@ -54,10 +54,7 @@ def update_obj2():
     payload = {
         "name": "Naro-Fran"
     }
-    response = requests.patch(
-        'https://api.restful-api.dev/objects/ff80818190273335019039fb10002268',
-        json=payload
-        )
+    response = requests.patch('https://api.restful-api.dev/objects/ff80818190273335019039fb10002268', json=payload)
     assert response.status_code == 200
     print(response.json())
 
