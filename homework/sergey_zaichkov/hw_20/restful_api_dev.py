@@ -86,5 +86,5 @@ print(get_object_by_id(obj_id))
 
 # Delete the object
 delete_result = delete_object(obj_id)
-print('_'*len(delete_result))
+print('_' * len(delete_result))
 print(delete_result)
