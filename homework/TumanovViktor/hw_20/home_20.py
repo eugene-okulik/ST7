@@ -35,6 +35,8 @@ def update_obj():
             "year": 30,
             "price": "100$",
             "CPU model": "World 2024",
+            "Hard disk size": "1000 TB",
+            "color": "Red"
 
         }
     }
@@ -50,22 +52,13 @@ def update_obj():
 
 def update_obj2():
     payload = {
-        "name": "NarateL",
-        "data": {
-            "year": 39,
-            "price": "100$",
-            "CPU model": "World 2024",
-            "Hard disk size": "1000 TB",
-            "color": "Red"
-        }
+        "name": "Naro-Fran"
     }
-    headers = {
-        'Content-Type': 'application/json'
-    }
-    response = requests.put('https://api.restful-api.dev/objects/ff80818190273335019039fb10002268',
-                            json=payload,
-                            headers=headers
-                            )
+    response = requests.patch(
+        'https://api.restful-api.dev/objects/ff80818190273335019039fb10002268',
+        json=payload
+        )
+    assert response.status_code == 200
     print(response.json())
 
 
