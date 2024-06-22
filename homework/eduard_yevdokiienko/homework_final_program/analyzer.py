@@ -11,8 +11,6 @@ dir_path = args.dir_path
 target_word = args.target_word
 search_words_count = args.words_count
 
-file_list = os.listdir(dir_path)
-
 
 def read_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
