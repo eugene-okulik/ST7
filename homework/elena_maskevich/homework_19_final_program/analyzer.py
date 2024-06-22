@@ -8,21 +8,16 @@
 
 import argparse
 import os
+import re
 
-project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-# root1 = os.path.dirname(__file__)
-# print(root1)
-# roo11_path = os.path.join(root1, 'analyzer.py')
-# print(roo11_path)
-task_path = os.path.join(project_root, 'homework', 'eugene_okulik', 'data', 'logs')
 parser = argparse.ArgumentParser()
 parser.add_argument('task_path', help='путь к директории с логами')
 parser.add_argument('word_for_search', help='слово для поиска')
 args = parser.parse_args()
 
-entries = os.listdir(task_path)
+entries = os.listdir(args.task_path)
 for entry in entries:
-    file_path = os.path.join(task_path, entry)
+    file_path = os.path.join(args.task_path, entry)
     with open(file_path) as logs_file:
         data = logs_file.read()
         data_array = data.split('\n')
@@ -34,11 +29,13 @@ for entry in entries:
                 indices.append(elem)
         if len(indices) > 0:
             print(f'Путь к файлу - {file_path}', end='\n')
+        else:
+            print('Слово не найдено')
+            break
 
         for element in indices:
             text_array = str(data_array[element]).split()
             text_string = str(text_array)
-            c = text_string.find(args.word_for_search)
             word_index = text_array.index(args.word_for_search)
             for i in range(word_index - 4, word_index + 6):
                 if i >= 0:
