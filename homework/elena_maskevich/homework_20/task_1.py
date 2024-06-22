@@ -14,13 +14,13 @@ base_url = 'https://api.restful-api.dev/objects'
 
 def create_object():
     payload = {
-       "name": "Apple MacBook Pro 16",
-       "data": {
+        "name": "Apple MacBook Pro 16",
+        "data": {
           "year": 2019,
           "price": 1849.99,
           "CPU model": "Intel Core i9",
           "Hard disk size": "1 TB"
-       }
+        }
     }
     headers = {
         'Content-Type': 'application/json',
@@ -46,14 +46,14 @@ def get_by_id(obj_id):
 
 def update_with_put(obj_id):
     payload = {
-       "name": "Apple MacBook Pro 16",
-       "data": {
+        "name": "Apple MacBook Pro 16",
+        "data": {
           "year": 2019,
           "price": 2049.99,
           "CPU model": "Intel Core i9",
           "Hard disk size": "1 TB",
           "color": "silver"
-       }
+        }
     }
 
     response = requests.put(
@@ -67,7 +67,7 @@ def update_with_put(obj_id):
 
 def change_object_patch(obj_id):
     payload = {
-       "name": "Apple MacBook Pro 16 (Updated Name)"
+        "name": "Apple MacBook Pro 16 (Updated Name)"
     }
     response = requests.patch(
         url=f"{base_url}/{obj_id}",
