@@ -4,12 +4,12 @@ import requests
 def create_object():
 
     payload = {
-       "name": "Asus Ultrabook 2",
-       "data": {
-          "year": 2021,
-          "price": 837.99,
-          "CPU model": "Intel Core i7",
-          "Hard disk size": "1 TB"
+        "name": "Asus Ultrabook 2",
+        "data": {
+            "year": 2021,
+            "price": 837.99,
+            "CPU model": "Intel Core i7",
+            "Hard disk size": "1 TB"
        }
     }
 
@@ -47,12 +47,12 @@ def get_object_by_id(o_id):
 def update_object(o_id):
 
     payload = {
-       "name": "Asus Ultrabook 2a",
-       "data": {
-          "year": 2022,
-          "price": 899.99,
-          "CPU model": "Intel Core i3",
-          "Hard disk size": "128 Mb"
+        "name": "Asus Ultrabook 2a",
+        "data": {
+            "year": 2022,
+            "price": 899.99,
+            "CPU model": "Intel Core i3",
+            "Hard disk size": "128 Mb"
        }
     }
 
@@ -73,9 +73,9 @@ def update_object(o_id):
 def partually_update_object(o_id):
 
     payload = {
-       "data": {
-           "Hard disk size": "256 Mb",
-           "price": 1837.99,
+        "data": {
+            "Hard disk size": "256 Mb",
+            "price": 1837.99,
        }
     }
 
