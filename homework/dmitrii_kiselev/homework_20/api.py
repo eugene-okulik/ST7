@@ -10,7 +10,7 @@ def create_object():
             "price": 837.99,
             "CPU model": "Intel Core i7",
             "Hard disk size": "1 TB"
-       }
+        }
     }
 
     headers = {
@@ -53,7 +53,7 @@ def update_object(o_id):
             "price": 899.99,
             "CPU model": "Intel Core i3",
             "Hard disk size": "128 Mb"
-       }
+        }
     }
 
     headers = {
@@ -76,7 +76,7 @@ def partually_update_object(o_id):
         "data": {
             "Hard disk size": "256 Mb",
             "price": 1837.99,
-       }
+        }
     }
 
     headers = {
