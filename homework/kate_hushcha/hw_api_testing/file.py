@@ -1,5 +1,6 @@
 import requests
 
+
 def new_object():
     payload = {
         "name": "Apple MacBook Pro Kate",
@@ -15,7 +16,7 @@ def new_object():
         'https://api.restful-api.dev/objects',
         json=payload,
         headers=headers
-        )
+    )
     print(response.json())
 
 
@@ -37,7 +38,7 @@ def change_everyth():
     response = requests.put(
         'https://api.restful-api.dev/objects/ff808181902733350190466878152cfd',
         json=payload
-        )
+    )
     print(response.json())
 
 
@@ -51,7 +52,7 @@ def change_someth():
     response = requests.patch(
         'https://api.restful-api.dev/objects/ff808181902733350190466878152cfd',
         json=payload
-        )
+    )
     print(response.json())
 
 
