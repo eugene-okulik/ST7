@@ -12,3 +12,4 @@ six==1.16.0
 jmespath~=1.0.1
 rich~=13.7.1
 ttkbootstrap~=1.10.1
+requests~=2.32.3
