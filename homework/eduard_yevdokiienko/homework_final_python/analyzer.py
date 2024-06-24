@@ -22,7 +22,7 @@ def read_file(file_path):
 
 
 def main():
-    found_any_target = False
+    found_any = False
     for file_name in file_list:
         file_path = os.path.join(dir_path, file_name)
 
@@ -34,7 +34,7 @@ def main():
             if char_index < 0:
                 continue
 
-            found_any_target = True
+            found_any = True
             char_index_start = char_index
             char_index_end = char_index + len(target_word) - 1
             shift = search_words_count * 50
@@ -55,8 +55,8 @@ def main():
 
             print(f"File: {file_name} - Row #{row_number}. Found: '{words_found}'")
 
-    if not found_any_target:
-        print(f"Target word '{target_word}' not found in any file.")
+    if not found_any:
+        print(f"Target word '{target_word}' is not found.")
 
 
 main()
