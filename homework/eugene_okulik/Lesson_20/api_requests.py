@@ -11,7 +11,7 @@ def get_all():
     assert response.json()[0]['title'] == 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit'
 
 
-get_all()
+# get_all()
 
 
 def get_one():
@@ -71,3 +71,16 @@ def delete_publication():
     response = requests.delete('https://jsonplaceholder.typicode.com/posts/42')
     print(response.status_code)
     print(response.json())
+
+
+def params_api():
+    params = {
+        'start_date': '2015-09-07',
+        'end_date': '2015-09-08',
+        'api_key': 'DEMO_KEY'
+    }
+    response = requests.get('https://api.nasa.gov/neo/rest/v1/feed', params=params)
+    print(response.json())
+
+
+params_api()
