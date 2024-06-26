@@ -8,31 +8,28 @@ load_dotenv()
 URL = os.getenv('BASE_URL')
 
 
-@pytest.fixture()
+@pytest.fixture(scope='session')
 def session_info():
-    print('\nStart testing')
+    print('Start testing', end=' ')
     yield
-    print('\nTesting completed')
+    print(' Testing completed')
 
 
 @pytest.fixture
-def create_delete_object():
+def object_id():
     payload = create_payload("Apple MacBook Pro 16", 2019, 1849.99, "Intel Core i9", "1 TB")
     response = requests.post(URL, json=payload)
-    response.raise_for_status()
     obj_id = response.json()['id']
     yield obj_id
     requests.delete(f"{URL}/{obj_id}")
 
 
 @pytest.fixture
-def create_object():
+def object_id_without_del():
     payload = create_payload("Apple MacBook Pro 16", 2019, 1849.99, "Intel Core i9", "1 TB")
     response = requests.post(URL, json=payload)
-    response.raise_for_status()
     obj_id = response.json()['id']
-    yield obj_id
-    requests.delete(f"{URL}/{obj_id}")
+    return obj_id
 
 
 def create_payload(name, year, price, cpu_model, hard_disk_size, color=None):
@@ -54,7 +51,6 @@ def create_payload(name, year, price, cpu_model, hard_disk_size, color=None):
 def test_create_object(session_info):
     payload = create_payload("Apple MacBook Pro 16", 2019, 1849.99, "Intel Core i9", "1 TB")
     response = requests.post(URL, json=payload)
-    response.raise_for_status()
 
     response_data = response.json()
     assert response_data['name'] == payload['name'], f"Expected name {payload['name']}, got {response_data['name']}"
@@ -63,24 +59,21 @@ def test_create_object(session_info):
 
     obj_id = response_data['id']
     delete_response = requests.delete(f"{URL}/{obj_id}")
-    delete_response.raise_for_status()
     assert delete_response.status_code == 200, f"Expected status code 200, got {delete_response.status_code}"
 
 
 @pytest.mark.smoke
-def test_get_object(create_delete_object, session_info):
-    response = requests.get(f"{URL}/{create_delete_object}")
-    response.raise_for_status()
+def test_get_object(object_id, session_info):
+    response = requests.get(f"{URL}/{object_id}")
 
     response_data = response.json()
-    assert response_data['id'] == create_delete_object, f"Expected id {create_delete_object}, got {response_data['id']}"
+    assert response_data['id'] == object_id, f"Expected id {object_id}, got {response_data['id']}"
     assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
 
 
-def test_update_object(create_delete_object, session_info):
+def test_update_object(object_id, session_info):
     payload = create_payload("Desktop", 2002, "free", "Intel Celeron (Pentium 4) 2.0", "1.8 GB", "silver")
-    response = requests.put(f"{URL}/{create_delete_object}", json=payload)
-    response.raise_for_status()
+    response = requests.put(f"{URL}/{object_id}", json=payload)
 
     response_data = response.json()
     assert response_data['name'] == payload['name'], f"Expected name {payload['name']}, got {response_data['name']}"
@@ -88,17 +81,15 @@ def test_update_object(create_delete_object, session_info):
         assert response_data['data'][key] == value, f"Expected {key} {value}, got {response_data['data'][key]}"
 
 
-def test_partial_update_object(create_delete_object, session_info):
+def test_partial_update_object(object_id, session_info):
     payload = {"name": "(Updated Name)"}
-    response = requests.patch(f"{URL}/{create_delete_object}", json=payload)
-    response.raise_for_status()
+    response = requests.patch(f"{URL}/{object_id}", json=payload)
 
     response_data = response.json()
     assert response_data['name'] == payload['name'], f"Expected name {payload['name']}, got {response_data['name']}"
 
 
-def test_delete_object(create_object, session_info):
-    response = requests.delete(f"{URL}/{create_object}")
-    response.raise_for_status()
+def test_delete_object(object_id_without_del, session_info):
+    response = requests.delete(f"{URL}/{object_id_without_del}")
 
     assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
