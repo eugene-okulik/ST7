@@ -20,6 +20,6 @@ for line_number, line in enumerate(file_lines, start=1):
         w_index = words_count.index(args.word)
         before_w = w_index - 5
         after_w = w_index + 5
-        print(words_count[before_w], words_count[w_index],words_count[after_w])
+        print(words_count[before_w], words_count[w_index], words_count[after_w])
     else:
         print('Word is not found')
