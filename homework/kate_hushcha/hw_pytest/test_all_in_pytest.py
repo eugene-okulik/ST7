@@ -32,6 +32,7 @@ def session_wrap():
     yield
     print("End Testing")
 
+
 @pytest.mark.critical
 def test_new_object():
     payload = {
@@ -49,7 +50,6 @@ def test_new_object():
         json=payload,
         headers=headers
     )
-    new_object_id = response.json()["id"]
     print(f'Created object {response.json()["id"]}')
 
 
