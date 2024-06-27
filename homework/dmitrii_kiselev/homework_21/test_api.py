@@ -5,7 +5,6 @@ import pytest
 @pytest.fixture()
 def create_object():
     print('Start testing')
-
     payload = {
         "name": "Asus Ultrabook 2",
         "data": {
@@ -30,6 +29,39 @@ def create_object():
     yield obj_id
     requests.delete(f'https://api.restful-api.dev/objects/{obj_id}')
     print('Testing completed')
+
+
+@pytest.fixture()
+def follow_the_testing():
+    print('Start testing')
+    yield
+    print('Testing completed')
+
+
+@pytest.mark.regression
+def test_create_object(follow_the_testing):
+
+    payload = {
+        "name": "Asus Ultrabook 2",
+        "data": {
+            "year": 2021,
+            "price": 837.99,
+            "CPU model": "Intel Core i7",
+            "Hard disk size": "1 TB"
+        }
+    }
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.post(
+        'https://api.restful-api.dev/objects',
+        json=payload,
+        headers=headers
+    )
+
+    assert response.status_code == 200
 
 
 @pytest.mark.regression
