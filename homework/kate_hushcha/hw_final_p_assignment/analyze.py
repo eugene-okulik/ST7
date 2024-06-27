@@ -1,5 +1,5 @@
-import os
 import argparse
+
 
 parser = argparse.ArgumentParser()
 
@@ -12,13 +12,14 @@ args = parser.parse_args()
 with open(args.file_path, encoding='utf-8') as file:
     user_file = file.read()
 
-file_line = user_file.split('\n')
+file_lines = user_file.split('\n')
 
-for line_number, line in enumerate(file_line, start=1):
-    word_index = line.find(args.word)
-    five_symb_before = word_index - 5
-    five_symb_after = word_index + 5
+for line_number, line in enumerate(file_lines, start=1):
     if args.word in line:
-        print(line_number, five_symb_before, args.word, five_symb_after)
+        words_count = line.split()
+        w_index = words_count.index(args.word)
+        before_w = w_index - 5
+        after_w = w_index + 5
+        print(words_count[before_w], words_count[w_index],words_count[after_w])
     else:
         print('Word is not found')
