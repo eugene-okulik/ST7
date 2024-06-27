@@ -60,7 +60,7 @@ def test_patch_jbj(publication_id, session_info):
         "name": "NarateL",
         "data": {
             "year": 10,
-            "price": "50000000$"
+            "price": "500000$"
         }
     }
     headers = {
