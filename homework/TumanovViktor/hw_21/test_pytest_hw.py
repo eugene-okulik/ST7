@@ -55,7 +55,27 @@ def test_update_obj(publication_id, session_info):
     print('Update', response.json())
 
 
+def test_patch_jbj(publication_id, session_info):
+    payload = {
+        "name": "NarateL",
+        "data": {
+            "year": 10,
+            "price": "50000000$"
+        }
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.patch(
+        f'https://api.restful-api.dev/objects/{publication_id}',
+        json=payload,
+        headers=headers
+    )
+    assert response.status_code == 200
+
+
 @pytest.mark.smoke
-def test_get_all(session_info):
-    response = requests.request('GET', 'https://jsonplaceholder.typicode.com/posts')
+def test_get_all(publication_id, session_info):
+    response = requests.request('GET', f'https://api.restful-api.dev/objects/{publication_id}')
     assert response.status_code == 200
