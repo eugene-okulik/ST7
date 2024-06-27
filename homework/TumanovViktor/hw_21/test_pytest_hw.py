@@ -29,6 +29,30 @@ def publication_id():
     print(f'Удаление publication {pub_id}')
 
 
+def test_publication_id():
+    payload = {
+        "name": "NarateL",
+        "data": {
+            "year": 30,
+            "price": "100$",
+            "CPU model": "World 2024",
+            "Hard disk size": "1000 TB"
+        }
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.post(
+        'https://api.restful-api.dev/objects',
+        json=payload,
+        headers=headers
+    )
+    publik_id = response.json()['id']
+    print(publik_id)
+    assert response.status_code == 200
+
+
 @pytest.fixture()
 def session_info():
     print("Start testing")
