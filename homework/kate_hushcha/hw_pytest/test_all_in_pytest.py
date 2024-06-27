@@ -32,6 +32,26 @@ def session_wrap():
     yield
     print("End Testing")
 
+@pytest.mark.critical
+def test_new_object():
+    payload = {
+        "name": "Apple MacBook Pro Kate",
+        "data": {
+            "year": 2025,
+            "price": 2849.99,
+            "CPU model": "Intel Core i9",
+            "Hard disk size": "2 TB"
+        }
+    }
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(
+        'https://api.restful-api.dev/objects',
+        json=payload,
+        headers=headers
+    )
+    new_object_id = response.json()["id"]
+    print(f'Created object {response.json()["id"]}')
+
 
 @pytest.mark.smoke
 def test_get_by_id(new_object, session_wrap):
