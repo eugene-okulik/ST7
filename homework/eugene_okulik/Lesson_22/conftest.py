@@ -20,8 +20,8 @@ def publication_id():
         json=payload,
         headers=headers
     )
-    pub_id = 42
-    # pub_id = response.json()['id']
+    # pub_id = 42
+    pub_id = response.json()['id']
     # print(f'Created publication {response.json()["id"]}')
     print(f'Created publication {pub_id}')
     yield pub_id

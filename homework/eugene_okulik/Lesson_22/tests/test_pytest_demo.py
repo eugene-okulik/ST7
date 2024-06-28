@@ -48,7 +48,7 @@ class NewObjWithData(BaseModel):
     "id": "3",
     "name": "Apple iPhone 12 Pro Max",
     "data": {
-        "color": "Cloudy White", 
+        "color": "Cloudy White",
         "capacity GB": 512
     }
 }
