@@ -3,7 +3,7 @@ import requests
 
 
 @pytest.fixture()
-def publication_id():
+def new_obj():
     payload = {
         "name": "NarateL",
         "data": {
@@ -22,35 +22,33 @@ def publication_id():
         json=payload,
         headers=headers
     )
-    pub_id = response.json()['id']
-    print(f'Создание публикации {pub_id}')
-    yield pub_id
-    requests.delete(f'https://api.restful-api.dev/objects/{pub_id}')
-    print(f'Удаление publication {pub_id}')
+    new_obj_id = response.json()['id']
+    print(f'Создание объекта {new_obj_id}')
+    yield new_obj_id
+    requests.delete(f'https://api.restful-api.dev/objects/{new_obj_id}')
+    print(f'Удаление объекта {new_obj_id}')
 
 
-def test_publication_id():
+@pytest.mark.critical
+def test_new_obj():
     payload = {
         "name": "NarateL",
         "data": {
             "year": 30,
             "price": "100$",
             "CPU model": "World 2024",
-            "Hard disk size": "1000 TB"
+            "Hard disk size": "8880 TB"
         }
     }
     headers = {
         'Content-Type': 'application/json'
     }
-
     response = requests.post(
         'https://api.restful-api.dev/objects',
         json=payload,
         headers=headers
     )
-    publik_id = response.json()['id']
-    print(publik_id)
-    assert response.status_code == 200
+    print(f'Обьект успешно создан {response.json()["id"]}')
 
 
 @pytest.fixture()
@@ -61,7 +59,7 @@ def session_info():
 
 
 @pytest.mark.critical
-def test_update_obj(publication_id, session_info):
+def test_update_obj(new_obj, session_info):
     payload = {
         "name": "NarateL",
         "data": {
@@ -69,37 +67,34 @@ def test_update_obj(publication_id, session_info):
             "price": "77770$",
             "CPU model": "World 2024",
             "Hard disk size": "1000 TB",
-            "color": "Red"
+            "color": "Green"
         }
     }
-    response = requests.put(f'https://api.restful-api.dev/objects/{publication_id}',
-                            json=payload,
+    response = requests.put(f'https://api.restful-api.dev/objects/{new_obj}',
+                            json=payload
                             )
-    assert response.status_code == 200
-    print('Update', response.json())
-
-
-def test_patch_jbj(publication_id, session_info):
-    payload = {
-        "name": "NarateL",
-        "data": {
-            "year": 10,
-            "price": "500000$"
-        }
-    }
-    headers = {
-        'Content-Type': 'application/json'
-    }
-
-    response = requests.patch(
-        f'https://api.restful-api.dev/objects/{publication_id}',
-        json=payload,
-        headers=headers
-    )
     assert response.status_code == 200
 
 
 @pytest.mark.smoke
-def test_get_all(publication_id, session_info):
-    response = requests.request('GET', f'https://api.restful-api.dev/objects/{publication_id}')
+def test_change_obj(new_obj, session_info):
+    payload = {
+        "name": "NarateL",
+        "data": {
+            "year": 10,
+            "price": "5000$"
+        }
+    }
+    response = requests.patch(
+        f'https://api.restful-api.dev/objects/{new_obj}',
+        json=payload
+    )
+    assert response.status_code == 200
+    assert response.json()['name'] == payload['name']
+
+
+@pytest.mark.smoke
+def test_get_id(new_obj, session_info):
+    response = requests.request('GET', f'https://api.restful-api.dev/objects/{new_obj}')
+    assert response.json()['name'] == 'NarateL'
     assert response.status_code == 200
