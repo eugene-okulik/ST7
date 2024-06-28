@@ -50,7 +50,17 @@ def test_new_object():
         json=payload,
         headers=headers
     )
-    print(f'Created object {response.json()["id"]}')
+    obj_id = response.json()['id']
+    assert response.status_code == 200
+    assert response.json()['name'] == 'Apple MacBook Pro Kate'
+    print(f'Created object id - {obj_id}')
+
+
+@pytest.mark.critical
+def test_no_more_object(new_object):
+    response = requests.delete(f'https://api.restful-api.dev/objects/{new_object}')
+    assert response.status_code == 200
+    print(response.json())
 
 
 @pytest.mark.smoke
