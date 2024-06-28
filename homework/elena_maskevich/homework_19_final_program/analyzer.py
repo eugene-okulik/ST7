@@ -23,21 +23,13 @@ for entry in entries:
         data_array = data.split('\n')
         indices = []
         count = 0
-        for elem in range(len(data_array)):
-            if args.word_for_search in data_array[elem]:
+        for line_number, line in enumerate(data_array):
+            if args.word_for_search in line:
                 count += 1
-                indices.append(elem)
-        if len(indices) > 0:
+                indices.append(line_number)
+        if count > 0:
             print(f'Путь к файлу - {file_path}', end='\n')
+            print(f'Номера строк, где встречается искомое слово - {indices}', end='\n\n')
         else:
             print('Слово не найдено')
             break
-
-        for element in indices:
-            text_array = str(data_array[element]).split()
-            text_string = str(text_array)
-            word_index = text_array.index(args.word_for_search)
-            for i in range(word_index - 4, word_index + 6):
-                if i >= 0:
-                    print(text_array[i])
-        print(f'Номера строк, где встречается искомое слово - {indices}', end='\n\n')
