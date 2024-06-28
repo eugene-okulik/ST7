@@ -1,4 +1,5 @@
-from .fixtures import *
+import pytest
+from .fixtures import object_id, object_id_without_del
 
 
 @pytest.fixture(scope='session')

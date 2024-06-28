@@ -10,13 +10,13 @@ def test_create_object(session_info):
     payload = create_payload("Apple MacBook Pro 16", 2019, 1849.99, "Intel Core i9", "1 TB")
     response = requests.post(URL, json=payload)
     response_data = response.json()
-
     validated_response = ResponseModel(**response_data)
 
     validate_response_data(validated_response, payload)
 
     obj_id = validated_response.id
     delete_response = requests.delete(f"{URL}/{obj_id}")
+
     assert delete_response.status_code == 200, f"Expected status code 200, got {delete_response.status_code}"
 
 
@@ -48,8 +48,8 @@ def test_update_object(object_id, session_info, data):
     payload = data
     response = requests.put(f"{URL}/{object_id}", json=payload)
     response_data = response.json()
-
     validated_response = ResponseModel(**response_data)
+
     validate_response_data(validated_response, payload)
 
 
@@ -57,16 +57,16 @@ def test_partial_update_object(object_id, session_info):
     payload = {"name": "(Updated Name)"}
     response = requests.patch(f"{URL}/{object_id}", json=payload)
     response_data = response.json()
-
     validated_response = ResponseModel(**response_data)
+
     assert validated_response.name == payload['name'], f"Expected name {payload['name']}, got {validated_response.name}"
 
 
 def test_delete_object(object_id_without_del, session_info):
     response = requests.delete(f"{URL}/{object_id_without_del}")
     response_data = response.json()
-
     validated_response = DeleteResponseModel(**response_data)
+
     assert response.status_code == 200, f"Expected status code 200, got {response.status_code}"
     assert "has been deleted" in validated_response.message, \
         f"Expected message to contain 'has been deleted', got {validated_response.message}"
