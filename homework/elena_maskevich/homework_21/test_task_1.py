@@ -44,9 +44,11 @@ def object_id():
     obj_id = response.json()['id']
     print(obj_id)
     print(f'Created object id {response.json()["id"]}')
+    assert response.status_code == 200, 'Incorrect status code'
     yield obj_id
     requests.delete(f'{base_url}/{obj_id}')
     print(f'Deleted object id {obj_id}')
+    assert response.status_code == 200, 'Incorrect status code'
 
 
 @pytest.mark.smoke
