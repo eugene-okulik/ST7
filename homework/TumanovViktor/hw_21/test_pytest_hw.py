@@ -98,3 +98,4 @@ def test_get_id(new_obj, session_info):
     response = requests.request('GET', f'https://api.restful-api.dev/objects/{new_obj}')
     assert response.json()['name'] == 'NarateL'
     assert response.status_code == 200
+    assert response.json()['id'] == new_obj
