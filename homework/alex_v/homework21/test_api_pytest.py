@@ -14,7 +14,7 @@ def publication_id():
         'Authorization': 'Bearer 92834756903845739845'
     }
 
-    response = requests.post(
+    requests.post(
         'https://jsonplaceholder.typicode.com/posts',
         json=payload,
         headers=headers
