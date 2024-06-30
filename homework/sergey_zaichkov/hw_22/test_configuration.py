@@ -107,4 +107,3 @@ class TestRestfulApi:
         response = requests.delete(url=f"{self.BASE_URL}/999")
 
         assert response.status_code == 404, "Status code is not 404"
-        response_dict = response.json()
