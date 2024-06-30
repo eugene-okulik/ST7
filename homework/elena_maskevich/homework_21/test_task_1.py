@@ -44,10 +44,38 @@ def object_id():
     obj_id = response.json()['id']
     print(obj_id)
     print(f'Created object id {response.json()["id"]}')
-    assert response.status_code == 200, 'Incorrect status code'
     yield obj_id
     requests.delete(f'{base_url}/{obj_id}')
     print(f'Deleted object id {obj_id}')
+
+
+def test_create_object(session_info):
+    payload = {
+        "name": "Apple MacBook Pro 160",
+        "data": {
+            "year": 2219,
+            "price": 10,
+            "CPU model": "Intel Core i90",
+            "Hard disk size": "1 TB"
+        }
+    }
+    headers = {
+        'Content-Type': 'application/json',
+    }
+
+    response = requests.post(
+        base_url,
+        json=payload,
+        headers=headers
+    )
+    created_obj_id = response.json()['id']
+    assert response.status_code == 200, 'Incorrect status code'
+    return created_obj_id
+
+
+def test_delete_obj_by_id(session_info):
+    deleted_obj = test_create_object(session_info)
+    response = requests.delete(f'{base_url}/{deleted_obj}')
     assert response.status_code == 200, 'Incorrect status code'
 
 
