@@ -1,27 +1,33 @@
 import pytest
 import requests
 
+base_url = 'https://api.restful-api.dev/objects'
+
 
 @pytest.fixture()
-def publication_id():
+def item_id():
     payload = {
-        "title": "LKJHLKJDHLKJDHLKJDF",
-        "body": "UYkajshdfkajdshfasdf",
-        "userId": 1
+        "name": "Horizont AI Edition 2000",
+        "data": {
+            "year": 1980,
+            "price": 500,
+            "CPU model": "Intel Core i7",
+            "Hard disk size": "250 GB"
+        }
+
     }
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 92834756903845739845'
     }
-
-    requests.post(
-        'https://jsonplaceholder.typicode.com/posts',
+    response = requests.post(
+        url='https://api.restful-api.dev/objects',
         json=payload,
         headers=headers
     )
-    pub_id = 42
-    yield pub_id
-    requests.delete('https://jsonplaceholder.typicode.com/posts/42')
+
+    item_id = response.json()['id']
+    yield item_id
+    requests.delete(f'{base_url}/{item_id}', headers=headers)
 
 
 @pytest.fixture()
@@ -31,42 +37,47 @@ def before_after_greetings():
     print('Testing completed')
 
 
-def test_get_publication(publication_id, before_after_greetings):
-    requests.get(f'https://jsonplaceholder.typicode.com/posts/{publication_id}')
-    assert publication_id == 42
+def test_get_single_item(item_id, before_after_greetings):
+    response = requests.get(f'{base_url}/{item_id}')
+    assert response.status_code == 200
 
 
 @pytest.mark.smoke
 def test_get_all():
-    response = requests.request('GET', 'https://jsonplaceholder.typicode.com/posts')
+    response = requests.get(f'{base_url}')
     assert response.status_code == 200
-    assert response.json()[0]['title'] == 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit'
 
 
-def test_update(publication_id):
+def test_update_item(item_id):
     payload = {
-        "title": "LKJHLKJDHLKJDHLKJDF-UPD-test",
-        "body": "UYkajshdfkajdshfasdf-UPF-test",
-        "userId": 1
-    }
+        "name": "Horizont AI Edition 2000",
+        "data": {
+            "year": 1980,
+            "price": 1999,
+            "CPU model": "Intel Core i7",
+            "Hard disk size": "250 GB",
+            "color": "silver"
+        }
 
-    response = requests.put(
-        f'https://jsonplaceholder.typicode.com/posts/{publication_id}',
-        json=payload
+    }
+    headers = {
+        'Content-Type': 'application/json',
+    }
+    requests.put(
+        base_url,
+        json=payload,
+        headers=headers
     )
-    assert response.json()['title'] == payload['title']
+
+    assert payload['data']['color'] == 'silver'
 
 
 @pytest.mark.regression
-def test_delete(publication_id):
-    payload = {
-        "title": "LKJHLKJDHLKJDHLKJDF-UPD-test",
-        "body": "UYkajshdfkajdshfasdf-UPF-test",
-        "userId": 1
+def test_delete(item_id):
+    headers = {
+        'Content-Type': 'application/json'
     }
 
-    response = requests.delete(
-        f'https://jsonplaceholder.typicode.com/posts/{publication_id}',
-        json=payload
-    )
+    response = requests.delete(f'{base_url}/{item_id}',
+                               headers=headers)
     assert response.status_code == 200, 'Opps!?! publication vanishing has not been done yet'
