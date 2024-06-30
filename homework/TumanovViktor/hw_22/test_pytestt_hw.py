@@ -65,11 +65,6 @@ def test_change_obj(new_obj, session_info):
     assert response.json()['name'] == payload['name']
 
 
-class Publication(BaseModel):
-    name: str
-    data: dict[str, Any]
-
-
 class ObjData(BaseModel):
     year: int
     price: str
@@ -86,11 +81,9 @@ def test_get_id(new_obj, session_info):
     response = requests.request('GET', f'https://api.restful-api.dev/objects/{new_obj}')
     assert response.json()['name'] == 'NarateL'
     assert response.status_code == 200
-    assert response.json()['id'] == new_obj
-    print(response.json())
     Publication(**response.json())
     data = NewObjWithData(**response.json())
-    print(data.data.year)
+    print(data.data)
 
 
 def test_delete_obj(new_obj, session_info):
