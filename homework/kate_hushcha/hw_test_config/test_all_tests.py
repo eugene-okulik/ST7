@@ -60,8 +60,8 @@ def test_get_by_id(new_object, session_wrap):
 
 
 @pytest.mark.parametrize(
-        'name', ['Apple MacBook 111 Kate', 'Apple MacBook $$$ Kate', 'Apple MacBook Update Kate'],
-        ids=['numbers', 'special characters', 'regular']
+    'name', ['Apple MacBook 111 Kate', 'Apple MacBook $$$ Kate', 'Apple MacBook Update Kate'],
+    ids=['numbers', 'special characters', 'regular']
 )
 @pytest.mark.critical
 def test_change_everyth(new_object, session_wrap, name):
