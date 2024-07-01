@@ -30,7 +30,6 @@ def item_id():
     requests.delete(f'{base_url}/{item_id}', headers=headers)
 
 
-@pytest.mark.skip(reason='conflict with fixture')
 @pytest.fixture()
 def before_after_greetings():
     print('Start testing')
@@ -38,6 +37,7 @@ def before_after_greetings():
     print('Testing completed')
 
 
+@pytest.mark.skip(reason='conflict with fixture')
 def create_item():
     payload = {
         "name": "Horizont AI Edition 2000",
