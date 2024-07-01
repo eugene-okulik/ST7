@@ -19,10 +19,8 @@ def a_file(file_path, search_word):
                 w_index = words_count.index(args.word)
                 before_w = w_index - 5
                 after_w = w_index + 5
-                print(
-                    f'File {file_path}, line: {line_number}, 
-                    words: {words_count[before_w], words_count[w_index], words_count[after_w]}'
-                )
+                print(f'File: {file_path}, line: {line_number},')
+                print(f'words: {words_count[before_w], words_count[w_index], words_count[after_w]}')
     except ValueError:
         if search_word not in line:
             print('Word not found')
