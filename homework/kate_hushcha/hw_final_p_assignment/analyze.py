@@ -14,14 +14,17 @@ def a_file(file_path, search_word):
             user_file = file.read()
         file_lines = user_file.split('\n')
         for line_number, line in enumerate(file_lines, start=1):
-           if search_word in line:
+            if search_word in line:
                 words_count = line.split()
                 w_index = words_count.index(args.word)
                 before_w = w_index - 5
                 after_w = w_index + 5
-                print(f'File {file_path}, line: {line_number}, words: {words_count[before_w], words_count[w_index], words_count[after_w]}')
-    except:
-        if not search_word in line:
+                print(
+                    f'File {file_path}, line: {line_number}, 
+                    words: {words_count[before_w], words_count[w_index], words_count[after_w]}'
+                )
+    except ValueError:
+        if search_word not in line:
             print('Word not found')
 
 
