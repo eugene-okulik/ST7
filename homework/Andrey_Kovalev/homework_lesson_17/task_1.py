@@ -1,19 +1,18 @@
 import mysql.connector as mysql
 
-with mysql.connect(
+db = mysql.connect(
         username='st7',
         password='AVNS_re9xEYl4dUPuhui4A0l',
         host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
         port=25060,
         database='st7'
-) as db:
+)
+cursor = db.cursor(dictionary=True)
 
-    cursor = db.cursor(dictionary=True)
-
-    cursor.execute("INSERT INTO students (name, second_name) values ('Andrey', 'Kovalev')")
-    student_id = cursor.lastrowid
-    db.commit()
-    print(student_id)
+cursor.execute("INSERT INTO students (name, second_name) values ('Andrey', 'Kovalev')")
+student_id = cursor.lastrowid
+db.commit()
+print(student_id)
 
 
 create_books_request = "INSERT INTO books (title, taken_by_student_id) values ('Artur King', %s)"
@@ -38,16 +37,23 @@ db.commit()
 
 ids = []
 create_lesson_request = 'INSERT INTO lessons (title, subject_id) values (%s, %s)'
-for param in [('1337', subject_1), ('True LS', subject_1), ('AL LS', subject_2), ('JONE SINA', subject_2)]:
+lesson_params = [('1337', subject_1), ('True LS', subject_1), ('AL LS', subject_2), ('JONE SINA', subject_2)]
+
+for param in lesson_params:
     cursor.execute(create_lesson_request, param)
-    ids.append(cursor.lastrowid)
-    print(ids)
+    lesson_id = cursor.lastrowid
+    if lesson_id:
+        ids.append(lesson_id)
     db.commit()
 
-    set_marks_request = 'INSERT INTO marks (value, lesson_id, student_id) values (%s, %s, %s)'
-    for params in [(1, ids[0], student_id), (3, ids[1], student_id), (3, ids[2], student_id), (5, ids[3], student_id)]:
-        cursor.execute(set_marks_request, param)
-    db.commit()
+    if len(ids) == 4:
+        set_marks_request = 'INSERT INTO marks (value, lesson_id, student_id) values (%s, %s, %s)'
+        marks_params = [(1, ids[0], student_id), (3, ids[1], student_id), (3, ids[2], student_id),
+                        (5, ids[3], student_id)]
+
+        for param in marks_params:
+            cursor.execute(set_marks_request, param)
+        db.commit()
 
     get_marks_query = 'SELECT value FROM marks where student_id = %s'
     cursor.execute(get_marks_query, (student_id,))
