@@ -8,7 +8,9 @@ db = mysql.connect(
         database='st7'
 )
 
+
 cursor = db.cursor(dictionary=True)
+
 
 cursor.execute("INSERT INTO students (name, second_name) values ('Andrey', 'Kovalev')")
 student_id = cursor.lastrowid
@@ -30,11 +32,13 @@ cursor.execute(set_group_id_request, (group_id, student_id))
 db.commit()
 print(group_id)
 
+
 cursor.execute("INSERT INTO subjects (title) values ('Dron')")
 subject_1 = cursor.lastrowid
 cursor.execute("INSERT INTO subjects (title) values ('Baron')")
 subject_2 = cursor.lastrowid
 db.commit()
+
 
 ids = []
 create_lesson_request = 'INSERT INTO lessons (title, subject_id) values (%s, %s)'
@@ -55,6 +59,7 @@ for param in lesson_params:
         for params in marks_params:
             cursor.execute(set_marks_request, params)
         db.commit()
+
 
 get_marks_query = 'SELECT value FROM marks where student_id = %s'
 cursor.execute(get_marks_query, (student_id,))
