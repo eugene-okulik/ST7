@@ -7,6 +7,7 @@ db = mysql.connect(
         port=25060,
         database='st7'
 )
+
 cursor = db.cursor(dictionary=True)
 
 cursor.execute("INSERT INTO students (name, second_name) values ('Andrey', 'Kovalev')")
