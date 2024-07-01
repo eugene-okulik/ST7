@@ -4,12 +4,6 @@ from pydantic import BaseModel, Field
 from typing import Any
 
 
-class NewObj(BaseModel):
-    id: str
-    name: str
-    data: dict[str, Any]
-
-
 class ObjData(BaseModel):
     year: int
     price: float
@@ -21,6 +15,10 @@ class NewObjWithData(BaseModel):
     id: str
     name: str
     data: ObjData
+
+
+class DeletedObject(BaseModel):
+    message: str
 
 
 @pytest.mark.critical
@@ -40,7 +38,6 @@ def test_new_object():
         json=payload,
         headers=headers
     )
-    NewObj(**response.json())
     data = NewObjWithData(**response.json())
     assert response.status_code == 200
     assert data.name == 'Apple MacBook Pro Kate'
@@ -49,7 +46,9 @@ def test_new_object():
 @pytest.mark.critical
 def test_no_more_object(new_object):
     response = requests.delete(f'https://api.restful-api.dev/objects/{new_object}')
+    deleted_data = DeletedObject(**response.json())
     assert response.status_code == 200
+    assert deleted_data.message == f'Object with {new_object} has been deleted'
 
 
 @pytest.mark.skip('Bug 42779 ')
