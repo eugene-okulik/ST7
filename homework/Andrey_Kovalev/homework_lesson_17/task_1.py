@@ -55,20 +55,20 @@ for param in lesson_params:
             cursor.execute(set_marks_request, params)
         db.commit()
 
-    get_marks_query = 'SELECT value FROM marks where student_id = %s'
-    cursor.execute(get_marks_query, (student_id,))
-    marks = cursor.fetchall()
-    print(marks)
-    for line in marks:
-        print(line['value'])
+get_marks_query = 'SELECT value FROM marks where student_id = %s'
+cursor.execute(get_marks_query, (student_id,))
+marks = cursor.fetchall()
+print(marks)
+for line in marks:
+    print(line['value'])
 
-        get_books_query = ("SELECT title FROM books join students on books.taken_by_student_id = students.id "
+    get_books_query = ("SELECT title FROM books join students on books.taken_by_student_id = students.id "
                            "where students.id = %s")
-        cursor.execute(get_books_query, (student_id,))
-        books = cursor.fetchall()
-        print(books)
+    cursor.execute(get_books_query, (student_id,))
+    books = cursor.fetchall()
+    print(books)
 
-        get_all_query = '''
+    get_all_query = '''
              select * from students
              join books
              on students.id=books.taken_by_student_id
@@ -83,6 +83,6 @@ for param in lesson_params:
              lessons.subject_id =subjects.id
              where students.id=%s
              '''
-        cursor.execute(get_all_query, (student_id,))
-        student_info = cursor.fetchall()
-        print(student_info)
+    cursor.execute(get_all_query, (student_id,))
+    student_info = cursor.fetchall()
+    print(student_info)
