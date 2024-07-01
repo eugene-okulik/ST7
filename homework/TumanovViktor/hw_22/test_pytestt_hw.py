@@ -4,11 +4,6 @@ from pydantic import BaseModel, Field
 from typing import Any
 
 
-class Publication(BaseModel):
-    name: str
-    data: dict[str, Any]
-
-
 class ObjData(BaseModel):
     year: int
     price: str
@@ -19,6 +14,10 @@ class ObjData(BaseModel):
 class NewObjWithData(BaseModel):
     name: str
     data: ObjData
+
+
+class DelNewObjWithData(BaseModel):
+    message: str
 
 
 @pytest.mark.critical
@@ -40,7 +39,6 @@ def test_new_obj():
         json=payload,
         headers=headers
     )
-    Publication(**response.json())
     data = NewObjWithData(**response.json())
     assert data.name == data.name
 
@@ -95,3 +93,6 @@ def test_get_id(new_obj, session_info):
 def test_delete_obj(new_obj, session_info):
     response = requests.delete(f'https://api.restful-api.dev/objects/{new_obj}')
     assert response.status_code == 200
+    delete_obj = DelNewObjWithData(**response.json())
+    # print(delete_obj)
+    assert delete_obj.message == delete_obj.message
