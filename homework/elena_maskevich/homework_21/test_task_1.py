@@ -73,9 +73,8 @@ def test_create_object(session_info):
     return created_obj_id
 
 
-def test_delete_obj_by_id(session_info):
-    deleted_obj = test_create_object(session_info)
-    response = requests.delete(f'{base_url}/{deleted_obj}')
+def test_delete_obj_by_id(object_id, session_info):
+    response = requests.delete(f'{base_url}/{object_id}')
     assert response.status_code == 200, 'Incorrect status code'
 
 
