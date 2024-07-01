@@ -4,6 +4,23 @@ from pydantic import BaseModel, Field
 from typing import Any
 
 
+class Publication(BaseModel):
+    name: str
+    data: dict[str, Any]
+
+
+class ObjData(BaseModel):
+    year: int
+    price: str
+    CPU_model: str = Field(alias='CPU model')
+    Hard_disk_size: str = Field(alias='Hard disk size')
+
+
+class NewObjWithData(BaseModel):
+    name: str
+    data: ObjData
+
+
 @pytest.mark.critical
 def test_new_obj():
     payload = {
@@ -23,7 +40,9 @@ def test_new_obj():
         json=payload,
         headers=headers
     )
-    print(f'Обьект успешно создан {response.json()["id"]}')
+    Publication(**response.json())
+    data = NewObjWithData(**response.json())
+    assert data.name == data.name
 
 
 @pytest.mark.parametrize(
@@ -65,32 +84,14 @@ def test_change_obj(new_obj, session_info):
     assert response.json()['name'] == payload['name']
 
 
-class ObjData(BaseModel):
-    year: int
-    price: str
-    CPU_model: str = Field(alias='CPU model')
-    Hard_disk_size: str = Field(alias='Hard disk size')
-
-
-class NewObjWithData(BaseModel):
-    name: str
-    data: ObjData
-
-
+@pytest.mark.skip(reason='bag #12')
 def test_get_id(new_obj, session_info):
     response = requests.request('GET', f'https://api.restful-api.dev/objects/{new_obj}')
     assert response.json()['name'] == 'NarateL'
     assert response.status_code == 200
-    data = NewObjWithData(**response.json())
-    print(data.data)
 
 
+@pytest.mark.smoke
 def test_delete_obj(new_obj, session_info):
     response = requests.delete(f'https://api.restful-api.dev/objects/{new_obj}')
     assert response.status_code == 200
-
-
-@pytest.mark.skip(reason='bag #12')
-@pytest.mark.smoke
-def test_one():
-    assert 2 == 2
