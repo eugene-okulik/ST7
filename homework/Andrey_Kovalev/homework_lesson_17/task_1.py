@@ -1,11 +1,11 @@
 import mysql.connector as mysql
 
 db = mysql.connect(
-        username='st7',
-        password='AVNS_re9xEYl4dUPuhui4A0l',
-        host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
-        port=25060,
-        database='st7'
+    user='st7',
+    password='AVNS_re9xEYl4dUPuhui4A0l',
+    host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
+    port=25060,
+    database='st7'
 )
 
 
