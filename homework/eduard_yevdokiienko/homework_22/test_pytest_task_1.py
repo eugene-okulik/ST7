@@ -84,10 +84,12 @@ def test_update_object_put(get_object_id, session_info, name, year, color):
 
 @pytest.mark.skip(reason='Bug #1')
 @pytest.mark.critical
-def test_partially_update_object_patch(get_object_id, session_info):
+def test_update_object_price(get_object_id, session_info):
     print(session_info)
     payload = {
-        "price": 3000
+        "data": {
+            "price": 3000
+        }
     }
     response = requests.patch(
         f'{url}/{get_object_id}',
