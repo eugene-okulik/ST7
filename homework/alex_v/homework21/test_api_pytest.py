@@ -30,11 +30,35 @@ def item_id():
     requests.delete(f'{base_url}/{item_id}', headers=headers)
 
 
+@pytest.mark.skip(reason='conflict with fixture')
 @pytest.fixture()
 def before_after_greetings():
     print('Start testing')
     yield
     print('Testing completed')
+
+
+def create_item():
+    payload = {
+        "name": "Horizont AI Edition 2000",
+        "data": {
+            "year": 1980,
+            "price": 500,
+            "CPU model": "Intel Core i7",
+            "Hard disk size": "250 GB"
+        }
+
+    }
+    headers = {
+        'Content-Type': 'application/json',
+    }
+    response = requests.post(
+        url='https://api.restful-api.dev/objects',
+        json=payload,
+        headers=headers
+    )
+    response.json()
+    assert response.status_code == 200
 
 
 def test_get_single_item(item_id, before_after_greetings):
