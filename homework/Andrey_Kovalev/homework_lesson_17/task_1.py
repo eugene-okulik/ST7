@@ -63,7 +63,7 @@ for line in marks:
     print(line['value'])
 
     get_books_query = ("SELECT title FROM books join students on books.taken_by_student_id = students.id "
-                           "where students.id = %s")
+                       "where students.id = %s")
     cursor.execute(get_books_query, (student_id,))
     books = cursor.fetchall()
     print(books)
