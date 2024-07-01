@@ -51,8 +51,8 @@ for param in lesson_params:
         marks_params = [(1, ids[0], student_id), (3, ids[1], student_id), (3, ids[2], student_id),
                         (5, ids[3], student_id)]
 
-        for param in marks_params:
-            cursor.execute(set_marks_request, param)
+        for params in marks_params:
+            cursor.execute(set_marks_request, params)
         db.commit()
 
     get_marks_query = 'SELECT value FROM marks where student_id = %s'
