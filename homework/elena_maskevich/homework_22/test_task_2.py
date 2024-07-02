@@ -7,7 +7,7 @@ from typing import Any
 from test_task_1 import base_url
 
 
-class Publication(BaseModel):
+class CreatedObject(BaseModel):
     id: str
     name: str
     createdAt: str
@@ -34,7 +34,7 @@ def test_create_object(session_info):
         headers=headers
     )
     assert response.status_code == 200, 'Incorrect status code'
-    Publication(**response.json())
+    CreatedObject(**response.json())
 
 
 def test_change_object_patch(object_id, session_info):
@@ -47,6 +47,17 @@ def test_change_object_patch(object_id, session_info):
     )
     assert response.status_code == 200, "Status code is not 200"
     print(f'Updated patch object with id {object_id}')
+
+
+class DeletedObject(BaseModel):
+    message: str
+
+
+def test_delete_obj_by_id(object_id, session_info):
+    response = requests.delete(f'{base_url}/{object_id}')
+    print(f'ответ удаления - {response.json()}')
+    assert response.status_code == 200, 'Incorrect status code'
+    DeletedObject(**response.json())
 
 
 @pytest.mark.skip
