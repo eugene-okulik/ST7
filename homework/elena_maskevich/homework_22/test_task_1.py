@@ -39,6 +39,3 @@ def test_update_with_put(object_id, session_info, year):
 
     assert response.status_code == 200, 'Incorrect status code'
     print(f'Updated put object with id {object_id}')
-
-
-
