@@ -17,6 +17,31 @@ class NewObjWithData(BaseModel):
     data: ObjData
 
 
+@pytest.mark.regression
+def test_create_item(item_id, before_after_greetings):
+    payload = {
+        "name": "Horizont Extreme Edition",
+        "data": {
+            "year": 2019,
+            "price": 1849.99,
+            "CPU model": "Intel Core i9",
+            "Hard disk size": "2 TB"
+        }
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(
+        base_url,
+        json=payload,
+        headers=headers
+    )
+    assert response.status_code == 200
+    data = NewObjWithData(**response.json())
+    assert data.name == payload['name']
+
+
+@pytest.mark.smoke
 def test_get_single_item(item_id, before_after_greetings):
     response = requests.get(f'{base_url}/{item_id}')
     assert response.status_code == 200
@@ -28,6 +53,10 @@ def test_get_all():
     assert response.status_code == 200
 
 
+class DeleteSingleObject(BaseModel):
+    message: str
+
+
 @pytest.mark.regression
 def test_delete(item_id):
     headers = {
@@ -36,5 +65,6 @@ def test_delete(item_id):
 
     response = requests.delete(f'{base_url}/{item_id}',
                                headers=headers)
-    assert data == NewObjWithData(**response.json())
-    print(data.data)
+    assert response.status_code == 200
+    delete_obj = DeleteSingleObject(**response.json())
+    assert 'deleted' in delete_obj.message

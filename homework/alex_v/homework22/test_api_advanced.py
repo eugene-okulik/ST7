@@ -5,18 +5,6 @@ from pydantic import BaseModel, Field
 base_url = 'https://api.restful-api.dev/objects'
 
 
-class ObjData(BaseModel):
-    year: int
-    price: int
-    cpu_value: str = Field(alias='CPU model')
-    disk_size: str = Field(alias='Hard disk size')
-
-
-class NewObjWithData(BaseModel):
-    name: str
-    data: ObjData
-
-
 @pytest.mark.parametrize('name',
                          ['SONY ERICSSON',
                           '12345',
