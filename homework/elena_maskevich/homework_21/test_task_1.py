@@ -69,7 +69,7 @@ def test_create_object(session_info):
         headers=headers
     )
     created_obj_id = response.json()['id']
-    assert response.status_code == 200, 'Incorrect status code'
+    assert response.status_code == 200, 'Invalid status code'
     return created_obj_id
 
 
