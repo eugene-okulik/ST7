@@ -14,8 +14,6 @@ def session_info():
     print('Testing completed')
 
 
-
-
 @pytest.fixture()
 def object_id():
     payload = {
@@ -37,25 +35,7 @@ def object_id():
         headers=headers
     )
     obj_id = response.json()['id']
-    print(response.text)
-    print(obj_id)
     print(f'Created object id {response.json()["id"]}')
-    assert response.status_code == 200, 'Incorrect status code'
     yield obj_id
     requests.delete(f'{base_url}/{obj_id}')
     print(f'Deleted object id {obj_id}')
-    assert response.status_code == 200, 'Incorrect status code'
-
-"""{
-    "id":"ff808181905dc8b901906295fae30a4c",
-    "name":"Apple MacBook Pro 16",
-    "createdAt":"2024-06-29T06:01:54.659+00:00",
-    "data":
-        {
-            "year":2019,
-            "price":1849.99,
-            "CPU model":"Intel Core i9",
-            "Hard disk size":"1 TB"
-        }
-}
-"""
