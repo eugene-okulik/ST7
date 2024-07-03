@@ -9,7 +9,7 @@ from homework.evgeny_shit.Homework_23.models import ResponseModel, DeleteRespons
 
 
 @allure.title("Create object test")
-@allure.feature("Create object")
+@allure.feature("New test")
 @allure.story("POST")
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.description('This test checks creating a publication')
@@ -40,7 +40,7 @@ def test_create_object(session_info):
 
 
 @allure.title("Get object test")
-@allure.feature("Get object")
+@allure.feature("New test")
 @allure.story("GET")
 @allure.severity(allure.severity_level.NORMAL)
 @allure.description('This test checks getting a publication')
@@ -59,7 +59,7 @@ def test_get_object(object_id: str, session_info):
 
 
 @allure.title("Get all objects test")
-@allure.feature("Get all objects")
+@allure.feature("New test")
 @allure.story("GET")
 @allure.severity(allure.severity_level.MINOR)
 @allure.description('This test checks getting all publications')
@@ -78,7 +78,7 @@ def test_get_all_objects(session_info):
 
 
 @allure.title("Update object test")
-@allure.feature("Update object")
+@allure.feature("New test")
 @allure.story("PUT")
 @allure.severity(allure.severity_level.NORMAL)
 @allure.description('This test checks updating a publication')
@@ -104,7 +104,7 @@ def test_update_object(object_id: str, session_info, data: dict):
 
 
 @allure.title("Partial update object test")
-@allure.feature("Partial update object")
+@allure.feature("New test")
 @allure.story("PATCH")
 @allure.description('This test checks partial updating a publication')
 @allure.severity(allure.severity_level.NORMAL)
@@ -125,7 +125,7 @@ def test_partial_update_object(object_id: str, session_info):
 
 
 @allure.title("Delete object test")
-@allure.feature("Delete object")
+@allure.feature("New test")
 @allure.story("DELETE")
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.description('This test checks deleting a publication')
