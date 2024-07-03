@@ -65,33 +65,9 @@ def test_create_object(follow_the_testing_without_object):
 
 
 @pytest.mark.regression
-def test_delete_object(follow_the_testing_without_object):
-    payload = {
-        "name": "Asus Ultrabook 2",
-        "data": {
-            "year": 2021,
-            "price": 837.99,
-            "CPU model": "Intel Core i7",
-            "Hard disk size": "1 TB"
-        }
-    }
-
-    headers = {
-        'Content-Type': 'application/json'
-    }
-
-    response = requests.post(
-        'https://api.restful-api.dev/objects',
-        json=payload,
-        headers=headers
-    )
-
-    obj_id = response.json()['id']
-
+def test_delete_object(object_id):
     response = requests.delete(
-        f'https://api.restful-api.dev/objects/{obj_id}',
-        json=payload,
-        headers=headers
+        f'https://api.restful-api.dev/objects/{object_id}'
     )
 
     assert response.status_code == 200
