@@ -46,6 +46,7 @@ def test_create_object(follow_the_testing_without_object):
 class Deletion(BaseModel):
     message: str
 
+
 @pytest.mark.regression
 def test_delete_object(object_id):
     response = requests.delete(
