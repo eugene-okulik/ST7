@@ -100,14 +100,14 @@ def test_get_object(object_id):
 @allure.title('Watch all Posts')
 @pytest.mark.regression
 @pytest.mark.smoke
-def test_get_object(follow_the_testing_without_object):
+def test_get_all_object(follow_the_testing_without_object):
     headers = {
         'Content-Type': 'application/json'
     }
 
     with allure.step('Make request'):
         response = requests.get(
-            f'https://api.restful-api.dev/objects',
+            'https://api.restful-api.dev/objects',
             headers=headers
         )
 
