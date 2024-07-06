@@ -26,4 +26,3 @@ def test_to_skip(follow_the_testing_without_object, small_checks):
 @pytest.mark.smoke
 def test_to_failing(follow_the_testing_without_object, small_checks):
     assert small_checks.incorrect_equals()
-

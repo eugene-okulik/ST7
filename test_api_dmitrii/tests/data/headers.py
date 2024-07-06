@@ -1,3 +1,1 @@
-headers_temp = {
-        'Content-Type': 'application/json'
-    }
+headers_temp = {'Content-Type': 'application/json'}
