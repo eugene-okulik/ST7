@@ -5,11 +5,12 @@ from api_tests_shit.endpoints.schemas import ResponseSchema, DeleteResponseSchem
 
 
 class BaseApi:
+    obj_id: str
     response_json: dict
     response: requests.Response
+    valid_response: ResponseSchema
     delete_response: requests.Response
     valid_delete_response: DeleteResponseSchema
-    valid_response: ResponseSchema
 
     @allure.step('Check status code')
     def check_status_code(self, response: requests.Response, status_code: int) -> tuple[bool, str]:

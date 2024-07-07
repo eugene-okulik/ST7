@@ -13,11 +13,14 @@ from api_tests_shit.tests.data import payloads
     tag='!!!'
 )
 @pytest.mark.critical
-def test_create_object(create_obj_endpoint, session_info):
+def test_create_object(create_obj_endpoint, delete_obj_endpoint, session_info):
     create_obj_endpoint.create_object(payloads.create_obj)
     assert create_obj_endpoint.check_status_code(create_obj_endpoint.response, 200)
     assert create_obj_endpoint.check_response_name_is_(payloads.create_obj['name'])
-    assert create_obj_endpoint.check_response_message_is_("has been deleted")
+
+    delete_obj_endpoint.delete_object(create_obj_endpoint.obj_id)
+    assert delete_obj_endpoint.check_status_code(delete_obj_endpoint.delete_response, 200)
+    assert delete_obj_endpoint.check_response_message_is_("has been deleted")
 
 
 @allure_annotations(
