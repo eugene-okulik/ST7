@@ -18,7 +18,7 @@ with mysql.connect(
     cursor.execute(query, (group_id,))
     student_id_var = cursor.lastrowid
 
-    query = f'INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)'
+    query = 'INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)'
     cursor.executemany(
         query, [('Информатика для чайников', student_id_var), ('Погружение в базы данных', student_id_var),
                 ('Гвидо ван Россум. Детство. Отрочество. Юность', student_id_var)]
@@ -46,10 +46,6 @@ with mysql.connect(
     cursor.execute(quary, (student_id_var, ))
     marks_data = cursor.fetchall()
     print(marks_data)
-
-    # cursor.execute(f"SELECT * FROM books WHERE taken_by_student_id = {student_id_var}")
-    # books_data = cursor.fetchall()
-    # print(books_data)
 
     quary = "SELECT * FROM books WHERE taken_by_student_id = %s"
     cursor.execute(quary, (student_id_var, ))
