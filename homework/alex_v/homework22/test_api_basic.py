@@ -23,7 +23,7 @@ def test_create_item(item_id, before_after_greetings):
         "name": "Horizont Extreme Edition",
         "data": {
             "year": 2019,
-            "price": 1849.99,
+            "price": 2500,
             "CPU model": "Intel Core i9",
             "Hard disk size": "2 TB"
         }
