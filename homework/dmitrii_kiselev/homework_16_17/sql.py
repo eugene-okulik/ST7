@@ -14,12 +14,15 @@ with mysql.connect(
     cursor.execute("INSERT INTO `groups` (title, start_date, end_date) VALUES ('st7', '01.04.2024', NULL)")
     group_id = cursor.lastrowid
 
-    cursor.execute(f"INSERT INTO students (name, second_name, group_id) VALUES ('Dmitrii', 'Kiselev', {group_id})")
+    query = "INSERT INTO students (name, second_name, group_id) VALUES ('Dmitrii', 'Kiselev', %s)"
+    cursor.execute(query, (group_id,))
     student_id_var = cursor.lastrowid
 
-    quary = f'INSERT INTO books (title, taken_by_student_id) VALUES (%s, {student_id_var})'
-    cursor.executemany(quary, [['Информатика для чайников'], ['Погружение в базы данных'],
-                               ['Гвидо ван Россум. Детство. Отрочество. Юность']])
+    query = f'INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)'
+    cursor.executemany(
+        query, [('Информатика для чайников', student_id_var), ('Погружение в базы данных', student_id_var),
+                ('Гвидо ван Россум. Детство. Отрочество. Юность', student_id_var)]
+    )
 
     quary = 'INSERT INTO subjects (title) VALUES (%s)'
     subject_ids = []
@@ -39,11 +42,17 @@ with mysql.connect(
     for i in range(4):
         cursor.execute(quary, [marks_dict[lessons[i]], lesson_ids[i], student_id_var])
 
-    cursor.execute(f"SELECT * FROM marks WHERE student_id = {student_id_var}")
+    quary = "SELECT * FROM marks WHERE student_id = %s"
+    cursor.execute(quary, (student_id_var, ))
     marks_data = cursor.fetchall()
     print(marks_data)
 
-    cursor.execute(f"SELECT * FROM books WHERE taken_by_student_id = {student_id_var}")
+    # cursor.execute(f"SELECT * FROM books WHERE taken_by_student_id = {student_id_var}")
+    # books_data = cursor.fetchall()
+    # print(books_data)
+
+    quary = "SELECT * FROM books WHERE taken_by_student_id = %s"
+    cursor.execute(quary, (student_id_var, ))
     books_data = cursor.fetchall()
     print(books_data)
 
