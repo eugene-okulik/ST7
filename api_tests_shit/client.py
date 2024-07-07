@@ -10,12 +10,26 @@ load_dotenv()
 URL: str = os.getenv('BASE_URL')
 
 
-def attach_response(response: dict, name: str):
+def attach_response(response: dict, name: str) -> allure:
     allure.attach(str(response), name=name, attachment_type=allure.attachment_type.JSON)
 
 
-def attach_error(value: str, name: str):
+def attach_error(value: str, name: str) -> allure:
     allure.attach(value, name=name, attachment_type=allure.attachment_type.TEXT)
+
+
+def allure_annotations(title, story, description, tag="",
+                       severity=allure.severity_level.NORMAL, feature="REST-API") -> allure:
+    def wrapper(func):
+        func = allure.title(title)(func)
+        func = allure.feature(feature)(func)
+        func = allure.story(story)(func)
+        func = allure.severity(severity)(func)
+        func = allure.description(description)(func)
+        func = allure.tag(tag)(func)
+        return func
+
+    return wrapper
 
 
 def validate_response(self, response_json, response_type, schema) -> Any:
@@ -35,17 +49,3 @@ def validate_response(self, response_json, response_type, schema) -> Any:
         except Exception as e:
             attach_error(str(e), name="Validation Error")
             assert False, f"Validation error: {str(e)}"
-
-
-def allure_annotations(title, story, description, tag="",
-                       severity=allure.severity_level.NORMAL, feature="REST-API") -> allure:
-    def wrapper(func):
-        func = allure.title(title)(func)
-        func = allure.feature(feature)(func)
-        func = allure.story(story)(func)
-        func = allure.severity(severity)(func)
-        func = allure.description(description)(func)
-        func = allure.tag(tag)(func)
-        return func
-
-    return wrapper
