@@ -21,10 +21,11 @@ def test_get_by_id(get_object_id, object_id):
 @allure.story('Object')
 @pytest.mark.parametrize('year', [2, 10, 2999999])
 @pytest.mark.critical
-def test_update_with_put(put_object_id, object_id,  year):
+def test_update_with_put(put_object_id, object_id, year):
     payload = payloads.put_payload
     payload['data']['year'] = year
     put_object_id.put_object(object_id, payload)
+    assert put_object_id.check_status_code_(200)
 
 
 @allure.feature('Task2')

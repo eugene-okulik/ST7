@@ -20,5 +20,5 @@ put_payload = {
 }
 
 patch_payload = {
-        "name": "Apple MacBook Pro 16 (Updated Name)"
-    }
+    "name": "Apple MacBook Pro 16 (Updated Name)"
+}

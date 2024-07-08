@@ -6,8 +6,8 @@ from api_tests_elena_maskevich.endpoints.schemas import CreatedObject
 base_url = 'https://api.restful-api.dev/objects'
 
 headers_template = {
-        'Content-Type': 'application/json',
-    }
+    'Content-Type': 'application/json',
+}
 
 
 class PostCreateObj(BaseApi):
