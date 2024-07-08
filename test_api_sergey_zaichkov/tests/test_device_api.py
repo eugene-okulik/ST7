@@ -30,7 +30,7 @@ class TestDeviceApi:
     # PUTTING
     @pytest.mark.parametrize('payload', payloads.put_devices)
     @allure.story('Changing')
-    def test_change_object_put(self, put_device_endpoint, new_device, payload):
+    def test_change_device_put(self, put_device_endpoint, new_device, payload):
         put_device_endpoint.put_device(device_id=new_device, payload=payload)
 
         assert put_device_endpoint.status_code_is_(200)
@@ -39,7 +39,7 @@ class TestDeviceApi:
 
     # PATCHING
     @allure.story('Changing')
-    def test_change_object_patch(self, patch_device_endpoint, new_device):
+    def test_change_device_patch(self, patch_device_endpoint, new_device):
         patch_device_endpoint.patch_device(new_device, payload=payloads.patch_device)
 
         assert patch_device_endpoint.status_code_is_(200)
@@ -47,7 +47,7 @@ class TestDeviceApi:
 
     # DELETING
     @allure.story('Deleting')
-    def test_delete_object(self, delete_device_endpoint, new_device):
+    def test_delete_device(self, delete_device_endpoint, new_device):
         delete_device_endpoint.delete_device(device_id=new_device)
 
         assert delete_device_endpoint.status_code_is_(200)
@@ -55,7 +55,7 @@ class TestDeviceApi:
 
     @allure.story('Deleting')
     # @pytest.mark.skip
-    def test_delete_non_existent_object(self, delete_device_endpoint):
+    def test_delete_non_existent_device(self, delete_device_endpoint):
         delete_device_endpoint.delete_device(device_id=999)
 
         assert delete_device_endpoint.status_code_is_(404), "Status code is not 404"
