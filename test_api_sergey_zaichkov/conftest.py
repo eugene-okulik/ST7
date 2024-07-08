@@ -16,22 +16,25 @@ def start_completed():
 
 
 @pytest.fixture()
-def new_device():
-    url = "https://api.restful-api.dev/objects"
-
-    response = requests.post(url=url, json=payloads.create_device)
-    assert response.status_code == 200, "Status code is not 200"
-    device_id = response.json().get('id')
-    yield device_id
-
-    if requests.get(f"{url}/{device_id}").status_code == 200:
-        response = requests.delete(url=f"{url}/{device_id}")
-        assert response.status_code == 200, "Status code is not 200"
+def create_device_endpoint():
+    return CreateDevice()
 
 
 @pytest.fixture()
-def create_device_endpoint():
-    return CreateDevice()
+def new_device(create_device_endpoint, get_device_by_id_endpoint, delete_device_endpoint):
+    # Creating device
+    create_device_endpoint.create_device(payload=payloads.create_device)
+
+    assert create_device_endpoint.status_code_is_(200)
+    device_id = create_device_endpoint.device.id
+
+    yield device_id
+
+    get_device_by_id_endpoint.get_device_by_id(device_id)
+    if get_device_by_id_endpoint.status_code_is_(200):
+        # Deleting device
+        delete_device_endpoint.delete_device(device_id)
+        assert delete_device_endpoint.status_code_is_(200)
 
 
 @pytest.fixture()

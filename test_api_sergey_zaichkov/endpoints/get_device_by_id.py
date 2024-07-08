@@ -10,4 +10,5 @@ class GetDeviceById(BaseDevice):
     def get_device_by_id(self, device_id, headers=None):
         headers = headers if headers else base_headers
         self.response = requests.get(url=f"{self.BASE_URL}/{device_id}", headers=headers)
-        self.device = device_models.GetDevice(**self.response.json())
+        if self.response.status_code == 200:
+            self.device = device_models.GetDevice(**self.response.json())
