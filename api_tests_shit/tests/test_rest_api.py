@@ -88,7 +88,7 @@ def test_partial_update_object(partial_update_obj_endpoint, object_id, session_i
     severity=allure.severity_level.CRITICAL
 )
 @pytest.mark.critical
-def test_delete_object(delete_obj_endpoint, object_id, session_info) -> None:
-    delete_obj_endpoint.delete_object(object_id)
+def test_delete_object(delete_obj_endpoint, object_id_without_del, session_info) -> None:
+    delete_obj_endpoint.delete_object(object_id_without_del)
     assert delete_obj_endpoint.check_status_code_is_(200)
     assert delete_obj_endpoint.check_response_message_is_("has been deleted")

@@ -1,7 +1,5 @@
 import pytest
-import requests
 
-from api_tests_shit.client import URL
 from api_tests_shit.tests.data import payloads
 from api_tests_shit.endpoints.put_upd_obj import PutUpdObj
 from api_tests_shit.endpoints.get_single_obj import GetObject
@@ -19,19 +17,17 @@ def session_info() -> None:
 
 
 @pytest.fixture
-def object_id() -> str:
+def object_id(create_obj_endpoint, delete_obj_endpoint) -> str:
     payload = payloads.create_obj
-    response = requests.post(URL, json=payload)
-    obj_id = response.json()['id']
+    obj_id = create_obj_endpoint.create_object(payload)
     yield obj_id
-    requests.delete(f"{URL}/{obj_id}")
+    delete_obj_endpoint.delete_object(obj_id)
 
 
 @pytest.fixture
-def object_id_without_del() -> str:
+def object_id_without_del(create_obj_endpoint) -> str:
     payload = payloads.create_obj
-    response = requests.post(URL, json=payload)
-    obj_id = response.json()['id']
+    obj_id = create_obj_endpoint.create_object(payload)
     return obj_id
 
 
