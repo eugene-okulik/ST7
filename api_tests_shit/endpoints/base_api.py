@@ -13,9 +13,9 @@ class BaseApi:
     valid_delete_response: DeleteResponseSchema
 
     @allure.step('Check status code')
-    def check_status_code(self, response: requests.Response, status_code: int) -> tuple[bool, str]:
-        return response.status_code == status_code, (f"Expected status code {status_code}, "
-                                                     + f"got {response.status_code}")
+    def check_status_code_is_(self, status_code: int) -> tuple[bool, str]:
+        return self.response.status_code == status_code, (f"Expected status code {status_code}, "
+                                                          + f"got {self.response.status_code}")
 
     @allure.step('Check response name')
     def check_response_name_is_(self, name: str) -> tuple[bool, str]:
