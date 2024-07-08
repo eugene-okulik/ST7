@@ -14,4 +14,5 @@ class PutPuts(BaseApi):
         )
         self.response_json = self.response.json()
         print(self.response.json())
+
         return self.response

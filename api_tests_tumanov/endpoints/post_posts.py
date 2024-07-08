@@ -1,16 +1,18 @@
+import allure
 import requests
-
-headers_template = {
-    'Content-Type': 'application/json'
-}
+from api_tests_tumanov.endpoints.base_api import BaseApi
 
 
-class PostPosts:
-    def create_pub(self, payload, header=None):
-        headers = header if header else headers_template
+class PostPosts(BaseApi):
+    @allure.step('Create Obj')
+    def create_object(self, payload, headers=None):
+        headers = headers if headers else self.headers
         self.response = requests.post(
-            'https://api.restful-api.dev/objects',
+            f'{self.url}',
             json=payload,
             headers=headers
         )
         self.response_json = self.response.json()
+        print(self.response.json())
+
+        return self.response

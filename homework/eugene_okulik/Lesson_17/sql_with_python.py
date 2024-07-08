@@ -64,12 +64,7 @@ with mysql.connect(
         select_request = 'select * from students where name = %s'
         cursor.execute(select_request, (name,))
 
-    def insert_many():
-        insert_query = 'INSERT INTO students (name, second_name) VALUES (%s, %s)'
-        cursor.executemany(insert_query, [('Tim', 'Bean'), ('Tim', 'Bean2')])
-        ids = cursor.lastrowid
-        print(ids)
-        db.commit()
+
 
     def insert_many_with_ids():
         ids = []
