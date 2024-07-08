@@ -1,12 +1,12 @@
 new_object = {
-        "name": "NarateL",
-        "data": {
-            "year": 30,
-            "price": "100$",
-            "CPU model": "World 2024",
-            "Hard disk size": "1000 TB"
+    "name": "NarateL",
+    "data": {
+        "year": 30,
+        "price": "100$",
+        "CPU model": "World 2024",
+        "Hard disk size": "1000 TB"
         }
-    }
+}
 
 patch_obj_change = {
     "name": "Anakonda",
