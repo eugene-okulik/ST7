@@ -8,7 +8,6 @@ new_object = {
         }
     }
 
-
 patch_obj_change = {
     "name": "Anakonda",
     "data": {
