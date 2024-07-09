@@ -2,8 +2,7 @@ import allure
 import pytest
 
 from api_tests_elena_maskevich.tests.data import payloads
-from api_tests_elena_maskevich.conftest import (object_id, get_object_id, create_object_id, put_object_id,
-                                                patch_object_id, deleted_object_id)
+
 base_url = 'https://api.restful-api.dev/objects'
 
 
