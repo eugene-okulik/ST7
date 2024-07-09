@@ -1,6 +1,7 @@
 import allure
 import requests
-from api_tests_yevdokiienko.endpoints.schemas import NewObjectData, DeleteObjData
+from api_tests_yevdokiienko.endpoints.schemas import NewObjectData
+from api_tests_yevdokiienko.endpoints.schemas import DeleteObjData
 
 
 class BaseApi:
