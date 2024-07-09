@@ -1,5 +1,7 @@
 import pytest
 import requests
+from test_api_alex_v_project.endpoints.get_item import GetById
+
 
 base_url = 'https://api.restful-api.dev/objects'
 
@@ -28,3 +30,8 @@ def item_id():
     item_id = response.json()['id']
     yield item_id
     requests.delete(f'{base_url}/{item_id}', headers=headers)
+
+    @pytest.fixture()
+    def get_item_endpoint():
+        return GetById()
+
