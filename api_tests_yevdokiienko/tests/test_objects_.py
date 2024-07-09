@@ -52,7 +52,6 @@ def test_update_object_price(patch_object_endpoint, get_object_id):
 
 @allure.feature('hw 22')
 @allure.story('Patch')
-@pytest.mark.critical
 def test_partially_update_object_patch(patch_object_endpoint, get_object_id):
     patch_object_endpoint.update_object(get_object_id, payloads.update_name)
     assert patch_object_endpoint.check_status_code_is_(200)
