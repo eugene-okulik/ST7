@@ -7,6 +7,7 @@ new_object = {
         "Hard disk size": "1000 TB"
             }
 }
+
 patch_obj_change = {
     "name": "Anakonda",
     "data": {
@@ -15,6 +16,7 @@ patch_obj_change = {
         "Hard disk size": "1000 TB"
             }
 }
+
 put_update_obj = {
     "name": "Nara-Fominske",
     "data": {
