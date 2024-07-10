@@ -2,12 +2,13 @@ import allure
 import requests
 from test_api_kate.endpoints.base_api import StatusCode
 
+
 class ObPatchUpdate(StatusCode):
     @allure.step('Making price changes')
     def ob_change_patch(self, ob_id, payload):
         self.response = requests.patch(
-        f'https://api.restful-api.dev/objects/{ob_id}',
-        json=payload
+            f'https://api.restful-api.dev/objects/{ob_id}',
+            json=payload
         )
         self.response_json = self.response.json()
 

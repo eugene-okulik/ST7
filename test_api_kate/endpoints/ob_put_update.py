@@ -8,7 +8,7 @@ class ObPutUpdate(StatusCode):
     def ob_change_put(self, ob_id, payload):
         self.response = requests.put(f'https://api.restful-api.dev/objects/{ob_id}', json=payload)
         self.response_json = self.response.json()
-    
+
     @allure.step('Checking updated name')
     def ob_updated_name(self, name):
         return self.response_json['name'] == name

@@ -6,6 +6,7 @@ headers_template = {
     'Content-Type': 'application/json',
 }
 
+
 class PostObjects(StatusCode):
     @allure.step('Create new object')
     def create_object(self, payload, header=None):

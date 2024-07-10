@@ -2,6 +2,7 @@ import allure
 import requests
 from test_api_kate.endpoints.ob_schema import NewObjWithData
 
+
 class StatusCode():
     response: requests.Response
     response_json: dict
