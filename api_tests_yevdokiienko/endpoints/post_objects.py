@@ -15,3 +15,4 @@ class PostObjects(BaseApi):
             headers=headers
         )
         self.response_json = self.response.json()
+        self.object_id = self.response_json['id']

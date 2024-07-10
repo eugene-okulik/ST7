@@ -1,5 +1,6 @@
 import pytest
 import requests
+from api_tests_yevdokiienko.tests.data import payloads
 from api_tests_yevdokiienko.endpoints.post_objects import PostObjects
 from api_tests_yevdokiienko.endpoints.get_by_id import GetById
 from api_tests_yevdokiienko.endpoints.put_object import UpdatePut
@@ -18,27 +19,18 @@ def session_info():
 
 
 @pytest.fixture()
-def get_object_id():
-    payload = {
-        "name": "Apple MacBook Pro 16",
-        "data": {
-            "year": 2019,
-            "price": 1849.99,
-            "CPU model": "Intel Core i9",
-            "Hard disk size": "1 TB"
-        }
-    }
-    headers = {
-        'Content-Type': 'application/json'
-    }
-    response = requests.post(
-        url,
-        json=payload,
-        headers=headers
-    )
-    object_id = response.json()['id']
+def get_object_id(create_object_endpoint):
+    create_object_endpoint.create_object(payloads.new_object)
+    object_id = create_object_endpoint.response_json['id']
     yield object_id
     requests.delete(f'{url}/{object_id}')
+
+
+@pytest.fixture()
+def delete_object(request):
+    request.object_id = None
+    yield request
+    print(f'I will delete object with id {request.object_id}')
 
 
 @pytest.fixture()

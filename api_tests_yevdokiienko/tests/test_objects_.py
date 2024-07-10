@@ -5,8 +5,9 @@ from api_tests_yevdokiienko.tests.data import payloads
 
 @allure.feature('hw 22')
 @allure.story('Post')
-def test_create_object_post(create_object_endpoint, session_info):
+def test_create_object_post(create_object_endpoint, delete_object):
     create_object_endpoint.create_object(payloads.new_object)
+    delete_object.object_id = create_object_endpoint.object_id
     assert create_object_endpoint.check_status_code_is_(200)
 
 
@@ -16,13 +17,13 @@ def test_get_object_by_id(get_object_endpoint, get_object_id):
 
 
 @pytest.mark.parametrize(
-        'name', ['Apple MacBook Pro 16', 'APPLE MACBOOK PRO 16']
+    'name', ['Apple MacBook Pro 16', 'APPLE MACBOOK PRO 16']
 )
 @pytest.mark.parametrize(
-        'year', [2019, 1990, 3050]
+    'year', [2019, 1990, 3050]
 )
 @pytest.mark.parametrize(
-        'color', ['silver', 'SILVER', 'SiLvEr']
+    'color', ['silver', 'SILVER', 'SiLvEr']
 )
 @pytest.mark.smoke
 def test_update_object_put(
