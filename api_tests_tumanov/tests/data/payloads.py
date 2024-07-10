@@ -5,7 +5,7 @@ new_object = {
         "price": "100$",
         "CPU model": "World 2024",
         "Hard disk size": "1000 TB"
-            }
+    }
 }
 
 patch_obj_change = {
@@ -14,7 +14,7 @@ patch_obj_change = {
         "price": "99999$",
         "CPU model": "World 2024",
         "Hard disk size": "1000 TB"
-            }
+    }
 }
 
 put_update_obj = {
@@ -24,5 +24,5 @@ put_update_obj = {
         "price": "1000$",
         "CPU model": "World 2024",
         "Hard disk size": "1 TB"
-            }
+    }
 }
