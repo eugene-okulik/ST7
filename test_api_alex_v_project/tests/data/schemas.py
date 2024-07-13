@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import Any
 
 
 class DeleteSingleObject(BaseModel):
@@ -6,7 +7,7 @@ class DeleteSingleObject(BaseModel):
 
 
 class ObjData(BaseModel):
-    year: int
-    price: int
-    cpu_value: str = Field(alias='CPU model')
-    disk_size: str = Field(alias='Hard disk size')
+    id: str
+    name: str
+    createdAt: str
+    data: dict[str, Any]

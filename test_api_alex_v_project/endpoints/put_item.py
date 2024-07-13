@@ -5,11 +5,10 @@ from test_api_alex_v_project.endpoints.base_api import BaseApi, base_url
 
 
 class PutItem(BaseApi):
-    @allure.step("Adjust item")
-    def update_item(self, payload):
+    @allure.step("Set new data for an item")
+    def update_item(self, item_id, payload):
         self.response = requests.put(
-            url=base_url,
-            json=payload,
-            headers=headers
+            url=f"{base_url}/{item_id}",
+            json=payload
         )
         self.response_json = self.response.json()

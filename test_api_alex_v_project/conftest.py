@@ -10,7 +10,7 @@ base_url = 'https://api.restful-api.dev/objects'
 
 
 @pytest.fixture()
-def item_id_fixture():
+def item_id():
     payload = {
         "name": "Horizont AI Edition 2000",
         "data": {

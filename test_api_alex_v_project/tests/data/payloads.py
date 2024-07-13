@@ -8,3 +8,24 @@ new_item_payload = {
     }
 
 }
+
+put_new__payload = {
+    "name": "Vitek PRO Max",
+    "data": {
+        "year": 2077,
+        "price": 1000,
+        "CPU model": "Ryzen  9x",
+        "Hard disk size": "378 GB"
+    }
+
+}
+
+patch__payload = {
+    "data": {
+        "year": 1999,
+        "price": 300,
+        "CPU model": "Ryzen  9x",
+        "Hard disk size": "378 GB"
+    }
+
+}
