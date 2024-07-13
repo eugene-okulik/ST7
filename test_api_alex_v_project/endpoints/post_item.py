@@ -1,10 +1,8 @@
 import requests
 import allure
-from test_api_alex_v_project.endpoints.base_api import BaseApi
 
-headers_template = {
-    'Content-Type': 'application/json',
-}
+from data.headers import headers_template
+from test_api_alex_v_project.endpoints.base_api import BaseApi
 
 
 class PostItem(BaseApi):

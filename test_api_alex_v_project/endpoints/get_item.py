@@ -1,8 +1,6 @@
 import requests
 import allure
-from test_api_alex_v_project.endpoints.base_api import BaseApi
-
-base_url = 'https://api.restful-api.dev/objects'
+from test_api_alex_v_project.endpoints.base_api import BaseApi, base_url
 
 
 class GetById(BaseApi):
