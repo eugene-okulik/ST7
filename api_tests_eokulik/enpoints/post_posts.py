@@ -17,6 +17,8 @@ class PostPosts(BaseApi):
             headers=headers
         )
         self.response_json = self.response.json()
+        self.obj_id = self.response_json['id']
+        return self.obj_id
 
     @allure.step('Check response title')
     def check_response_title_is_(self, title):
