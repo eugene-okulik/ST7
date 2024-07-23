@@ -23,5 +23,4 @@ click_alerts = driver.find_element(By.PARTIAL_LINK_TEXT, 'Contact')
 click_alerts.click()
 sleep(3)
 
-
-# driver.close()
+driver.close()
