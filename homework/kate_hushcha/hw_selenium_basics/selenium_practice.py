@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 driver = webdriver.Chrome()
 driver.maximize_window()
 
+
 def web_homework():
     driver.get('https://www.qa-practice.com/elements/input/simple')
     sleep(1)
