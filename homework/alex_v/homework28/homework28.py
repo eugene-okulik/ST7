@@ -18,4 +18,3 @@ print(result_pop_up_text)
 
 driver.close()
 driver.quit()
-
