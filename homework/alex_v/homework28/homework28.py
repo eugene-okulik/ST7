@@ -17,3 +17,6 @@ def test_ui_framework():
     assert result_pop_up_text == expected_text
     driver.close()
     driver.quit()
+
+
+test_ui_framework()
