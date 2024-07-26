@@ -17,8 +17,4 @@ def find_by_class():
 
 find_by_class()
 
-
-
-
-
 driver.quit()
