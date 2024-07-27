@@ -1,5 +1,3 @@
-from time import sleep
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -33,7 +31,6 @@ WebDriverWait(driver, 10).until(
     ec.element_to_be_clickable((By.XPATH, "//*[contains(text(),'Merrut')]"))
 ).click()
 driver.find_element(By.ID, "submit").click()
-sleep(3)
 table = WebDriverWait(driver, 10).until(
     ec.visibility_of_element_located(
         (By.XPATH, '//*[@class="table table-dark table-striped table-bordered table-hover"]')))
