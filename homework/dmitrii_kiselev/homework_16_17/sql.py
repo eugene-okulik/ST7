@@ -25,8 +25,7 @@ with mysql.connect(
     )
 
     cursor.execute("INSERT INTO `groups` (title, start_date, end_date) VALUES ('st7', '01.04.2024', NULL)")
-    group_id = cursor.lastrowid
-
+    group_id = cursor.lastrowidgit
     query = "UPDATE students SET group_id = %s WHERE name = %s AND second_name = %s"
     data = (group_id, student_name, student_surname)
     cursor.execute(query, data)
