@@ -8,11 +8,10 @@ import pytest
 @pytest.fixture()
 def driver():
     driver = webdriver.Firefox()
-    # driver.set_window_size(577, 774)
     driver.maximize_window()
     yield driver
     sleep(1)
-    # driver.quit()
+    driver.quit()
 
 
 def test_form_filling(driver):
