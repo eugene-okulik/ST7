@@ -50,6 +50,8 @@ def test_form_filling(driver):
 
     subject_container = driver.find_element(By.XPATH, '//*[@id="subjectsInput"]')
     subject_container.send_keys('test text')
+    subject_container = driver.find_element(By.XPATH, '//div[contains(@class, "subjects-auto-complete__menu")]')
+    subject_container.click()
     sleep(1)
 
     box = driver.find_element(By.XPATH, '//label[@for="hobbies-checkbox-1"]')
