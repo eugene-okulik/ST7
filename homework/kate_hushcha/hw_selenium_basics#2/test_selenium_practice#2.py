@@ -5,6 +5,8 @@ from selenium.webdriver.common.keys import Keys
 
 
 driver = webdriver.Chrome()
+
+
 def input_fields():
     driver.get('https://demoqa.com/automation-practice-form')
     driver.set_window_size(713, 729)
@@ -56,7 +58,9 @@ def input_fields():
     field_submit = driver.find_element(By.ID, 'submit')
     field_submit.click()
     sleep(2)
-    final_form = driver.find_element(By.XPATH, "//*[@class='table table-dark table-striped table-bordered table-hover']")
+    final_form = driver.find_element(
+        By.XPATH, "//*[@class='table table-dark table-striped table-bordered table-hover']"
+    )
     print(final_form.text)
 
 
