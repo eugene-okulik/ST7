@@ -28,7 +28,8 @@ def test_task1(driver):
 
 def test_task2(driver):
     driver.get('https://the-internet.herokuapp.com/dynamic_loading/2')
-    driver.find_element(By.TAG_NAME, 'button').click()  # находим кнопку и кликаем
+    # driver.find_element(By.TAG_NAME, 'button').click()  # находим кнопку и кликаем
+    driver.find_element(By.XPATH, '//button[contains(text(),"Start")]').click()    # Вариант более надёжный
     driver.implicitly_wait(5)
     finish = driver.find_element(By.ID, 'finish')
     # print(finish.text)
