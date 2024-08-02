@@ -1,5 +1,3 @@
-import time
-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -48,7 +46,6 @@ def test_form_page(driver):
     state_input.click()
     state = driver.find_element(By.CSS_SELECTOR, '#react-select-3-option-2')
     state.click()
-    time.sleep(3)
     city_input = driver.find_element(By.CSS_SELECTOR, '#city')
     city_input.click()
     city = driver.find_element(By.CSS_SELECTOR, '#react-select-4-option-1')
