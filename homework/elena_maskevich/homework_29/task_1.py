@@ -3,12 +3,13 @@ import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 
 @pytest.fixture()
 def driver():
     driver = webdriver.Chrome()
-    driver.maximize_window()
+    driver.set_window_size(912, 1200)
     yield driver
     driver.quit()
 
@@ -27,26 +28,32 @@ def test_form_page(driver):
     mobile_input.send_keys('1112223334')
     date_input = driver.find_element(By.XPATH, '//*[@id="dateOfBirthInput"]')
     date_input.click()
-    month_input = driver.find_element(By.XPATH, '//*[@class="react-datepicker__month-select"]')
-    month_input.click()
-    month_selected = driver.find_element(By.XPATH, '//option[@value="5"]')
-    month_selected.click()
-    year_select = driver.find_element(By.XPATH, '//*[@react-datepicker__year-select"]')
-    year_select.click()
-    year_selected = driver.find_element(By.XPATH, '//option[@value="1905"]')
-    year_selected.click()
+    month_select = driver.find_element(By.XPATH, '//*[@class="react-datepicker__month-select"]')
+    month_input = Select(month_select)
+    month_input.select_by_value('5')
+    year_select = driver.find_element(By.XPATH, '//*[@class="react-datepicker__year-select"]')
+    year_input = Select(year_select)
+    year_input.select_by_value('1905')
+    driver.implicitly_wait(3)
+    driver.execute_script("window.scrollTo(0, 500)")
     subject_input = driver.find_element(By.CSS_SELECTOR, '#subjectsInput')
-    subject_input.send_keys('math, chemistry, informatics')
-    hobbies_checkbox_1 = driver.find_element(By.CSS_SELECTOR, '#hobbies-checkbox-1')
+    subject_input.send_keys('en')
+    subject_selected = driver.find_element(By.CSS_SELECTOR, '#react-select-2-option-0')
+    subject_selected.click()
+    hobbies_checkbox_1 = driver.find_element(By.XPATH, '//label[@for="hobbies-checkbox-1"]')
     hobbies_checkbox_1.click()
-    address_input = driver.find_element(By.CSS_SELECTOR, 'currentAddress')
+    address_input = driver.find_element(By.CSS_SELECTOR, '#currentAddress')
     address_input.send_keys('Minsk')
     state_input = driver.find_element(By.XPATH, '//div[contains(text(),"Select State")]')
-
-
+    state_input.click()
+    state = driver.find_element(By.CSS_SELECTOR, '#react-select-3-option-2')
+    state.click()
     time.sleep(3)
-# search_input.send_keys('hello')
-# search_input.submit()
-# time.sleep(3)
-# result_text = driver.find_element(By.ID, 'result-text')
-# assert result_text.text == 'hello'
+    city_input = driver.find_element(By.CSS_SELECTOR, '#city')
+    city_input.click()
+    city = driver.find_element(By.CSS_SELECTOR, '#react-select-4-option-1')
+    city.click()
+    submit_input = driver.find_element(By.CSS_SELECTOR, '#submit')
+    submit_input.click()
+    submitted_form = driver.find_element(By.CSS_SELECTOR, '#example-modal-sizes-title-lg')
+    print(submitted_form.text)
