@@ -41,11 +41,11 @@ def test_hover_products_to_compare(driver):
     product = driver.find_element(By.XPATH, '(//img[@class="product-image-photo"])[1]')
     name_of_added_product = product.get_attribute('alt')
     compare = driver.find_element(By.XPATH, '(//a[@title="Add to Compare"])[1]')
-    actions=ActionChains(driver)
+    actions = ActionChains(driver)
     actions.move_to_element(product)
     actions.click(compare)
     actions.perform()
-    compared_product = driver.find_element(By.XPATH,'//strong[@class="product-item-name"]/a')
+    compared_product = driver.find_element(By.XPATH, '//strong[@class="product-item-name"]/a')
     assert compared_product.text == name_of_added_product
 
 
@@ -62,7 +62,7 @@ def test_iframes(driver):
     check_button.click()
     text_from_frame = driver.find_element(By.ID, 'id_text_from_iframe')
     text_from_frame.send_keys(copied_text)
-    submit_button = driver.find_element(By.CSS_SELECTOR,'#submit-id-submit')
+    submit_button = driver.find_element(By.CSS_SELECTOR, '#submit-id-submit')
     submit_button.click()
     output = driver.find_element(By.ID, 'check-result')
     assert output.get_attribute('innerText') == 'Correct!'
