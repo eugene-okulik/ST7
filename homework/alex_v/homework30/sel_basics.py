@@ -19,9 +19,8 @@ def driver():
 def test_choose_language(driver):
     driver.get('https://www.qa-practice.com/elements/select/single_select')
     choose_lang_dropdown = driver.find_element(By.NAME, 'choose_language')
-    choose_lang_dropdown.click()
-    java_option = WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.XPATH, "//*/option[text()='Java']")))
-    java_option.click()
+    select = Select(choose_lang_dropdown)
+    select.select_by_value("4")
     submit_button = driver.find_element(By.ID, 'submit-id-submit')
     submit_button.click()
     result = WebDriverWait(driver, 5).until(ec.presence_of_element_located((By.ID, "result"))).text
