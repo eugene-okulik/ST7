@@ -25,7 +25,7 @@ def test_demoqa():
     input_phone.send_keys('4207742432')
 
     input_birth_date = driver.find_element(By.ID, 'dateOfBirthInput')
-    for _ in range(len(input_birth_date.get_attribute('value'))-1):
+    for _ in range(len(input_birth_date.get_attribute('value')) - 1):
         input_birth_date.send_keys(Keys.BACKSPACE)
     input_birth_date.send_keys(Keys.ARROW_LEFT)
     input_birth_date.send_keys('09.01.1983')
@@ -41,7 +41,7 @@ def test_demoqa():
     hobbies_checkbox = driver.find_element(By.XPATH, '//label[@for="hobbies-checkbox-1"]')
     hobbies_checkbox.click()
 
-    image_upload_button = driver.find_element(By.ID, 'uploadPicture')  # А как это сделать?
+    # image_upload_button = driver.find_element(By.ID, 'uploadPicture')  # А как это сделать?
 
     address_text_area = driver.find_element(By.ID, 'currentAddress')
     address_text_area.send_keys("False address")
