@@ -39,3 +39,20 @@ def test_mobile_phone_cart_adding(driver):
 
     phone_cart = driver.find_element(By.XPATH, "//td[contains(text(), 'Iphone 6 32gb')]").text
     assert "Iphone 6 32gb" in phone_cart
+
+
+def test_item_comparing(driver):
+    driver.get("https://magento.softwaretestingboard.com/gear/bags.html")
+    first_product = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//li[contains(@class,'product-item')][1]"))
+    )
+    actions = ActionChains(driver)
+    actions.move_to_element(first_product).perform()
+    add_to_compare_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//a[@title='Add to Compare']"))
+    )
+    add_to_compare_button.click()
+    compare_product_name = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".product-item-name"))
+    )
+    assert "Push It Messenger Bag" in compare_product_name.text
