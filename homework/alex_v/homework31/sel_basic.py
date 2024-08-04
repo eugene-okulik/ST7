@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 @pytest.fixture()
 def driver():
     driver = webdriver.Firefox()
-    driver.implicitly_wait(3)
+    driver.implicitly_wait(5)
     driver.maximize_window()
     yield driver
     driver.quit()
@@ -56,3 +56,18 @@ def test_item_comparing(driver):
         EC.presence_of_element_located((By.CSS_SELECTOR, ".product-item-name"))
     )
     assert "Push It Messenger Bag" in compare_product_name.text
+
+
+def test_pop_up(driver):
+    driver.get("https://www.qa-practice.com/elements/popup/iframe_popup")
+    driver.find_element(By.XPATH, '//button[contains(text(), "Launch Pop-Up")]').click()
+    driver.switch_to.frame(0)
+    text = driver.find_element(By.XPATH, '//p[@id="text-to-copy"]').text
+    driver.switch_to.default_content()
+    driver.find_element(By.XPATH, '//button[contains(text(), "Check")]').click()
+    text_input = driver.find_element(By.XPATH, '//input[@name="text_from_iframe"]')
+    text_input.send_keys(text)
+    driver.find_element(By.XPATH, '//input[@id="submit-id-submit"]').click()
+    result = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//div[@id="check-result"]'))).text
+    assert result == 'Correct!'
