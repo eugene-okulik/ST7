@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
@@ -10,11 +11,11 @@ def test_qa_practice():
     driver.maximize_window()
     driver.get('https://www.qa-practice.com/elements/select/single_select')
 
-    language_select = driver.find_element(By.ID, "id_choose_language")
-    language_select.click()
-    choose_language = driver.find_element(By.XPATH, "//option[@value='1']")
-    language_choice = choose_language.text
-    choose_language.click()
+    choose_language = driver.find_element(By.ID, 'id_choose_language')
+    language_choice = driver.find_element(By.XPATH, '//option[@value="1"]').text
+    dropdown = Select(choose_language)
+    dropdown.select_by_value('1')
+
     submit_button = driver.find_element(By.ID, "submit-id-submit")
     submit_button.click()
     submitted_text = driver.find_element(By.ID, "result-text")
