@@ -15,7 +15,7 @@ def driver():
     driver.implicitly_wait(3)
     driver.maximize_window()
     yield driver
-    # sleep(1)
+    sleep(1)
     driver.quit()
 
 
@@ -94,4 +94,34 @@ def test_key_down(driver):
     driver.get('https://www.qa-practice.com/')
     link = driver.find_element(By.LINK_TEXT, 'Homepage')
     ActionChains(driver).key_down(Keys.CONTROL).click(link).key_up(Keys.CONTROL).perform()
+    sleep(3)
+
+
+def test_dnd(driver):
+    driver.get('https://www.qa-practice.com/elements/dragndrop/boxes')
+    drag_me = driver.find_element(By.ID, 'rect-draggable')
+    drop_here = driver.find_element(By.ID, 'rect-droppable')
+    # ActionChains(driver).drag_and_drop(drag_me, drop_here).perform()
+    actions = ActionChains(driver)
+    actions.move_to_element(drag_me)
+    actions.click_and_hold()
+    actions.move_to_element(drop_here)
+    actions.release()
+    actions.perform()
+    sleep(3)
+
+
+def test_price(driver):
+    driver.get('https://sreda.ru/flats')
+    bubble = driver.find_element(By.CSS_SELECTOR, '[data-slot="thumb"]')
+    actions = ActionChains(driver)
+    actions.drag_and_drop_by_offset(bubble, 70, 0)
+    actions.perform()
+    sleep(3)
+
+
+def test_upload(driver):
+    driver.get('https://the-internet.herokuapp.com/upload')
+    file_upload = driver.find_element(By.ID, 'file-upload')
+    file_upload.send_keys('/home/eugene/Downloads/vacation.png')
     sleep(3)
