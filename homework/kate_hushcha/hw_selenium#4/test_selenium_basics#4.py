@@ -23,13 +23,15 @@ def test_item(driver):
     ActionChains(driver).key_down(Keys.CONTROL).click(item).key_up(Keys.CONTROL).perform()
     tabs = driver.window_handles
     driver.switch_to.window(tabs[1])
-    add_to_cart = driver.find_element(By.XPATH, '//a[text()="Add to cart"]').click()
+    add_to_cart = driver.find_element(By.XPATH, '//a[text()="Add to cart"]')
+    add_to_cart.click()
     WebDriverWait(driver, 5).until(ec.alert_is_present())
     alert = Alert(driver)
     alert.accept()
     driver.close()
     driver.switch_to.window(tabs[0])
-    cart = driver.find_element(By.ID, 'cartur').click()
+    cart = driver.find_element(By.ID, 'cartur')
+    cart.click()
     assert 'Sony xperia z5' in driver.find_element(By.CSS_SELECTOR, '.success').text
 
 
@@ -57,7 +59,8 @@ def test_pop_up(driver):
     driver.switch_to.frame(copy_from_iframe)
     copy_text = driver.find_element(By.ID, 'text-to-copy').text
     driver.switch_to.default_content()
-    close_button = driver.find_element(By.XPATH, '//button[@class="btn btn-primary" and @type="submit"]').click()
+    close_button = driver.find_element(By.XPATH, '//button[@class="btn btn-primary" and @type="submit"]')
+    close_button.click()
     input_field = driver.find_element(By.ID, 'id_text_from_iframe')
     input_field.send_keys(copy_text)
     input_field.submit()
