@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as ec
 import pytest
 
 
+# some changes
 @pytest.fixture()
 def driver():
     driver = webdriver.Chrome()
