@@ -1,6 +1,5 @@
 import allure
 from ui_tests_yevdokiienko.pages.base_page import BasePage
-from ui_tests_yevdokiienko.pages.locators import RegisterLocators as loc
 from ui_tests_yevdokiienko.pages.locators import AccountLocators as loc
 
 
