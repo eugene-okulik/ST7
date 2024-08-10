@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 
+from ui_test_alex_v.pages.account_page import AccountPage
 from ui_test_alex_v.pages.home_page import HomePage
 
 
@@ -15,3 +16,7 @@ def driver():
 @pytest.fixture()
 def home_page(driver):
     return HomePage(driver)
+
+@pytest.fixture()
+def account_page(driver):
+    return AccountPage(driver)

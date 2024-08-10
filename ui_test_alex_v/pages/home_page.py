@@ -4,14 +4,11 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium import webdriver
 
+from ui_test_alex_v.pages.base_page import BasePage
 
-class HomePage:
-    def __init__(self, driver):
-        self.driver = driver
 
-    @allure.step('Open the homepage')
-    def open_site(self):
-        self.driver.get('https://magento.softwaretestingboard.com/')
+class HomePage(BasePage):
+
 
     def click_shop_new_yoga(self):
         wait = WebDriverWait(self.driver, 10)
