@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-
 from ui_test_alex_v.pages.base_page import BasePage
 
 

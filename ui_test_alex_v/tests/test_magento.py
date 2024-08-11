@@ -35,3 +35,26 @@ def test_registration_with_wrong_confirmation_password(create_account_page):
     create_account_page.fill_in_password_confirmation(UserData.generate_password())
     create_account_page.click_on_create_an_account_button()
     create_account_page.confirm_password_notification_message_displayed_is('Please enter the same value again.')
+
+
+def test_product_sort_by_name(eco_page):
+    eco_page.open()
+    assert eco_page.sort_products_by_name()
+
+
+def test_add_product_to_compare(eco_page, product_page, compare_page):
+    eco_page.open()
+    eco_page.choose_product()
+    product_page.add_to_compare_product()
+    product_title = product_page.get_product_title()
+    product_page.go_to_comparison_list()
+    assert compare_page.compared_product_title_displayed_is(product_title)
+
+
+def test_add_product_to_wish_list_as_quest_user(eco_page, product_page, customer_login_page):
+    eco_page.open()
+    eco_page.choose_product()
+    product_page.add_to_wish_list()
+    assert customer_login_page.invalid_login_notification_message_displayed_is(
+        'You must login or register to add items to your wishlist.'
+    )

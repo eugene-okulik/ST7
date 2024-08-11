@@ -1,7 +1,12 @@
 import pytest
 from selenium import webdriver
+
+from ui_test_alex_v.pages.compare_page import ComparePage
 from ui_test_alex_v.pages.create_account_page import CreateAccountPage
 from ui_test_alex_v.pages.account_page import Account
+from ui_test_alex_v.pages.customer_login import CustomerLoginPage
+from ui_test_alex_v.pages.eco_page import EcoPage
+from ui_test_alex_v.pages.product_page import ProductPage
 
 
 @pytest.fixture()
@@ -22,3 +27,22 @@ def create_account_page(driver):
 def my_account_page(driver):
     return Account(driver)
 
+
+@pytest.fixture()
+def eco_page(driver):
+    return EcoPage(driver)
+
+
+@pytest.fixture()
+def compare_page(driver):
+    return ComparePage(driver)
+
+
+@pytest.fixture()
+def product_page(driver):
+    return ProductPage(driver)
+
+
+@pytest.fixture()
+def customer_login_page(driver):
+    return CustomerLoginPage(driver)
