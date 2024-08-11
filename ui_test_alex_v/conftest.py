@@ -1,22 +1,24 @@
 import pytest
 from selenium import webdriver
-
-from ui_test_alex_v.pages.account_page import AccountPage
-from ui_test_alex_v.pages.home_page import HomePage
+from ui_test_alex_v.pages.create_account_page import CreateAccountPage
+from ui_test_alex_v.pages.my_account_page import MyAccount
 
 
 @pytest.fixture()
 def driver():
     driver = webdriver.Firefox()
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(10)
     yield driver
     driver.quit()
 
 
-@pytest.fixture()
-def home_page(driver):
-    return HomePage(driver)
+
 
 @pytest.fixture()
-def account_page(driver):
-    return AccountPage(driver)
+def create_account_page(driver):
+    return CreateAccountPage(driver)
+
+
+@pytest.fixture()
+def my_account_page(driver):
+    return MyAccount(driver)

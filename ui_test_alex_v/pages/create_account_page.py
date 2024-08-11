@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from ui_test_alex_v.pages.base_page import BasePage
 
 
-class AccountPage(BasePage):
+class CreateAccountPage(BasePage):
     page_url = '/customer/account/create/'
 
     def fill_in_first_name(self, firstname):
@@ -35,10 +35,6 @@ class AccountPage(BasePage):
         create_account_btn = self.find((By.CLASS_NAME, 'action submit primary'))
         create_account_btn.click()
 
-    # def notification_message_displayed_is(self):
-    #     notification_message = self.find((By.ID, 'email_address-error'))
-    #     return notification_message.text
-
     def invalid_email_notification_message_displayed_is(self):
         notification_message = self.find((By.ID, 'email_address-error'))
         return notification_message.text
@@ -50,5 +46,4 @@ class AccountPage(BasePage):
     def confirm_password_notification_message_displayed_is(self):
         notification_message = self.find((By.ID, 'password-confirmation-error'))
         return notification_message.text
-
 

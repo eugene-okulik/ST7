@@ -14,7 +14,7 @@ class BasePage:
     @allure.step('Open home page')
     def open(self):
         if self.page_url:
-            self.driver.get(f'{self.base_url}{self.page_url}')
+            self.driver.get('https://magento.softwaretestingboard.com/customer/account/')
         else:
             raise NotImplementedError('Unable to open that page by url')
 
