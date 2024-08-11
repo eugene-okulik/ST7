@@ -32,18 +32,18 @@ class CreateAccountPage(BasePage):
         first_name.send_keys(password_confirm)
 
     def click_on_create_an_account_button(self):
-        create_account_btn = self.find((By.CLASS_NAME, 'action submit primary'))
+        create_account_btn = self.find((By.XPATH, '//button[@title="Create an Account"]'))
         create_account_btn.click()
 
-    def invalid_email_notification_message_displayed_is(self):
-        notification_message = self.find((By.ID, 'email_address-error'))
-        return notification_message.text
+    def invalid_email_notification_message_displayed_is(self, message_text):
+        notification_message = self.find((By.ID, 'email_address-error')).text
+        assert notification_message == message_text
 
     def password_notification_message_displayed_is(self):
         notification_message = self.find((By.ID, 'password-error'))
         return notification_message.text
 
-    def confirm_password_notification_message_displayed_is(self):
-        notification_message = self.find((By.ID, 'password-confirmation-error'))
-        return notification_message.text
-
+    def confirm_password_notification_message_displayed_is(self, message_text):
+        notification_message = self.find((By.ID, 'password-confirmation-error')).text
+        print(notification_message)
+        assert notification_message == message_text
