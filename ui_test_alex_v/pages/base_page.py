@@ -23,6 +23,9 @@ class BasePage:
             ec.presence_of_element_located(locator)
         )
 
+    def title_page_is(self, text):
+        return self.driver.title == text
+
     @allure.step('Scroll the page')
     def scroll_page(self, pixels=None, start=0):
         if pixels:

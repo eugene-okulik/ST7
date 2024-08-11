@@ -58,3 +58,16 @@ def test_add_product_to_wish_list_as_quest_user(eco_page, product_page, customer
     assert customer_login_page.invalid_login_notification_message_displayed_is(
         'You must login or register to add items to your wishlist.'
     )
+
+
+def test_proper_page_title(sale_page):
+    sale_page.open()
+    sale_page.title_page_is('Sale')
+
+
+def test_women_sections_sale_presence(sale_page):
+    sale_page.open()
+    actual_sections =sale_page.get_section_titles()
+    sale_page.ex
+
+

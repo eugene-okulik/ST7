@@ -7,6 +7,7 @@ from ui_test_alex_v.pages.account_page import Account
 from ui_test_alex_v.pages.customer_login import CustomerLoginPage
 from ui_test_alex_v.pages.eco_page import EcoPage
 from ui_test_alex_v.pages.product_page import ProductPage
+from ui_test_alex_v.pages.sale_page import SalePage
 
 
 @pytest.fixture()
@@ -46,3 +47,8 @@ def product_page(driver):
 @pytest.fixture()
 def customer_login_page(driver):
     return CustomerLoginPage(driver)
+
+
+@pytest.fixture()
+def sale_page(driver):
+    return SalePage(driver)
