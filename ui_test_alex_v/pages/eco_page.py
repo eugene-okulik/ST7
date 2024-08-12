@@ -1,5 +1,6 @@
 import random
 
+import allure
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
@@ -9,6 +10,7 @@ from ui_test_alex_v.pages.base_page import BasePage
 class EcoPage(BasePage):
     page_url = '/collections/eco-friendly.html'
 
+    @allure.step('sort  products')
     def sort_products_by_name(self):
         sort_dropdown = WebDriverWait(self.driver, 10).until(
             ec.element_to_be_clickable((By.CSS_SELECTOR, "select#sorter"))
@@ -27,6 +29,7 @@ class EcoPage(BasePage):
 
         return names == sorted(names)
 
+    @allure.step('click on a product')
     def choose_product(self):
         product_elements = WebDriverWait(self.driver, 10).until(
             ec.presence_of_all_elements_located((By.XPATH, "//a[@class='product-item-link']"))
