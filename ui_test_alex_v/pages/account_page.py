@@ -8,4 +8,4 @@ class Account(BasePage):
 
     def successful_registration_message_displayed_is(self, message_text):
         success_msg = self.find((By.CLASS_NAME, 'messages')).text
-        assert success_msg == message_text
+        return success_msg == message_text

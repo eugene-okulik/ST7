@@ -26,9 +26,5 @@ class BasePage:
     def title_page_is(self, text):
         return self.driver.title == text
 
-    @allure.step('Scroll the page')
-    def scroll_page(self, pixels=None, start=0):
-        if pixels:
-            self.driver.execute_script(f"window.scrollTo({start}, {pixels})")
-        else:
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+    def element_visible_is(self, locator):
+        return self.find(locator).is_displayed()

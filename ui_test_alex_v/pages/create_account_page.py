@@ -36,7 +36,7 @@ class CreateAccountPage(BasePage):
 
     def invalid_email_notification_message_displayed_is(self, message_text):
         notification_message = self.find((By.ID, 'email_address-error')).text
-        assert notification_message == message_text
+        return notification_message == message_text
 
     def password_notification_message_displayed_is(self):
         notification_message = self.find((By.ID, 'password-error'))
@@ -45,4 +45,4 @@ class CreateAccountPage(BasePage):
     def confirm_password_notification_message_displayed_is(self, message_text):
         notification_message = self.find((By.ID, 'password-confirmation-error')).text
         print(notification_message)
-        assert notification_message == message_text
+        return notification_message == message_text
