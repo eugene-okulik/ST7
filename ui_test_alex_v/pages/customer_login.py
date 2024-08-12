@@ -12,4 +12,3 @@ class CustomerLoginPage(BasePage):
         )
         notification_message = notification_element.text.strip()
         return expected_message.lower() in notification_message.lower()
-
