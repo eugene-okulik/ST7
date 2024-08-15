@@ -39,7 +39,5 @@ def test_submit_form_with_playwright(page: Page):
     option_city.click()
     submit = page.locator('#submit')
     submit.click()
-
     student_name = page.locator('//td[text()="Student Name"]/following-sibling::td')
     expect(student_name).to_have_text('Jonhy Silverhand')
-
