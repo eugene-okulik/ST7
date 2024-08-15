@@ -33,5 +33,3 @@ class Basepage:
 
     def url_new_page(self, url: str):
         return self.driver.current_url == url
-
-

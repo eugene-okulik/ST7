@@ -21,6 +21,3 @@ class SalPage(Basepage):
         wait = WebDriverWait(self.driver, 3)
         quan_el = wait.until(ec.visibility_of_element_located(loc_sale.jackets_elements))
         assert quan_el.text == 12
-
-
-

@@ -66,6 +66,3 @@ def test_quantity_el(sale_page):
     sale_page.open()
     sale_page.click_el(sal.jackets)
     sale_page.check_quan_elements()
-
-
-
