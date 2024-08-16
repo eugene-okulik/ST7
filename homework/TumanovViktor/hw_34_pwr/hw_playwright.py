@@ -9,7 +9,7 @@ def test_task_one(page: Page):
 
 
 def test_task_two(page: Page):
-    page.goto('https://demoqa.com/automation-practice-form')
+    page.goto('https://demoqa.com/automation-practice-form', wait_until='domcontentloaded')
 
     first_name = page.locator('#firstName')
     first_name.type('Vitek')
@@ -45,6 +45,10 @@ def test_task_two(page: Page):
     box = page.locator('//label[@for="hobbies-checkbox-1"]')
     box.click()
 
+    subject_container = page.locator('//*[@id="subjectsInput"]')
+    subject_container.type('Bio')
+    subject_container.press('Enter')
+
     current_text_address = page.locator('//*[@id="currentAddress"]')
     current_text_address.type('Naro-Fominsk,  1')
 
@@ -58,7 +62,5 @@ def test_task_two(page: Page):
     page.locator('submit').click()
 
 # Check name
-    first_name = page.locator('#firstName')
-    first_name.type('Vitek')
-
-    assert first_name == 'Vitek'
+    user_name = page.locator('//td[contains(text(),"Vitek Tuman")]')
+    expect(user_name).to_have_text('Vitek Tuman')
