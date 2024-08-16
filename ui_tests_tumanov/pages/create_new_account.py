@@ -13,15 +13,14 @@ class CreateAccountPage(Basepage):
     def input_met(self, loc, send_text):
         self.driver.find_element(*loc).send_keys(send_text)
 
-    def check_text_info_correct(self, text):
-        wait = WebDriverWait(self.driver, 5)
-        text_thank = wait.until(ec.visibility_of_element_located(loc.thank_message))
-        assert text_thank.text == text
+    # def check_message_error(self, text):
+    #     wait = WebDriverWait(self.driver, 5)
+    #     text_error_message = wait.until(ec.visibility_of_element_located(loc.error_message))
+    #     assert text_error_message.text == text
 
-    def check_message_error(self, text):
-        wait = WebDriverWait(self.driver, 5)
-        text_error_message = wait.until(ec.visibility_of_element_located(loc.error_message))
-        assert text_error_message.text == text
+    def check_text_is(self, text):
+        found_el = self.find(loc.error_message)
+        assert found_el.text == text
 
     def spase_name(self):
         wait = WebDriverWait(self.driver, 5)
