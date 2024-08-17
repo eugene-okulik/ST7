@@ -47,7 +47,6 @@ def test_opening_eco_product_page(eco_products_page, product_page):
     locator = ('xpath', '//span[@itemprop="name"]')
     eco_products_page.open()
     eco_products_page.choose_eco_product(name)
-    # print(eco_products_page.eco_product_page_url)
     product_page.open_eco_product(eco_products_page.eco_product_page_url)
     product_page.check_opened_correct_product_page(locator, name)
 
@@ -65,9 +64,11 @@ def test_sorting_by_price(eco_products_page):
     eco_products_page.sorting_by_('//select[@id="sorter"]', '//option[@value="price"]')
     assert eco_products_page.check_order_by_price('//span[@class="price"]')
 
+
 def test_sales_page_opened(sales_page):
     sales_page.open()
     assert sales_page.check_sale_page_opened()
+
 
 def test_luma_gear_offer(sales_page, deals_page):
     text = 'Gear'
@@ -75,11 +76,13 @@ def test_luma_gear_offer(sales_page, deals_page):
     sales_page.go_to_deal_page(text)
     assert deals_page.check_opened_correct_page(text)
 
+
 def test_men_offer(sales_page, deals_page):
     text = 'Men'
     sales_page.open()
     sales_page.go_to_deal_page(text)
     assert deals_page.check_opened_correct_page(text)
+
 
 def test_women_offer(sales_page, deals_page):
     sales_page.open()

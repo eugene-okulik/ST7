@@ -27,7 +27,7 @@ class BasePage:
         else:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 
-    def find(self, locator: tuple):
+    def find(self, locator):
         # return self.driver.find_element(*locator)
         wait = WebDriverWait(self.driver, 10)
         return wait.until(

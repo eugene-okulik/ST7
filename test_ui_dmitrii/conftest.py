@@ -8,6 +8,7 @@ from test_ui_dmitrii.pages.login_page import LoginPage
 from test_ui_dmitrii.pages.sales_page import Sales
 from test_ui_dmitrii.pages.deals_page import DealsPage
 
+
 @pytest.fixture()
 def driver():
     driver = webdriver.Firefox()
@@ -36,13 +37,16 @@ def my_account_page(driver):
 def product_page(driver):
     return ProductPage(driver)
 
+
 @pytest.fixture()
 def login_page(driver):
     return LoginPage(driver)
 
+
 @pytest.fixture()
 def sales_page(driver):
     return Sales(driver)
+
 
 @pytest.fixture()
 def deals_page(driver):
