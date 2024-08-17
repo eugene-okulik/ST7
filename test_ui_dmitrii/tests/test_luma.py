@@ -1,8 +1,7 @@
 from time import sleep
 import random as r
 import string as s
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+
 
 default_name = 'Dmitrii'
 default_surname = 'Kiselev'
@@ -65,4 +64,25 @@ def test_sorting_by_price(eco_products_page):
     eco_products_page.open()
     eco_products_page.sorting_by_('//select[@id="sorter"]', '//option[@value="price"]')
     assert eco_products_page.check_order_by_price('//span[@class="price"]')
+
+def test_sales_page_opened(sales_page):
+    sales_page.open()
+    assert sales_page.check_sale_page_opened()
+
+def test_luma_gear_offer(sales_page, deals_page):
+    text = 'Gear'
+    sales_page.open()
+    sales_page.go_to_deal_page(text)
+    assert deals_page.check_opened_correct_page(text)
+
+def test_men_offer(sales_page, deals_page):
+    text = 'Men'
+    sales_page.open()
+    sales_page.go_to_deal_page(text)
+    assert deals_page.check_opened_correct_page(text)
+
+def test_women_offer(sales_page, deals_page):
+    sales_page.open()
+    sales_page.go_to_deal_page('Pristine prices on pants, tanks and bras')
+    assert deals_page.check_opened_correct_page('Women')
     sleep(3)

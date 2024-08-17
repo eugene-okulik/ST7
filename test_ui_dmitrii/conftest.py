@@ -5,7 +5,8 @@ from test_ui_dmitrii.pages.eco_friendly_supplies import EcoProducts
 from test_ui_dmitrii.pages.my_account import MyAccountPage
 from test_ui_dmitrii.pages.product_page import ProductPage
 from test_ui_dmitrii.pages.login_page import LoginPage
-
+from test_ui_dmitrii.pages.sales_page import Sales
+from test_ui_dmitrii.pages.deals_page import DealsPage
 
 @pytest.fixture()
 def driver():
@@ -38,3 +39,11 @@ def product_page(driver):
 @pytest.fixture()
 def login_page(driver):
     return LoginPage(driver)
+
+@pytest.fixture()
+def sales_page(driver):
+    return Sales(driver)
+
+@pytest.fixture()
+def deals_page(driver):
+    return DealsPage(driver)

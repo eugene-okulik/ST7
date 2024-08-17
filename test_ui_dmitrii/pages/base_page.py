@@ -54,3 +54,6 @@ class BasePage:
     def move_attention(self, driver, locator):
         target = self.find(locator)
         ActionChains(driver).move_to_element(target).perform()
+
+    def check_correct_page_opened(self, text):
+        return text in self.find((By.XPATH, f'//h1[@id="page-title-heading"]/span[contains(text(), {text})]')).text
