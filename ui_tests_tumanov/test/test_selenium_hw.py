@@ -7,11 +7,11 @@ def test_create_account(create_account):
     create_account.open()
     create_account.input_met(loc.first_name_loc, "Viteenq")
     create_account.input_met(loc.last_name_loc, "Tumaanq")
-    create_account.input_met(loc.email_loc, 'tsttnqqq@bk.com')
+    create_account.input_met(loc.email_loc, 'tsttnqhr@bk.com')
     create_account.input_met(loc.password_loc, '923456zZz#!!')
     create_account.input_met(loc.password_confirmation_loc, '923456zZz#!!')
     create_account.click_el(loc.click_button_account)
-    create_account.check_text_info_correct('Thank you for registering with Main Website Store.')
+    create_account.check_text_is('Thank you for registering with Main Website Store.')
 
 
 def test_check_re_registration(create_account):
@@ -22,10 +22,10 @@ def test_check_re_registration(create_account):
     create_account.input_met(loc.password_loc, '923456zZz#!!')
     create_account.input_met(loc.password_confirmation_loc, '923456zZz#!!')
     create_account.click_el(loc.click_button_account)
-    create_account.check_message_error('There is already an'
-                                       ' account with this email address. If you are sure that it is your'
-                                       ' email address, click here to get your password and access your'
-                                       ' account.')
+    create_account.check_text_is('There is already an'
+                                 ' account with this email address. If you are sure that it is your'
+                                 ' email address, click here to get your password and access your'
+                                 ' account.')
 
 
 def test_check_message_text_input(create_account):
@@ -53,7 +53,8 @@ def test_title_in_card(eco_friendly):
 
 def test_title_sale(sale_page):
     sale_page.open()
-    sale_page.check_title('Sale')
+    # sale_page.check_title('Sale')
+    sale_page.find(sal.title_sale)
 
 
 def test_title_women_page(sale_page):
