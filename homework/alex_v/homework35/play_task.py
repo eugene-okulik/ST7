@@ -32,4 +32,3 @@ def test_negative_login_data_fill_in(page: Page):
         page.locator('//button[text()="Log in"]').click()
         response = response_event.value
     assert 'User does not exist.' in response.json()['errorMessage']
-
