@@ -2,15 +2,18 @@
 # Важно: никакие id не хардкодить! Хардкод - это если вы в коде пишете значение id. Все id нужно сохранять в
 # переменные сразу после добавления данных в базу и потом ими пользоваться.
 # При получении данных, распечатывайте эти данные.
+import os
 
 import mysql.connector as mysql
+import dotenv
+dotenv.load_dotenv()
 
 with mysql.connect(
-    username='st7',
-    password='AVNS_re9xEYl4dUPuhui4A0l',
-    host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
-    port=25060,
-    database='st7'
+    username=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASSW'),
+    host=os.getenv('DB_HOST'),
+    port=os.getenv('DB_PORT'),
+    database=os.getenv('DB_NAME')
 ) as db:
 
     cursor = db.cursor(dictionary=True)

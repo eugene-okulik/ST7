@@ -1,0 +1,27 @@
+INSERT INTO students (name, second_name, group_id) VALUES ('Andrey', 'Kovalev', NULL)
+INSERT INTO books (title, taken_by_student_id) VALUES ('harry potter 1', 20)
+INSERT INTO books (title, taken_by_student_id) VALUES ('harry potter 2', 20)
+INSERT INTO books (title, taken_by_student_id) VALUES ('harry potter 3', 20)
+INSERT INTO subjects (title) value ('DRON')
+INSERT INTO subjects (title) value ('BARON')
+INSERT INTO lessons (title, subject_id) value ('1337', 372)
+INSERT INTO lessons (title, subject_id) value ('True ls', 372)
+INSERT INTO lessons (title, subject_id) value ('AI LS', 373)
+INSERT INTO lessons (title, subject_id) value ('iOS', 373)
+INSERT INTO marks (value, lesson_id, student_id) value (1, 588, 20)
+INSERT INTO marks (value, lesson_id, student_id) value (3, 589, 20)
+INSERT INTO marks (value, lesson_id, student_id) value (3, 590, 20)
+INSERT INTO marks (value, lesson_id, student_id) value (5, 291, 20)
+
+SELECT * FROM marks WHERE student_id = 20.
+SELECT * FROM books WHERE taken_by_student_id = 20
+SELECT * FROM marks WHERE student_id = 20
+SELECT * from books WHERE taken_by_student_id = 20
+
+SELECT * FROM students
+JOIN `groups` AS g ON g.id = s.group_id
+JOIN books AS b ON b.taken_by_student_id = s.id
+JOIN marks AS m ON m.student_id = s.id
+JOIN lessons AS l ON l.id = m.lesson_id
+JOIN subjects AS sub ON sub.id = l.subject_id
+WHERE s.id = 20;
