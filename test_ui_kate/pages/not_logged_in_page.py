@@ -4,7 +4,8 @@ from test_ui_kate.pages.locators import AccountLocators as loc
 
 
 class NotLoggedIn(BasePage):
-    page_url = '/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS93aXNobGlzdC9pbmRleC9hZGQv/'
+    page_url = '/customer/account/login/referer/' + \
+           'aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS93aXNobGlzdC9pbmRleC9hZGQv/'
 
     @allure.step('Checking not logged in page')
     def find_error_alert(self):

@@ -14,7 +14,7 @@ def test_email_field(account_page):
     account_page.send_keys('skdfjg.com')
     account_page.find_field(loc.CREATE_BUTTON)
     account_page.invalid_email()
-    
+
 
 def test_registration(account_page, success_account):
     account_page.open()
