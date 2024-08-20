@@ -33,7 +33,6 @@ class BasePage:
             ec.presence_of_element_located(locator)
         )
 
-
     @allure.step('Fill Input by ID')
     def fill_input_by_id(self, locate_id, input_text):
         self.find((By.ID, locate_id)).send_keys(input_text)
