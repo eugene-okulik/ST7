@@ -1,4 +1,3 @@
-from time import sleep
 import random as r
 import string as s
 
@@ -88,4 +87,3 @@ def test_women_offer(sales_page, deals_page):
     sales_page.open()
     sales_page.go_to_deal_page('Pristine prices on pants, tanks and bras')
     assert deals_page.check_opened_correct_page('Women')
-    sleep(3)

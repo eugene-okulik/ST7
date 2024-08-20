@@ -28,14 +28,11 @@ class BasePage:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 
     def find(self, locator):
-        # return self.driver.find_element(*locator)
         wait = WebDriverWait(self.driver, 10)
         return wait.until(
             ec.presence_of_element_located(locator)
         )
 
-    # def accept_alert(self):
-    #     WebDriverWait(self.driver, 10).until(ec.alert_is_present()).accept()
 
     @allure.step('Fill Input by ID')
     def fill_input_by_id(self, locate_id, input_text):
@@ -43,8 +40,10 @@ class BasePage:
 
     @allure.step('Push the button')
     def push_the_button(self, button_selector):
-        # print(f'//button[@class="{button_selector}"]')
-        self.find((By.XPATH, f'//button[@{button_selector}]')).click()
+        # self.find((By.XPATH, f'//button[@{button_selector}]')).click()
+        locator = (By.XPATH, f'//button[@{button_selector}]')
+        button = WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(locator))
+        button.click()
 
     @allure.step('Required field check')
     def check_required_field(self):
