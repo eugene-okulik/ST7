@@ -1,0 +1,47 @@
+INSERT INTO students (name,second_name, group_id)
+ Values('Andrew','Tate', Null)
+
+INSERT INTO groups (title, start_date, end_date)
+VALUES ('Xbox','2024-01-01', '2024-03-07')
+
+UPDATE students SET group_id =401 WHERE id =411
+
+INSERT INTO books (title, taken_by_student_id)
+Values ('HTML basics', 411)
+
+
+INSERT INTO subjects (title)
+VALUES ('World of Warcraft'),('Hunt'), ('The Forest')
+
+INSERT INTO lessons (title, subject_id)
+VALUES  ('Drawing',1),
+    ('Cooking',1),
+    ('Blacksmith',2);
+
+INSERT INTO marks (`value`, lesson_id, student_id)
+VALUES
+    (7, 709, 411),
+    (5, 709, 411),
+    (2, 711, 411),
+    (3, 711, 411),
+    (5, 710, 411),
+    (5, 710, 411);
+
+
+SELECT *
+FROM marks
+WHERE student_id =411
+
+
+SELECT *
+FROM books b
+WHERE taken_by_student_id =411
+
+SELECT s.name, s.second_name, g.title AS group_title, b.title AS book_title, m.value AS mark, l.title AS lesson_title, sub.title AS subject_title
+FROM students s
+JOIN `groups` g ON g.id = s.group_id
+JOIN books b ON b.taken_by_student_id = s.id
+JOIN marks m ON m.student_id = s.id
+JOIN lessons l ON l.id = m.lesson_id
+JOIN subjects sub ON sub.id = l.subject_id
+WHERE s.id = 411
