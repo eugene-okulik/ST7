@@ -44,7 +44,7 @@ class BasePage:
             self.driver.execute_script(f"window.scrollTo({start}, {pixels})")
         else:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-    
+
     @allure.step('Find a hover an element')
     def find_and_hover_element(self, locator):
         element = self.find(locator)

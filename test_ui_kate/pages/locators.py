@@ -12,7 +12,7 @@ class Locators:
     LAST_NAME_FIELD = (By.ID, 'lastname')
     CONFIRM_PASSWORD_FIELD = (By.ID, 'password-confirmation')
     SUCCESS_CONFIRMATION = (By.XPATH, '//div[@data-bind="html: $parent.prepareMessageForHtml(message.text)"]')
-    
+
     # Eco-friendly Page Locators
     COMPARE_ICON = (By.XPATH, '(//a[@class="action tocompare" and @title="Add to Compare"])[5]')
     BRA_ITEM = (By.XPATH, '//img[@class="product-image-photo" and @alt="Electra Bra Top"]')
