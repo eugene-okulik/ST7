@@ -10,5 +10,5 @@ class NotLoggedIn(BasePage):
     )
 
     @allure.step('Checking not logged in page')
-    def find_error_alert(self):
-        assert self.find(loc.ERROR_MESSAGE).is_displayed
+    def erro_without_login(self, locator):
+        assert self.find(locator).is_displayed
