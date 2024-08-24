@@ -32,7 +32,7 @@ def test_tabs(page, context: BrowserContext):
 def test_response(page):
     page.goto('https://www.demoblaze.com/index.html')
     page.get_by_role('link', name='Log in').click()
-    page.locator('#loginusername').fill('234234534')
+    page.locator('#loginusername').fill('234234d534')
     page.locator('#loginpassword').fill('adfoura;fd')
     with page.expect_response('https://api.demoblaze.com/login') as response_event:
         page.locator('//button[@onclick="logIn()"]').click()
