@@ -10,13 +10,13 @@ def page(context: BrowserContext) -> Page:
 
 
 def test_1_alert(page):
-    
+
     def change_response(route: Route):
         response = route.fetch()
         body = response.json()
         body['body']['digitalMat'][0]['familyTypes'][0]['productName'] = 'яблокофон 15 про'
         route.fulfill(response=response, json=body)
-    
+
     page.route(re.compile('shop/api/digital-mat'), change_response)
     page.goto('https://www.apple.com/shop/buy-iphone')
     page.get_by_role('button', name='Take a closer look - iPhone 15 Pro & iPhone 15 Pro Max').click()
