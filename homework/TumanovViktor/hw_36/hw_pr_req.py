@@ -1,5 +1,4 @@
 from playwright.sync_api import BrowserContext, Page, expect, Route
-import re
 import pytest
 from time import sleep
 
