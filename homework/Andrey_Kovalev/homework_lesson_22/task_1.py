@@ -62,11 +62,11 @@ def test_update_obj(new_obj, session_info, name):
 @pytest.mark.smoke
 def test_change_obj(new_obj, session_info):
     payload = {
-         "name": "TOYOTA",
-         "data": {
+        "name": "TOYOTA",
+        "data": {
             "year": 1996,
             "price": 1337.0
-         }
+        }
     }
     response = requests.patch(
         f'https://api.restful-api.dev/objects/{new_obj}',
