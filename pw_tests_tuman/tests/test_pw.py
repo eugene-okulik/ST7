@@ -1,5 +1,4 @@
-from pw_tests_tuman.pages.locators import (CreateAccount as loc, EcoFriendly as eco,
-                                              SalePage as sal)
+from pw_tests_tuman.pages.locators import (CreateAccount as loc, EcoFriendly as eco, SalePage as sal)
 
 
 def test_create_account(create_account):

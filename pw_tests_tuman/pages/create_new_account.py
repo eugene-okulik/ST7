@@ -1,4 +1,4 @@
-from playwright.sync_api import  Locator, expect
+from playwright.sync_api import expect
 from pw_tests_tuman.pages.base_page import Basepage
 from pw_tests_tuman.pages.locators import CreateAccount as loc
 
