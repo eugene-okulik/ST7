@@ -10,4 +10,3 @@ class MenDealPage(BasePage):
     @allure.step('Men deal page')
     def check_men_page_opened(self, page_title):
         expect(self.find(loc.MEN_PAGE_TITLE)).to_contain_text(page_title)
-
