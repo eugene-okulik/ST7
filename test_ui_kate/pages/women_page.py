@@ -8,4 +8,4 @@ class WomenPage(BasePage):
 
     @allure.step('Checking the page title')
     def check_page_title(self, text):
-        assert self.find(loc.HEADER).text == text
+        assert self.find_element(loc.HEADER).text == text

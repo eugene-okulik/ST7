@@ -7,5 +7,5 @@ class CustomerAccountPage(BasePage):
     page_url = '/customer/account/'
 
     @allure.step('Checking a successful registration')
-    def success_registration(self, text):
-        assert self.find(loc.SUCCESS_CONFIRMATION).text == text
+    def confirm_successful_registration(self, text):
+        assert self.find_element(loc.SUCCESS_CONFIRMATION).text == text

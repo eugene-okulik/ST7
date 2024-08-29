@@ -26,7 +26,7 @@ class BasePage:
 
     @allure.step('Find an element and click')
     def find_and_click_element(self, locator):
-        self.find(locator).click()
+        self.find_element(locator).click()
 
     @allure.step('Sending keys to an element')
     def send_keys_to_element(self, key_value):
@@ -47,5 +47,5 @@ class BasePage:
 
     @allure.step('Find a hover an element')
     def find_and_hover_element(self, locator):
-        element = self.find(locator)
+        element = self.find_element(locator)
         self.actions_move_to_element(element)

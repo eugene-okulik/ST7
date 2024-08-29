@@ -1,75 +1,66 @@
-from test_ui_kate.pages.locators import Locators as loc
-
-
 def test_password_field(account_page):
     account_page.open_page()
-    account_page.find_and_click_element(loc.PASSWORD_FIELD)
-    account_page.send_keys_to_element('Barsuki')
-    account_page.password_strength('Weak')
+    account_page.click_password_input_field()
+    account_page.type_weak_password()
+    account_page.check_password_strength(text='Weak')
 
 
 def test_email_field(account_page):
     account_page.open_page()
-    account_page.find_and_click_element(loc.EMAIL_FIELD)
-    account_page.send_keys_to_element('skdfjg.com')
-    account_page.find_and_click_element(loc.CREATE_BUTTON)
-    account_page.invalid_email_error('Please enter a valid email address (Ex: johndoe@domain.com).')
+    account_page.click_email_input_field()
+    account_page.type_incorrect_email()
+    account_page.click_create_account_button()
+    account_page.check_invalid_email_error(text='Please enter a valid email address (Ex: johndoe@domain.com).')
 
 
 def test_registration(account_page, success_account):
     account_page.open_page()
-    account_page.find_and_click_element(loc.FIRST_NAME_FIELD)
-    account_page.send_keys_to_element('Kate')
-    account_page.find_and_click_element(loc.LAST_NAME_FIELD)
-    account_page.send_keys_to_element('Test')
-    account_page.find_and_click_element(loc.EMAIL_FIELD)
-    account_page.send_keys_to_element('katetestY@yahoo.com')
-    account_page.find_and_click_element(loc.PASSWORD_FIELD)
-    account_page.send_keys_to_element('Barsuki07')
-    account_page.find_and_click_element(loc.CONFIRM_PASSWORD_FIELD)
-    account_page.send_keys_to_element('Barsuki07')
-    account_page.find_and_click_element(loc.CREATE_BUTTON)
-    success_account.find_element(loc.SUCCESS_CONFIRMATION)
-    success_account.success_registration('Thank you for registering with Main Website Store.')
+    account_page.click_first_name_input_field()
+    account_page.type_first_name()
+    account_page.click_last_name_input_field()
+    account_page.type_last_name()
+    account_page.click_email_input_field()
+    account_page.type_email_address()
+    account_page.click_password_input_field()
+    account_page.type_password()
+    account_page.click_confirmation_password_input_field()
+    account_page.type_password_again()
+    account_page.click_create_account_button()
+    success_account.confirm_successful_registration(text='Thank you for registering with Main Website Store.')
 
 
 def test_to_compare_item(eco_friendly):
     eco_friendly.open_page()
-    eco_friendly.scroll_page(500)
-    eco_friendly.find_and_hover_element(loc.BRA_ITEM)
-    eco_friendly.find_and_click(loc.COMPARE_ICON)
-    eco_friendly.compared_item_added('Electra Bra Top')
+    eco_friendly.add_bra_item_to_compare()
+    eco_friendly.check_bra_added('Electra Bra Top')
 
 
 def test_to_wishlist_item(eco_friendly, not_logged_in):
     eco_friendly.open_page()
-    eco_friendly.scroll_page(500)
-    eco_friendly.find_and_hover_element(loc.TANK_ITEM)
-    eco_friendly.find_and_click(loc.WISHLIST_ICON)
-    not_logged_in.erro_without_login(loc.ERROR_MESSAGE)
+    eco_friendly.add_tank_item_to_wishlist()
+    not_logged_in.check_item_not_added_without_logging_in()
 
 
 def test_page_list_view(eco_friendly):
     eco_friendly.open_page()
-    eco_friendly.find_and_click(loc.LIST_VIEW_ICON)
-    eco_friendly.changed_pagination('10')
+    eco_friendly.change_the_items_view_to_be_list()
+    eco_friendly.check_the_pagination_changed_to_be_10()
 
 
-def test_sale_redirect_to_gear_page(sale_page, gear_page):
+def test_sale_page_redirects_to_gear_page(sale_page, gear_page):
     sale_page.open_page()
-    sale_page.find_and_click_element(loc.LUMA_GEAR_LINK)
-    gear_page.check_correct_redirect('Gear')
+    sale_page.click_luma_gear_link()
+    gear_page.check_redirect_is_correct()
 
 
-def test_sale_add_to_cart(sale_page, gear_page):
+def test_add_to_cart(sale_page, gear_page):
     sale_page.open_page()
-    sale_page.find_and_click_element(loc.LUMA_GEAR_LINK)
-    gear_page.find_and_hover_element(loc.BOTTLE_ICON)
-    gear_page.find_and_click(loc.ADD_TO_CART_ICON)
+    sale_page.click_luma_gear_link()
+    gear_page.add_bottle_to_cart()
     gear_page.check_number_items_in_cart('1')
 
 
-def test_sale_redirect_to_proper_page(sale_page, women_page):
+def test_sale_page_redirects_to_bras_and_tanks_page(sale_page, women_page):
     sale_page.open_page()
-    sale_page.find_and_click_element(loc.BRAS_AND_TANKS_LINK)
+    sale_page.click_bras_and_tanks_link()
     women_page.check_page_title('Bras & Tanks')
