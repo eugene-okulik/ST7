@@ -6,10 +6,6 @@ from test_ui_kate.pages.locators import Locators as loc
 class AccountPage(BasePage):
     page_url = '/customer/account/create/'
 
-    @allure.step('Find and click password field')
-    def click_password_input_field(self):
-        self.find_and_click_element(loc.PASSWORD_FIELD)
-
     @allure.step('Typing a weak password')
     def type_weak_password(self):
         self.send_keys_to_element('Barsuki')
@@ -17,10 +13,6 @@ class AccountPage(BasePage):
     @allure.step('Checking the strength of the password')
     def check_password_strength(self, text):
         assert text in self.find_element(loc.PASSWORD_STRENGTH_WEAK).text
-
-    @allure.step('Find and click email field')
-    def click_email_input_field(self):
-        self.find_and_click_element(loc.EMAIL_FIELD)
 
     @allure.step('Typing an incorrect email address')
     def type_incorrect_email(self):
@@ -72,4 +64,4 @@ class AccountPage(BasePage):
 
     @allure.step('Confirm the password')
     def type_password_again(self):
-        self.send_keys_to_element('Barsuki07')    
+        self.send_keys_to_element('Barsuki07')
