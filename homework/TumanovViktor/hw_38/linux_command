@@ -1,0 +1,23 @@
+№ 2
+Go to first line in file:  g
+Go to last line in file:   G
+Forward one window: f
+Forward one line:   e
+Backward one line:  y
+Search forward for matching line:   /pattern
+Search backward for matching line:  ?pattern
+Repeat previous search:    n
+Repeat previous search in reverse direction:  N
+
+
+№ 3
+
+/dev/null    special file
+/dev/zero    special file
+/dev/sda     block device files
+/dev/tty     special
+/root        directory
+/etc/passwd  txt
+/proc/mounts symbolic link
+/bin/ls      regular file
+/bin/zcat    regular file
