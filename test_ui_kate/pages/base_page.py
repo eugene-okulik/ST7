@@ -3,6 +3,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
+from test_ui_kate.pages.locators import Locators as loc
 
 
 class BasePage:
@@ -49,3 +50,7 @@ class BasePage:
     def find_and_hover_element(self, locator):
         element = self.find_element(locator)
         self.actions_move_to_element(element)
+
+    @allure.step('Checking the page title')
+    def check_page_title(self, title):
+        self.find_element(loc.HEADER).text == title

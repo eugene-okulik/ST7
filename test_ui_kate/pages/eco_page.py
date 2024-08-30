@@ -28,5 +28,5 @@ class EcoFriendlyPage(BasePage):
         self.find_and_click_element(loc.LIST_VIEW_ICON)
 
     @allure.step('Checking the pagination in the list view')
-    def check_the_pagination_changed_to_be_10(self):
-        assert self.find_element(loc.LIST_VIEW_PAGINATION).text == '10'
+    def check_the_pagination_changed_to_be_(self, number):
+        assert self.find_element(loc.LIST_VIEW_PAGINATION).text == number
