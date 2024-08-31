@@ -17,34 +17,34 @@ def page(context: BrowserContext) -> Page:
 
 @pytest.fixture()
 def create_account_page(page):
-    return CreateAccountPage(driver)
+    return CreateAccountPage(page)
 
 
 @pytest.fixture()
 def my_account_page(page):
-    return Account(driver)
+    return Account(page)
 
 
 @pytest.fixture()
 def eco_page(page):
-    return EcoPage(driver)
+    return EcoPage(page)
 
 
 @pytest.fixture()
 def compare_page(page):
-    return ComparePage(driver)
+    return ComparePage(page)
 
 
 @pytest.fixture()
-def product_page(driver):
-    return ProductPage(driver)
+def product_page(page):
+    return ProductPage(page)
 
 
 @pytest.fixture()
-def customer_login_page(driver):
-    return CustomerLoginPage(driver)
+def customer_login_page(page):
+    return CustomerLoginPage(page)
 
 
 @pytest.fixture()
-def sale_page(driver):
-    return SalePage(driver)
+def sale_page(page):
+    return SalePage(page)

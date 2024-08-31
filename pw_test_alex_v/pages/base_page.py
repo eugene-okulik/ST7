@@ -20,8 +20,8 @@ class BasePage:
     def find(self, locator: str) -> Locator:
         return self.page.locator(locator)
 
-    def title_page_is(self, text):
-        return self.page.title == text
+    def title_page_is(self, text: str) -> bool:
+        return self.page.title() == text
 
     def element_visible_is(self, locator):
         return self.find(locator).is_disabled()

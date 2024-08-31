@@ -1,4 +1,3 @@
-from playwright.async_api import Page
 from pw_test_alex_v.pages.base_page import BasePage
 
 

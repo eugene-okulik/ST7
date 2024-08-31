@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from ui_test_alex_v.utils.user_data import UserData
+from pw_test_alex_v.utils.user_data import UserData
 
 
 @allure.feature('Registration page')
