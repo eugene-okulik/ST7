@@ -10,7 +10,7 @@ def test_registration_with_valid_data(create_account_page, my_account_page):
     valid_password = UserData.generate_password()
     create_account_page.open()
     create_account_page.fill_in_first_name(UserData.generate_firstname())
-    create_account_page.fill_in_last_name(UserData.generate_lastname())  # Assuming this should be `generate_lastname()`
+    create_account_page.fill_in_last_name(UserData.generate_lastname())
     create_account_page.fill_in_email(UserData.generate_email())
     create_account_page.fill_in_password(valid_password)
     create_account_page.fill_in_password_confirmation(valid_password)

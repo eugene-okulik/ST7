@@ -1,4 +1,3 @@
-from playwright.sync_api import expect
 from pw_test_alex_v.pages.base_page import BasePage
 
 
