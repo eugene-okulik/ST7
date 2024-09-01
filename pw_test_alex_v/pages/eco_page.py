@@ -10,11 +10,11 @@ class EcoPage(BasePage):
 
     @allure.step('Sort products by name')
     def sort_products_by_name(self) -> bool:
-        sort_dropdown = self.page.locator("select#sorter")
+        sort_dropdown = self.page.locator("select#sorter").first
         sort_dropdown.wait_for(state="visible", timeout=10000)
         sort_dropdown.click()
 
-        sort_by_name_option = self.page.locator("//option[@value='name']")
+        sort_by_name_option = self.find("//option[@value='name']").first
         sort_by_name_option.wait_for(state="visible", timeout=10000)
         sort_by_name_option.click()
 
@@ -27,7 +27,7 @@ class EcoPage(BasePage):
 
     @allure.step('Click on a product')
     def choose_product(self):
-        product_elements = self.page.locator("//a[@class='product-item-link']")
+        product_elements = self.page.locator("//a[@class='product-item-link']").first
         product_elements.wait_for(state="visible", timeout=10000)
 
         all_products = product_elements.all()
