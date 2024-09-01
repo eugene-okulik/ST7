@@ -12,7 +12,7 @@ class ProductPage(BasePage):
         add_to_wishlist.click()
 
     def go_to_comparison_list(self):
-        comparison_list_button = self.page.locator('comparison list').first
+        comparison_list_button = self.page.locator("//a[@data-role='add-to-links']")
         comparison_list_button.click()
 
     def get_product_title(self):
