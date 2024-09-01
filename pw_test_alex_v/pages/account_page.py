@@ -13,4 +13,3 @@ class Account(BasePage):
             return message_locator.text_content() and message_text.lower() in message_locator.text_content().lower()
         except TimeoutError:
             return False
-

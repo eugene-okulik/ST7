@@ -14,6 +14,3 @@ class CustomerLoginPage(BasePage):
         print(f"Actual notification message: {notification_message}")
 
         return expected_message.lower() in notification_message.lower()
-
-
-
