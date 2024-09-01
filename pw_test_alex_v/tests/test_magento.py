@@ -10,13 +10,14 @@ def test_registration_with_valid_data(create_account_page, my_account_page):
     valid_password = UserData.generate_password()
     create_account_page.open()
     create_account_page.fill_in_first_name(UserData.generate_firstname())
-    create_account_page.fill_in_last_name(UserData.generate_firstname())
+    create_account_page.fill_in_last_name(UserData.generate_lastname())  # Assuming this should be `generate_lastname()`
     create_account_page.fill_in_email(UserData.generate_email())
     create_account_page.fill_in_password(valid_password)
     create_account_page.fill_in_password_confirmation(valid_password)
     create_account_page.click_on_create_an_account_button()
     assert my_account_page.successful_registration_message_displayed_is(
-        'Thank you for registering with Main Website Store.')
+        'Thank you for registering with Main Website Store.'
+    )
 
 
 @allure.feature('Registration page')
