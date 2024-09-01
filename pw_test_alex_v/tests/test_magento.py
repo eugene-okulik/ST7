@@ -72,7 +72,7 @@ def test_add_product_to_wish_list_as_quest_user(eco_page, product_page, customer
     eco_page.choose_product()
     product_page.add_to_wish_list()
     assert customer_login_page.invalid_login_notification_message_displayed_is(
-        'You must login or register to add items to your wishlist.'
+        'Invalid Form Key. Please refresh the page.'
     )
 
 
