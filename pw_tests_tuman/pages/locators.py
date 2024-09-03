@@ -7,7 +7,8 @@ class CreateAccount:
     click_button_account = '//button[@type="submit" and @title="Create an Account"]'
     thank_message = '//*[contains(@data-bind, "parent")]'
     error_message = '//*[contains(@data-bind, "parent")]'
-    spase_input = 'firstname-error'
+    spase_input = '//*[@class="mage-error"]'   # 'firstname-error'
+    support_text = '//a[text()="Support This Project"]'
 
 
 class EcoFriendly:

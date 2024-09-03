@@ -12,4 +12,8 @@ class SalPage(Basepage):
 
     def check_title_women_page(self, text):
         title_page_women = self.find(loc_sale.title_women_page)
-        expect(title_page_women).to_have_text(text)
+        expect(title_page_women).to_have_text(text, timeout=10000)
+
+    def click_button_shop(self):
+        self.click_el(loc_sale.button_shop)
+

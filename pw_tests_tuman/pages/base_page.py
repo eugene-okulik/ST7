@@ -19,22 +19,14 @@ class Basepage:
     def find(self, locator: str) -> Locator:
         return self.page.locator(locator)
 
-    def element_visible(self, locator: str):
-        expect(self.page.locator(locator)).to_have_text()
-        return True
-
-    def equal(self, locator: str, text: str):
+    def is_equal(self, locator: str, text: str):
         expect(self.page.locator(locator)).to_have_text(text)
         return True
-
-    # def check_text_is(self, text):
-    #     found_el = self.find(loc.thank_message)
-    #     assert found_el.text == text
 
     def click_el(self, locator: str):
         self.find(locator).click()
 
-    def current_url(self, url: str):
+    def current_url_is(self, url: str):
         expect(self.page).to_have_url(url)
         return True
 
