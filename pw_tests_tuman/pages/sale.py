@@ -16,4 +16,3 @@ class SalPage(Basepage):
 
     def click_button_shop(self):
         self.click_el(loc_sale.button_shop)
-
