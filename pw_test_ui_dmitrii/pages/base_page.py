@@ -5,6 +5,7 @@ from playwright.sync_api import Page, Locator
 class BasePage:
     base_url = 'https://magento.softwaretestingboard.com/'
     page_url = None
+    locator = None
 
     def __init__(self, page: Page):
         self.page = page

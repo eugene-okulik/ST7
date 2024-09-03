@@ -4,6 +4,12 @@ from pw_test_ui_dmitrii.pages.base_page import BasePage
 
 class EcoProducts(BasePage):
     page_url = 'collections/eco-friendly.html'
+    locator = str
+
+    @allure.step('Move attention to Eco Supply')
+    def move_attention_to_eco_supply(self, name):
+        self.locator = f'//a[contains(text(), "{name}")]'
+        self.move_attention(self.locator)
 
     @allure.step('Choose Eco product')
     def choose_eco_product(self, locator_text):
@@ -13,8 +19,9 @@ class EcoProducts(BasePage):
         product_page.click()
 
     @allure.step('Add to favorite')
-    def click_to_favorite(self, locator):
-        self.find(locator).click()
+    def click_to_favorite(self):
+        # print(f'{self.locator}/following::a[@data-action="add-to-wishlist"]')
+        self.find(f'{self.locator}/following::a[@data-action="add-to-wishlist"]').click()
 
     @allure.step('Sorting by parameter')
     def sorting_by_(self, locator_1, locator_2):
