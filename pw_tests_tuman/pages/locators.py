@@ -9,6 +9,7 @@ class CreateAccount:
     error_message = '//*[contains(@data-bind, "parent")]'
     spase_input = '//*[@class="mage-error"]'   # 'firstname-error'
     support_text = '//a[text()="Support This Project"]'
+    loc_body = 'body'
 
 
 class EcoFriendly:

@@ -1,4 +1,4 @@
-from playwright.sync_api import expect, Locator
+from playwright.sync_api import expect, Locator, Page
 from pw_tests_tuman.pages.base_page import Basepage
 from pw_tests_tuman.pages.locators import CreateAccount as loc
 from time import sleep
@@ -25,18 +25,15 @@ class CreateAccountPage(Basepage):
 
     def check_text_is(self, text):
         found_el = self.find(loc.error_message)
-        # assert found_el.text == text
         expect(found_el).to_have_text(text)
-        # заменил на timeout=10000 не помогло
 
     def check_empty_input_message(self, text: str):
+        support_text = self.find(loc.loc_body)
         sleep(3)
-        # self.find(loc.first_name_loc).click()
-        # self.find(loc.first_name_loc).page.keyboard.press('Enter')
-        self.click_el(loc.click_button_account)
+        expect(support_text).to_contain_text('Support This Project')
+        field = self.find(loc.first_name_loc)
+        field.click()
+        field.press('Enter')
         sleep(3)
-        support_text = self.find(loc.support_text)
-        expect(support_text).to_have_text()
         text_spase_error = self.find(loc.spase_input)
         expect(text_spase_error).to_have_text(text, timeout=10000)
-# Так и не понял как это победить
