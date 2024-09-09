@@ -12,11 +12,7 @@ class AccountPage(BasePage):
 
     @allure.step('Checking the strength of the password')
     def check_password_strength(self, text):
-        expect(self.find_element(loc.PASSWORD_STRENGTH_WEAK)).to_have_text(text)
-
-    @allure.step('Enter the email')
-    def enter_email_address(self, email):
-        self.send_keys_to_element(loc.EMAIL_FIELD, key_value=email)
+        expect(self.find_element_by_locator(loc.PASSWORD_STRENGTH_WEAK)).to_have_text(text)
 
     @allure.step('Find and click create button')
     def click_create_account_button(self):
