@@ -49,14 +49,25 @@ jobs:
           sudo tar -zxvf allure-2.30.0.tgz -C /opt/ &&
           sudo ln -s /opt/allure-2.30.0/bin/allure /usr/bin/allure
       - name: Generate report
-        run: allure generate -c ui_tests_eokulik/allure-results -o allure_report
+        run: allure generate -c ui_tests_eokulik/allure-results -o _site
       - name: save report as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: allure_report
-          path: allure_report
+          name: _site
+          path: _site
           retention-days: 2
         
       
-        
+  publish-report:
+    name: Report publication
+    runs-on: ubuntu-latest
+    needs: run-tests
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
       
