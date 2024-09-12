@@ -16,4 +16,4 @@ def test_e2e(home_page, product_page, cart_page):
     product_page.click_add_to_cart('1')
     product_page.accept_alert()
     cart_page.open()
-    cart_page.check_product_in_cart('Samsung galaxy s6')
+    cart_page.check_product_in_cart('Samsung galaxy s834762873648273')
