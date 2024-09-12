@@ -1,3 +1,7 @@
+import pytest
+
+
+@pytest.smoke
 def test_phone_page(home_page, product_page):
     home_page.open()
     home_page.click_product('Sony vaio i7')
@@ -5,6 +9,7 @@ def test_phone_page(home_page, product_page):
     product_page.check_add_to_cart_button(9)
 
 
+@pytest.e2e
 def test_e2e(home_page, product_page, cart_page):
     home_page.open()
     home_page.click_product('Samsung galaxy s6')
