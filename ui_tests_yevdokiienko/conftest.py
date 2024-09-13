@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from ui_tests_yevdokiienko.pages.create_nc_account_page import CreateAccountPage
 from ui_tests_yevdokiienko.pages.account_page import AccountPage
 from ui_tests_yevdokiienko.pages.ef_collection_page import EcoFriendlyCollectionPage
@@ -12,7 +13,11 @@ from ui_tests_yevdokiienko.pages.acc_error_page import AccountErrorPage
 
 @pytest.fixture()
 def driver():
-    driver = webdriver.Firefox()
+    options = Options()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     driver.implicitly_wait(5)
     yield driver
